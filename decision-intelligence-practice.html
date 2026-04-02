@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Decision Intelligence Actually Means in Practice | Consilium.ai</title>
+  <meta name="description" content="A Consilium.ai white paper on decision intelligence, enterprise AI, scenario-based evaluation, and decision quality under uncertainty.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .article-wrap { max-width: 900px; margin: 0 auto; }
+    .article-meta { display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; color:#666; font-size:.95rem; }
+    .article-lead { font-size:1.1rem; line-height:1.75; color:#334155; }
+    .quote-panel {
+      margin-top: 28px;
+      padding: 24px 28px;
+      border-left: 4px solid #1f3a5f;
+      background: linear-gradient(90deg,#f8fafb 0%,#fff 100%);
+      border-radius: 18px;
+    }
+    .quote-panel p { margin: 0; font-size: 1.08rem; line-height: 1.8; color:#334155; }
+    .article-section { margin-top: 44px; }
+    .article-section h2 { margin-bottom: 14px; }
+    .article-section p { line-height: 1.9; color:#334155; margin: 0 0 18px 0; }
+    .equation-card {
+      margin-top: 24px;
+      padding: 22px 24px;
+      text-align: center;
+      border-radius: 20px;
+      background: #f8fafb;
+      font-size: 1.1rem;
+      color:#1f3a5f;
+      border: 1px solid rgba(31,58,95,.08);
+    }
+    .inline-links { display:flex; flex-wrap:wrap; gap:14px; margin-top:24px; }
+    .article-footer-note { color:#64748b; font-size:.95rem; margin-top:24px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">
+        <div class="logo">C</div>
+        <div>
+          <div class="brand-title">Consilium<span class="dotai">.ai</span></div>
+          <div class="brand-sub">AI Decision Intelligence</div>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="decision-platform.html">Decision Platform</a>
+        <a href="decision-intelligence.html">Decision Intelligence</a>
+        <a href="insights.html" class="active">Insights</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="button button-primary" href="contact.html">Request a Demo</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="article-wrap">
+          <div class="eyebrow">Decision Intelligence White Paper</div>
+          <h1>What decision intelligence actually means in practice</h1>
+          <p class="article-lead">Most organizations have already invested in AI, data, and analytics. The more difficult question is whether those investments actually improve how the enterprise makes decisions under uncertainty. This paper argues that the next wave of AI value will come not from doing work faster, but from building systems that evaluate decisions across scenarios, constraints, and interconnected business outcomes.</p>
+          <div class="article-meta">
+            <span>Consilium.ai</span>
+            <span>•</span>
+            <span>Richard Wong, PhD</span>
+            <span>•</span>
+            <span>Decision Intelligence</span>
+          </div>
+          <div class="inline-links">
+            <a class="button button-primary" href="decision_intelligence.pdf">Download PDF</a>
+            <a class="button button-secondary" href="insights.html">Back to Insights</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="article-wrap">
+        <div class="quote-panel">
+          <p>“Most organizations do not lack data or models—they lack a system that integrates them into decisions and evaluates how those decisions perform across alternative scenarios.”</p>
+        </div>
+
+        <div class="article-section">
+          <h2>Introduction</h2>
+          <p>Over the past decade, enterprises have made significant investments in artificial intelligence, data infrastructure, and advanced analytics, yet the expected transformation in business outcomes has been uneven and often underwhelming. The primary reason is that most organizations have approached AI through a productivity lens, focusing on accelerating workflows, automating tasks, and improving efficiency at the individual or function level. While these improvements are real and measurable, they do not fundamentally change how decisions are made, nor do they consistently improve enterprise-level outcomes. As a result, many organizations find themselves in a state of high AI usage but relatively modest impact on revenue growth, profitability, or risk reduction.</p>
+          <p>This gap reflects a misunderstanding of where the true value of AI resides. Productivity improvements make work faster, but they do not necessarily make decisions better. Decision quality, rather than task efficiency, is the dominant driver of long-term business performance. Organizations succeed or fail based on the accumulation of decisions made under uncertainty, across time, and across interconnected parts of the enterprise. Decision intelligence addresses this gap by shifting the focus from how work is performed to how decisions are evaluated, coordinated, and executed.</p>
+        </div>
+
+        <div class="article-section">
+          <h2>The structural limitation of current AI adoption</h2>
+          <p>Current AI adoption is dominated by use cases such as writing, summarization, coding, and general-purpose assistance, all of which improve how individuals interact with information but do not materially change how organizations choose between alternatives. These applications are attractive because they are easy to deploy, require minimal organizational coordination, and produce immediate visible benefits. However, they operate primarily at the level of workflow enhancement rather than decision transformation.</p>
+          <p>The more difficult problem, and therefore the more valuable one, is improving decision-making under uncertainty. This requires integrating data, models, and organizational context into a system that evaluates choices rather than simply generating insights. Unlike productivity tools, decision intelligence cannot be deployed in isolation. It requires coordination across functions, alignment of assumptions, and the ability to model interactions between decisions. This complexity explains why most organizations remain in a state where AI usage is high but business impact is limited.</p>
+        </div>
+
+        <div class="article-section">
+          <h2>Decision quality under uncertainty</h2>
+          <p>At its core, decision intelligence is concerned with improving decision quality under uncertainty. A high-quality decision is not defined by whether the outcome is favorable, but by whether the decision process properly accounted for uncertainty, trade-offs, and constraints. Three dimensions are particularly important.</p>
+          <p>First, decisions must evaluate expected value, which represents the potential upside and the conditions under which that upside is realized. Second, they must explicitly consider downside risk, including tail outcomes that may be unlikely but have severe consequences. Third, they must incorporate reversibility, which reflects the cost of being wrong and the ability to adjust course after a decision is made. Decisions that appear optimal in expectation but carry high irreversibility and poorly understood downside risk are often the most dangerous.</p>
+          <p>Most organizations implicitly consider these dimensions, but they do so inconsistently and without a structured framework. Decision intelligence makes these trade-offs explicit and measurable, allowing leaders to compare alternatives in a disciplined and repeatable way.</p>
+        </div>
+
+        <div class="article-section">
+          <h2>From insight to decision systems</h2>
+          <p>Traditional analytics systems are designed to produce insight. They answer questions such as what is happening, why it is happening, and what is likely to happen next. While these outputs are valuable, they stop short of answering the most important question, which is what should be done. This gap forces decision-makers to translate insight into action manually, introducing variability, bias, and inconsistency.</p>
+          <p>Decision intelligence closes this gap by building a system that connects data, models, scenarios, and decisions. The critical addition is the scenario layer, which transforms single-point predictions into distributions of possible futures. Rather than optimizing for a single expected outcome, decisions are evaluated across multiple plausible scenarios, allowing leaders to understand robustness, sensitivity, and trade-offs. This approach reflects the reality that the future is inherently uncertain and that decisions must perform well across a range of conditions rather than a single forecast.</p>
+        </div>
+
+        <div class="equation-card">
+          Decision Intelligence = f(External State, Scenarios, Audience Context, Constraints)
+        </div>
+
+        <div class="article-section">
+          <h2>The decision intelligence function</h2>
+          <p>The external state includes macroeconomic conditions, market dynamics, and observable data that define the current environment. The scenario layer represents the range of possible futures, including different regimes and shock processes. Audience context captures the role, objectives, and organizational characteristics of the decision-maker, while constraints define what actions are feasible given capital, governance, and operational limitations.</p>
+          <p>This formulation highlights a critical insight: personalization is not a presentation feature, but an input into decision generation. The same external conditions will lead to different optimal decisions depending on the context and constraints of the organization. Decision intelligence systems must therefore generate context-aware and constraint-aware decisions rather than generic recommendations.</p>
+        </div>
+
+        <div class="article-section">
+          <h2>Enterprise implications</h2>
+          <p>Decision intelligence is inherently an enterprise capability rather than a function-level tool. Decisions made in one part of the organization often have second- and third-order effects elsewhere. For example, hiring decisions affect cost structure, which in turn influences capital allocation, which then impacts risk exposure and strategic flexibility. These interactions are rarely modeled explicitly, leading to fragmented decision-making and unintended consequences.</p>
+          <p>An enterprise decision system aligns decisions across functions by ensuring that they are evaluated under consistent assumptions and shared scenarios. This reduces conflict between teams, improves coordination, and enables the organization to act as a coherent system rather than a collection of independent units. It also allows leaders to anticipate how decisions propagate through the organization over time, improving both strategic planning and operational execution.</p>
+        </div>
+
+        <div class="article-section">
+          <h2>Conclusion</h2>
+          <p>The next phase of enterprise AI is not defined by incremental improvements in productivity, but by the ability to systematically improve decision-making. Organizations do not lack data or analytical capability. They lack a system that integrates these capabilities into decisions and evaluates how those decisions perform across alternative scenarios.</p>
+          <p>Decision intelligence provides this system by combining forecasting, simulation, causal reasoning, and optimization into a unified framework for evaluating choices under uncertainty. By doing so, it transforms AI from a tool that accelerates work into a system that improves outcomes. This shift represents the true frontier of enterprise AI and the foundation for building an AI-native organization.</p>
+          <div class="article-footer-note">This article is the on-site reading version of the corresponding Consilium.ai PDF white paper.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="kicker" style="color:rgba(255,255,255,.68)">Continue the Conversation</div>
+      <h2>Build AI into decisions, not just workflows</h2>
+      <p>Discuss how AAIDIS can translate uncertainty, scenarios, and business context into actionable decision intelligence.</p>
+      <div class="hero-actions">
+        <a class="button button-primary" href="contact.html">Discuss an Executive Briefing</a>
+        <a class="button button-secondary" href="decision_intelligence.pdf">Download PDF</a>
+      </div>
+    </section>
+
+    <footer class="footer">Consilium.ai · AI Decision Intelligence</footer>
+  </div>
+</body>
+</html>
