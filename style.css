@@ -52,7 +52,7 @@ button, input, select, textarea { font: inherit; }
   height: auto;
   object-fit: contain;
   background: transparent;
-  padding: 0;
+  padding: 2px;
   border-radius: 0;
   box-shadow: none;
 }
