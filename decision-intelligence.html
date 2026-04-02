@@ -1,91 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Decision Intelligence | Consilium.ai</title>
-  <meta name="description" content="Consilium.ai static website page converted from JSX to HTML.">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    
     <header class="header">
-      <div class="brand">
-        <div class="logo">
-          <img src="consilium_logo.png" alt="Consilium Logo">
-        </div>
+      <a class="brand" href="index.html" aria-label="Consilium.ai home">
+        <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
         <div>
-          <div class="brand-title">Consilium<span class="dotai">.ai</span></div>
+          <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
           <div class="brand-sub">AI Decision Intelligence</div>
         </div>
-      </div>
-      <nav class="nav">
-        <a href="index.html" class="">Home</a><a href="decision-platform.html" class="">Decision Platform</a><a href="decision-intelligence.html" class="active">Decision Intelligence</a><a href="insights.html" class="">Insights</a><a href="about.html" class="">About</a><a href="contact.html" class="">Contact</a>
-        <a class="button button-primary" href="contact.html">Request a Demo</a>
-      </nav>
+      </a>
+      <nav class="nav" aria-label="Primary navigation"><a class="" href="index.html">Home</a><a class="" href="decision-platform.html">Decision Platform</a><a class="active" href="decision-intelligence.html">Decision Intelligence</a><a class="" href="use-cases.html">Use Cases</a><a class="" href="insights.html">Insights</a><a class="" href="about.html">About</a><a class="" href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Request a Demo</a></nav>
     </header>
     
-    <section class="hero">
-      <div class="hero-grid">
-        <div>
-          <div class="eyebrow">Decision Intelligence for Enterprise Leaders</div>
-          <h1>Better decisions matter more than <span>faster tasks</span></h1>
-          <p>Decision intelligence helps organizations reduce uncertainty, evaluate alternatives, and choose actions with greater clarity. It connects information, modeling, and executive judgment into a repeatable capability for better enterprise decisions.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="contact.html">Request a Demo</a>
-            <a class="button button-secondary" href="decision-platform.html">Explore the Platform</a>
-          </div>
-        </div>
-        <div class="hero-panel">
-          <h3>Why it matters</h3>
-          <ul class="pill-list"><li><span class="dot"></span><span>Sharper strategic timing</span></li><li><span class="dot"></span><span>Stronger capital allocation</span></li><li><span class="dot"></span><span>Better risk-adjusted choices</span></li><li><span class="dot"></span><span>More resilient planning under uncertainty</span></li></ul>
-        </div>
-      </div>
-    </section>
-    
-<section class="section">
-  <div class="section-header">
-    <div><div class="kicker">Core Idea</div><h2>Decision intelligence is a system for making better choices</h2></div>
-    <p>Decision intelligence combines information, modeling, scenarios, and judgment into a repeatable enterprise capability.</p>
-  </div>
-  <div class="grid-2"><div class="card"><h3>Reduce uncertainty</h3><p>Bring together richer information sets so leaders can make choices with a narrower uncertainty envelope.</p></div><div class="card"><h3>Model possible futures</h3><p>Use forecasting, scenarios, and simulation to understand alternative states, ranges, and pathways before acting.</p></div><div class="card"><h3>Evaluate actions</h3><p>Compare choices across growth, resilience, risk, and strategic fit instead of relying on instinct alone.</p></div><div class="card"><h3>Guide enterprise action</h3><p>Translate analysis into decision-ready recommendations, executive narratives, and operating direction.</p></div></div>
-</section>
-
-<section class="section soft">
-  <div class="section-header">
-    <div><div class="kicker">Contrast</div><h2>The distinction between analytics, productivity, and decision intelligence</h2></div>
-    <p>This page draws a practical distinction between traditional analytics, productivity tools, and decision intelligence.</p>
-  </div>
-  <div class="grid-3"><div class="card"><h3>Traditional analytics</h3><ul class="list-clean"><li>Explains what happened</li><li>Often backward-looking</li><li>Usually fragmented across teams</li></ul></div><div class="card"><h3>AI productivity tools</h3><ul class="list-clean"><li>Accelerate tasks and workflows</li><li>Reduce labor and cycle time</li><li>Do not necessarily improve strategic choices</li></ul></div><div class="card"><h3>Decision intelligence</h3><ul class="list-clean"><li>Frames what could happen next</li><li>Evaluates alternatives before commitment</li><li>Supports better enterprise decisions under uncertainty</li></ul></div></div>
-</section>
-
-<section class="section">
-  <div class="section-header">
-    <div><div class="kicker">Workflow</div><h2>A practical decision workflow</h2></div>
-    <p>The process below shows how decision intelligence moves from information to action.</p>
-  </div>
-  <div class="grid-4">
-    <div class="card"><div class="number">01</div><h3>See the full information set</h3><p>Integrate macro, market, company, operational, and external signals relevant to the decision context.</p></div><div class="card"><div class="number">02</div><h3>Understand the range of futures</h3><p>Forecast, simulate, and stress-test conditions to reveal downside, upside, and base-case paths.</p></div><div class="card"><div class="number">03</div><h3>Assess the impact of choices</h3><p>Estimate how actions affect outcomes and compare trade-offs across competing priorities.</p></div><div class="card"><div class="number">04</div><h3>Choose and act with clarity</h3><p>Deliver executive-ready recommendations that connect evidence, scenarios, and action.</p></div>
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Decision Intelligence for Enterprise Leaders</div>
+      <h1>Better decisions matter more than <span class="accent">faster tasks</span></h1>
+      <p>Decision intelligence helps organizations reduce uncertainty, evaluate alternatives, and choose actions with greater clarity. It connects information, modeling, and executive judgment into a repeatable capability for better enterprise decisions.</p>
+      <div class="hero-actions"><a class="btn" href="decision-platform.html">Explore the Platform</a><a class="btn-outline" href="use-cases.html">See Use Cases</a></div>
+    </div>
+    <div style="position:relative;"><div class="orb1"></div><div class="orb2"></div><div class="glass-wrap"><div class="glass-card" style="background:rgba(15,57,111,.5);"><div class="eyebrow">Decision Intelligence Loop</div><div class="simple-list" style="margin-top:16px;">
+      <div class="glass-card" style="display:flex; align-items:center; gap:16px;"><div class="number-badge small" style="background:var(--green);">01</div><div class="big" style="margin-top:0; font-size:16px;">Information breadth</div></div>
+      <div class="glass-card" style="display:flex; align-items:center; gap:16px;"><div class="number-badge small" style="background:var(--green);">02</div><div class="big" style="margin-top:0; font-size:16px;">Scenario understanding</div></div>
+      <div class="glass-card" style="display:flex; align-items:center; gap:16px;"><div class="number-badge small" style="background:var(--green);">03</div><div class="big" style="margin-top:0; font-size:16px;">Trade-off evaluation</div></div>
+      <div class="glass-card" style="display:flex; align-items:center; gap:16px;"><div class="number-badge small" style="background:var(--green);">04</div><div class="big" style="margin-top:0; font-size:16px;">Action guidance</div></div>
+    </div></div></div></div>
   </div>
 </section>
 
-<section class="section soft">
-  <div class="section-header">
-    <div><div class="kicker">Compounding Benefits</div><h2>Decision quality compounds across the business</h2></div>
-    <p>Better decisions improve timing, resilience, alignment, and the quality of enterprise trade-offs.</p>
+<section class="panel section">
+  <div class="section-top"><div><p class="eyebrow-section">What It Means</p><h2 class="h2">Decision intelligence is a system for making better choices</h2></div><p class="section-copy">It is not just analytics, and it is not just automation. It is the disciplined process of reducing uncertainty, seeing possible futures, evaluating actions, and guiding leadership decisions.</p></div>
+  <div class="cards-4" style="margin-top:32px;">
+    <div class="card soft"><h4>Reduce uncertainty</h4><p>Bring together richer information sets so leaders can make choices with a narrower uncertainty envelope.</p></div>
+    <div class="card soft"><h4>Model possible futures</h4><p>Use forecasting, scenarios, and simulation to understand alternative states, ranges, and pathways before acting.</p></div>
+    <div class="card soft"><h4>Evaluate actions</h4><p>Compare choices across growth, resilience, risk, and strategic fit instead of relying on instinct alone.</p></div>
+    <div class="card soft"><h4>Guide enterprise action</h4><p>Translate analysis into decision-ready recommendations, executive narratives, and operating direction.</p></div>
   </div>
-  <ul class="chip-list"><li>Sharper strategic timing</li><li>Stronger capital allocation</li><li>Better risk-adjusted choices</li><li>More resilient planning under uncertainty</li><li>Clearer executive alignment</li><li>Greater decision consistency across the enterprise</li></ul>
 </section>
 
-<section class="cta">
-  <div class="kicker" style="color:rgba(255,255,255,.68)">Operating Model</div>
-  <h2>Build decision intelligence into your operating model</h2>
-  <p>Use this page to explain the conceptual difference between automation and decision quality in your site narrative.</p>
-  <div class="hero-actions"><a class="button button-primary" href="contact.html">Talk About Your Decision Stack</a></div>
+<section class="panel-soft section">
+  <div class="section-top"><div><p class="eyebrow-section">Why It Matters</p><h2 class="h2 medium">The distinction between analytics, productivity, and decision intelligence</h2></div><p class="section-copy">Organizations often invest in tools that explain the past or accelerate work. Fewer build the capability to improve the quality of their decisions.</p></div>
+  <div class="cards-3" style="margin-top:32px;">
+    <div class="card"><h4>Traditional analytics</h4><div class="bullet-list"><div class="bullet-item"><span class="dot"></span><span>Explains what happened</span></div><div class="bullet-item"><span class="dot"></span><span>Often backward-looking</span></div><div class="bullet-item"><span class="dot"></span><span>Usually fragmented across teams</span></div></div></div>
+    <div class="card"><h4>AI productivity tools</h4><div class="bullet-list"><div class="bullet-item"><span class="dot"></span><span>Accelerate tasks and workflows</span></div><div class="bullet-item"><span class="dot"></span><span>Reduce labor and cycle time</span></div><div class="bullet-item"><span class="dot"></span><span>Do not necessarily improve strategic choices</span></div></div></div>
+    <div class="card"><h4>Decision intelligence</h4><div class="bullet-list"><div class="bullet-item"><span class="dot"></span><span>Frames what could happen next</span></div><div class="bullet-item"><span class="dot"></span><span>Evaluates alternatives before commitment</span></div><div class="bullet-item"><span class="dot"></span><span>Supports better enterprise decisions under uncertainty</span></div></div></div>
+  </div>
 </section>
 
-    <footer class="footer">Consilium.ai · Static HTML conversion for GitHub Pages</footer>
+<section class="split section">
+  <div class="panel"><p class="eyebrow-section">How Decision Intelligence Works</p><h2 class="h2 medium">A practical decision workflow</h2><div class="timeline" style="margin-top:32px;">
+    <div class="timeline-item"><div class="number-badge">01</div><div><h4>See the full information set</h4><p class="small">Integrate macro, market, company, operational, and external signals relevant to the decision context.</p></div></div>
+    <div class="timeline-item"><div class="number-badge">02</div><div><h4>Understand the range of futures</h4><p class="small">Forecast, simulate, and stress-test conditions to reveal downside, upside, and base-case paths.</p></div></div>
+    <div class="timeline-item"><div class="number-badge">03</div><div><h4>Assess the impact of choices</h4><p class="small">Estimate how actions affect outcomes and compare trade-offs across competing priorities.</p></div></div>
+    <div class="timeline-item"><div class="number-badge">04</div><div><h4>Choose and act with clarity</h4><p class="small">Deliver executive-ready recommendations that connect evidence, scenarios, and action.</p></div></div>
+  </div></div>
+  <div class="blue-panel"><p class="eyebrow-section" style="color:rgba(255,255,255,.7)">Enterprise Value</p><h2 class="h2 medium" style="color:white; margin-top:8px;">Decision quality compounds across the business</h2><p>Better decisions affect strategic timing, capital allocation, risk posture, and operational resilience. The impact accumulates across many choices over time.</p><div class="blue-grid">
+    <div class="blue-box"><div class="title">Sharper strategic timing</div></div><div class="blue-box"><div class="title">Stronger capital allocation</div></div><div class="blue-box"><div class="title">Better risk-adjusted choices</div></div><div class="blue-box"><div class="title">More resilient planning under uncertainty</div></div><div class="blue-box"><div class="title">Clearer executive alignment</div></div><div class="blue-box"><div class="title">Greater decision consistency across the enterprise</div></div>
+  </div></div>
+</section>
+
+<section class="cta"><p class="eyebrow-section" style="color:rgba(255,255,255,.7)">Ready to Engage</p><h2>Build decision intelligence into your operating model</h2><p>Consilium.ai helps organizations move beyond fragmented analytics and isolated AI tools toward a more durable capability for structured decision-making under uncertainty.</p><div class="cta-actions"><a class="btn" href="contact.html">Request a Demo</a><a class="btn-outline" href="contact.html">Discuss Your Business Need</a></div></section>
+
+    <div class="footer-space"></div>
   </div>
 </body>
 </html>
