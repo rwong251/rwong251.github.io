@@ -1,84 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About | Consilium.ai</title>
-  <meta name="description" content="Consilium.ai static website page converted from JSX to HTML.">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    
     <header class="header">
-      <div class="brand">
-        <div class="logo">
-          <img src="consilium_logo.png" alt="Consilium Logo">
-        </div>
+      <a class="brand" href="index.html" aria-label="Consilium.ai home">
+        <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
         <div>
-          <div class="brand-title">Consilium<span class="dotai">.ai</span></div>
+          <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
           <div class="brand-sub">AI Decision Intelligence</div>
         </div>
-      </div>
-      <nav class="nav">
-        <a href="index.html" class="">Home</a><a href="decision-platform.html" class="">Decision Platform</a><a href="decision-intelligence.html" class="">Decision Intelligence</a><a href="insights.html" class="">Insights</a><a href="about.html" class="active">About</a><a href="contact.html" class="">Contact</a>
-        <a class="button button-primary" href="contact.html">Request a Demo</a>
-      </nav>
+      </a>
+      <nav class="nav" aria-label="Primary navigation"><a class="" href="index.html">Home</a><a class="" href="decision-platform.html">Decision Platform</a><a class="" href="decision-intelligence.html">Decision Intelligence</a><a class="" href="use-cases.html">Use Cases</a><a class="" href="insights.html">Insights</a><a class="active" href="about.html">About</a><a class="" href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Request a Demo</a></nav>
     </header>
     
-    <section class="hero">
-      <div class="hero-grid">
-        <div>
-          <div class="eyebrow">About Consilium.ai</div>
-          <h1>Built to help enterprises make <span>better decisions</span></h1>
-          <p>Consilium.ai exists to help organizations move beyond fragmented analytics, isolated AI pilots, and productivity-only thinking. The firm is built around a larger premise: decision quality is one of the most important drivers of durable enterprise value.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="contact.html">Request a Demo</a>
-            <a class="button button-secondary" href="decision-platform.html">Explore the Platform</a>
-          </div>
-        </div>
-        <div class="hero-panel">
-          <h3>What Consilium.ai is</h3>
-          <ul class="pill-list"><li><span class="dot"></span><span>AI Decision Intelligence platform and advisory model</span></li><li><span class="dot"></span><span>Built on AAIDIS, the Agentic AI Decision Intelligence System</span></li><li><span class="dot"></span><span>Focused on forecasting, simulation, optimization, and strategic guidance</span></li><li><span class="dot"></span><span>Designed for leaders operating under uncertainty and complexity</span></li></ul>
-        </div>
-      </div>
-    </section>
-    
-<section class="section">
-  <div class="section-header">
-    <div><div class="kicker">Who We Are</div><h2>A decision intelligence company with a strategic point of view</h2></div>
-    <p>Consilium.ai is positioned as a decision intelligence company with a clear strategic perspective.</p>
-  </div>
-  <div class="grid-3"><div class="card"><h3>Decision-first orientation</h3><p>Consilium.ai is built around the idea that the greatest enterprise value often comes from improving decisions, not only automating tasks.</p></div><div class="card"><h3>Executive relevance</h3><p>The firm is designed to help leaders address risk, growth, capital allocation, timing, and strategic positioning with greater clarity.</p></div><div class="card"><h3>Systemic thinking</h3><p>Consilium.ai connects data, models, workflows, and operating choices into a more coherent enterprise capability for decision-making.</p></div></div>
-</section>
-
-<section class="section soft">
-  <div class="section-header">
-    <div><div class="kicker">Company Foundation</div><h2>From a platform vision to an enterprise offering</h2></div>
-    <p>The business model connects platform capability, strategic use cases, and executive guidance.</p>
-  </div>
-  <ul class="chip-list"><li>AI Decision Intelligence platform and advisory model</li><li>Built on AAIDIS, the Agentic AI Decision Intelligence System</li><li>Focused on forecasting, simulation, optimization, and strategic guidance</li><li>Designed for leaders operating under uncertainty and complexity</li></ul>
-  <div class="grid-3">
-    <div class="card"><div class="number">01</div><h3>Recognize the gap</h3><p>Most AI conversations focus on productivity and automation, while the larger opportunity in decision quality remains underserved.</p></div><div class="card"><div class="number">02</div><h3>Build the platform</h3><p>AAIDIS was conceived as a decision intelligence system that integrates forecasting, simulation, causal reasoning, optimization, and agentic orchestration.</p></div><div class="card"><div class="number">03</div><h3>Translate to enterprise value</h3><p>Consilium.ai brings that platform into an external-facing business model through strategic use cases, executive intelligence, and decision support.</p></div>
+<section class="hero">
+  <div class="hero-inner" style="grid-template-columns:1.08fr .92fr;">
+    <div><div class="hero-tag">About Consilium.ai</div><h1>Built to help enterprises make <span class="accent">better decisions</span></h1><p>Consilium.ai exists to help organizations move beyond fragmented analytics, isolated AI pilots, and productivity-only thinking. The firm is built around a larger premise: decision quality is one of the most important drivers of durable enterprise value.</p><div class="hero-actions"><a class="btn" href="decision-platform.html">Explore the Platform</a><a class="btn-outline" href="use-cases.html">View Use Cases</a></div></div>
+    <div style="position:relative;"><div class="orb1"></div><div class="orb2"></div><div class="glass-wrap"><div class="glass-card" style="background:rgba(15,57,111,.5);"><div class="eyebrow">What Consilium.ai is</div><div class="simple-list"><div class="glass-card" style="display:flex; gap:12px; align-items:flex-start;"><span class="dot"></span><div class="small" style="color:rgba(255,255,255,.88);">AI Decision Intelligence platform and advisory model</div></div><div class="glass-card" style="display:flex; gap:12px; align-items:flex-start;"><span class="dot"></span><div class="small" style="color:rgba(255,255,255,.88);">Built on AAIDIS, the Agentic AI Decision Intelligence System</div></div><div class="glass-card" style="display:flex; gap:12px; align-items:flex-start;"><span class="dot"></span><div class="small" style="color:rgba(255,255,255,.88);">Focused on forecasting, simulation, optimization, and strategic guidance</div></div><div class="glass-card" style="display:flex; gap:12px; align-items:flex-start;"><span class="dot"></span><div class="small" style="color:rgba(255,255,255,.88);">Designed for leaders operating under uncertainty and complexity</div></div></div></div></div></div>
   </div>
 </section>
 
-<section class="section">
-  <div class="section-header">
-    <div><div class="kicker">Values</div><h2>Principles that shape the work</h2></div>
-    <p>These principles shape how the work is framed and delivered.</p>
-  </div>
-  <div class="grid-2"><div class="card"><h3>Clarity</h3><p>Make complex questions understandable without stripping away what matters.</p></div><div class="card"><h3>Rigor</h3><p>Ground recommendations in structured analysis, scenario thinking, and disciplined evaluation.</p></div><div class="card"><h3>Practicality</h3><p>Deliver outputs leaders can use in real business decisions, not just technical artifacts.</p></div><div class="card"><h3>Durability</h3><p>Help organizations build long-term capability instead of isolated pilots and one-off exercises.</p></div></div>
+<section class="panel section">
+  <div class="section-top"><div><p class="eyebrow-section">Who We Are</p><h2 class="h2">A decision intelligence company with a strategic point of view</h2></div><p class="section-copy">Consilium.ai is not positioned as a generic AI consultancy. It is built to help leaders think more clearly, plan more rigorously, and act more effectively under uncertainty.</p></div>
+  <div class="cards-3" style="margin-top:32px;"><div class="card soft"><h4>Decision-first orientation</h4><p>Consilium.ai is built around the idea that the greatest enterprise value often comes from improving decisions, not only automating tasks.</p></div><div class="card soft"><h4>Executive relevance</h4><p>The firm is designed to help leaders address risk, growth, capital allocation, timing, and strategic positioning with greater clarity.</p></div><div class="card soft"><h4>Systemic thinking</h4><p>Consilium.ai connects data, models, workflows, and operating choices into a more coherent enterprise capability for decision-making.</p></div></div>
 </section>
 
-<section class="cta">
-  <div class="kicker" style="color:rgba(255,255,255,.68)">Engage</div>
-  <h2>Work with Consilium.ai</h2>
-  <p>This About page is now a static HTML version that preserves the substance of your original JSX concept while making it deployable on GitHub Pages.</p>
-  <div class="hero-actions"><a class="button button-primary" href="contact.html">Work with Consilium.ai</a></div>
+<section class="panel-soft section">
+  <div class="section-top"><div><p class="eyebrow-section">Our Journey</p><h2 class="h2 medium">From a platform vision to an enterprise offering</h2></div><p class="section-copy">Consilium.ai emerged from the recognition that enterprises need more than prediction, dashboards, or productivity tools. They need a better way to make decisions.</p></div>
+  <div class="cards-3" style="margin-top:32px;"><div class="card"><div class="eyebrow">01</div><h4 style="margin-top:8px;">Recognize the gap</h4><p>Most AI conversations focus on productivity and automation, while the larger opportunity in decision quality remains underserved.</p></div><div class="card"><div class="eyebrow">02</div><h4 style="margin-top:8px;">Build the platform</h4><p>AAIDIS was conceived as a decision intelligence system that integrates forecasting, simulation, causal reasoning, optimization, and agentic orchestration.</p></div><div class="card"><div class="eyebrow">03</div><h4 style="margin-top:8px;">Translate to enterprise value</h4><p>Consilium.ai brings that platform into an external-facing business model through strategic use cases, executive intelligence, and decision support.</p></div></div>
 </section>
 
-    <footer class="footer">Consilium.ai · Static HTML conversion for GitHub Pages</footer>
+<section class="split section">
+  <div class="panel"><p class="eyebrow-section">What We Value</p><h2 class="h2 medium">Principles that shape the work</h2><div class="simple-list"><div class="simple-item"><div class="title">Clarity</div><p>Make complex questions understandable without stripping away what matters.</p></div><div class="simple-item"><div class="title">Rigor</div><p>Ground recommendations in structured analysis, scenario thinking, and disciplined evaluation.</p></div><div class="simple-item"><div class="title">Practicality</div><p>Deliver outputs leaders can use in real business decisions, not just technical artifacts.</p></div><div class="simple-item"><div class="title">Durability</div><p>Help organizations build long-term capability instead of isolated pilots and one-off exercises.</p></div></div></div>
+  <div class="blue-panel"><p class="eyebrow-section" style="color:rgba(255,255,255,.7)">What We Aim To Build</p><h2 class="h2 medium" style="color:white; margin-top:8px;">A more durable enterprise capability for decision-making</h2><p>Consilium.ai is intended to help organizations move toward a more AI-native operating model, where better decisions are supported systematically through information, models, and structured judgment.</p><div class="blue-list"><div class="blue-box"><div class="title">Move beyond isolated pilots</div></div><div class="blue-box"><div class="title">Build decision capability at scale</div></div><div class="blue-box"><div class="title">Connect analytics to action</div></div><div class="blue-box"><div class="title">Support leadership under uncertainty</div></div></div></div>
+</section>
+
+<section class="cta"><p class="eyebrow-section" style="color:rgba(255,255,255,.7)">Ready to Engage</p><h2>Work with Consilium.ai</h2><p>Whether the need is a strategic use case, a platform discussion, or a broader enterprise decision intelligence conversation, Consilium.ai is designed to meet leaders where the stakes are highest.</p><div class="cta-actions"><a class="btn" href="contact.html">Request a Demo</a><a class="btn-outline" href="contact.html">Start a Conversation</a></div></section>
+
+    <div class="footer-space"></div>
   </div>
 </body>
 </html>
