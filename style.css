@@ -48,8 +48,8 @@ button, input, select, textarea { font: inherit; }
   min-width: 0;
 }
 .brand-logo {
-  width: 48px;
-  height: 48px;
+  width: 100px;
+  height: auto;
   object-fit: contain;
   background: transparent;
   padding: 0;
