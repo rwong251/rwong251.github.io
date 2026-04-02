@@ -1,86 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Insights | Consilium.ai</title>
-  <meta name="description" content="Consilium.ai static website page converted from JSX to HTML.">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    
     <header class="header">
-      <div class="brand">
-        <div class="logo">
-          <img src="consilium_logo.png" alt="Consilium Logo">
-        </div>
+      <a class="brand" href="index.html" aria-label="Consilium.ai home">
+        <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
         <div>
-          <div class="brand-title">Consilium<span class="dotai">.ai</span></div>
+          <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
           <div class="brand-sub">AI Decision Intelligence</div>
         </div>
-      </div>
-      <nav class="nav">
-        <a href="index.html" class="">Home</a><a href="decision-platform.html" class="">Decision Platform</a><a href="decision-intelligence.html" class="">Decision Intelligence</a><a href="insights.html" class="active">Insights</a><a href="about.html" class="">About</a><a href="contact.html" class="">Contact</a>
-        <a class="button button-primary" href="contact.html">Request a Demo</a>
-      </nav>
+      </a>
+      <nav class="nav" aria-label="Primary navigation"><a class="" href="index.html">Home</a><a class="" href="decision-platform.html">Decision Platform</a><a class="" href="decision-intelligence.html">Decision Intelligence</a><a class="" href="use-cases.html">Use Cases</a><a class="active" href="insights.html">Insights</a><a class="" href="about.html">About</a><a class="" href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Request a Demo</a></nav>
     </header>
     
-    <section class="hero">
-      <div class="hero-grid">
-        <div>
-          <div class="eyebrow">Insights for Enterprise AI and Decision Intelligence</div>
-          <h1>Strategic thinking for an <span>AI-native enterprise</span></h1>
-          <p>The Insights page is where Consilium.ai connects ideas, operating models, and executive questions. It is designed to help leaders think more clearly about AI, risk, uncertainty, and the future of enterprise decision-making.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="contact.html">Request a Demo</a>
-            <a class="button button-secondary" href="decision-platform.html">Explore the Platform</a>
-          </div>
-        </div>
-        <div class="hero-panel">
-          <h3>Thought leadership themes</h3>
-          <ul class="pill-list"><li><span class="dot"></span><span>Enterprise AI strategy</span></li><li><span class="dot"></span><span>Decision intelligence</span></li><li><span class="dot"></span><span>Scenario planning</span></li><li><span class="dot"></span><span>Forecasting and uncertainty</span></li></ul>
-        </div>
-      </div>
-    </section>
-    
-<section class="section">
-  <div class="section-header">
-    <div><div class="kicker">Featured Insight</div><h2>Lead the conversation, not just the implementation</h2></div>
-    <p>Use this page to establish strategic presence, not just implementation capability.</p>
-  </div>
-  <div class="card" style="margin-top:28px;background:linear-gradient(90deg,#f8fafb 0%,#fff 100%)">
-    <div class="number">Featured Insight</div>
-    <h3>Why Decision Quality Matters More Than Productivity Alone</h3>
-    <p>Many organizations approach AI through a productivity lens. That creates value, but it does not fully address the larger enterprise opportunity. The greater advantage often comes from improving the quality, timing, and consistency of strategic decisions across the business.</p>
+<section class="hero">
+  <div class="hero-inner">
+    <div><div class="hero-tag">Insights for Enterprise AI and Decision Intelligence</div><h1>Strategic thinking for an <span class="accent">AI-native enterprise</span></h1><p>The Insights page is where Consilium.ai connects ideas, operating models, and executive questions. It is designed to help leaders think more clearly about AI, risk, uncertainty, and the future of enterprise decision-making.</p><div class="hero-actions"><a class="btn" href="#featured">Read Featured Insight</a><a class="btn-outline" href="#themes">Explore Thought Themes</a></div></div>
+    <div style="position:relative;"><div class="orb1"></div><div class="orb2"></div><div class="glass-wrap"><div class="glass-card" style="background:rgba(15,57,111,.5);"><div class="eyebrow">Thought Leadership Themes</div><div id="themes" class="tags-grid" style="margin-top:20px;"><div class="tag-pill">Enterprise AI strategy</div><div class="tag-pill">Decision intelligence</div><div class="tag-pill">Scenario planning</div><div class="tag-pill">Forecasting and uncertainty</div><div class="tag-pill">Risk and resilience</div><div class="tag-pill">Executive operating models</div></div></div></div></div>
   </div>
 </section>
 
-<section class="section soft">
-  <div class="section-header">
-    <div><div class="kicker">Themes</div><h2>Ideas that support strategic clarity</h2></div>
-    <p>These themes anchor the thought-leadership layer of the site.</p>
+<section id="featured" class="panel section">
+  <div class="section-top"><div><p class="eyebrow-section">Featured Insight</p><h2 class="h2">Lead the conversation, not just the implementation</h2></div><p class="section-copy">Consilium.ai uses insights to frame the bigger strategic questions around enterprise AI, decision intelligence, and operating transformation.</p></div>
+  <div class="note-box" style="margin-top:32px;"><div class="eyebrow-section" style="letter-spacing:.18em;">Featured Insight</div><h3>Why Decision Quality Matters More Than Productivity Alone</h3><p>Many organizations approach AI through a productivity lens. That creates value, but it does not fully address the larger enterprise opportunity. The greater advantage often comes from improving the quality, timing, and consistency of strategic decisions across the business.</p><div class="linkish">Read the full perspective <span>→</span></div></div>
+</section>
+
+<section class="panel-soft section">
+  <div class="section-top"><div><p class="eyebrow-section">Insight Library</p><h2 class="h2 medium">Ideas that support strategic clarity</h2></div><p class="section-copy">These articles and perspectives are intended to help executives, operators, and boards think more rigorously about AI and decision systems.</p></div>
+  <div class="insight-grid" style="margin-top:32px;">
+    <div class="card"><div class="eyebrow">Strategy</div><h4 style="margin-top:10px;">From AI experimentation to enterprise capability</h4><p>What it takes to move from isolated pilots and proofs of concept to a durable operating model for AI-enabled decision-making.</p><div class="linkish">Read article <span>→</span></div></div>
+    <div class="card"><div class="eyebrow">Decision Intelligence</div><h4 style="margin-top:10px;">What decision intelligence actually means in practice</h4><p>A practical explanation of how forecasting, simulation, causal reasoning, and optimization come together to support better choices.</p><div class="linkish">Read article <span>→</span></div></div>
+    <div class="card"><div class="eyebrow">Risk</div><h4 style="margin-top:10px;">Why uncertainty should be modeled, not ignored</h4><p>How leaders can use scenario thinking and uncertainty ranges to improve resilience rather than rely on single-point planning.</p><div class="linkish">Read article <span>→</span></div></div>
+    <div class="card"><div class="eyebrow">Leadership</div><h4 style="margin-top:10px;">The executive case for AI-native decision systems</h4><p>Why the long-term opportunity is not just automation, but building a systematic capability for enterprise judgment at scale.</p><div class="linkish">Read article <span>→</span></div></div>
+    <div class="card"><div class="eyebrow">Forecasting</div><h4 style="margin-top:10px;">Forecasts are useful, but decisions require more</h4><p>Why prediction alone is not enough and how forecasting should connect to scenarios, actions, and trade-off evaluation.</p><div class="linkish">Read article <span>→</span></div></div>
+    <div class="card"><div class="eyebrow">Transformation</div><h4 style="margin-top:10px;">Building AI into the institution, not around it</h4><p>How organizations can embed AI into planning, operations, and leadership processes rather than keep it at the edge of the enterprise.</p><div class="linkish">Read article <span>→</span></div></div>
   </div>
-  <ul class="chip-list"><li>Enterprise AI strategy</li><li>Decision intelligence</li><li>Scenario planning</li><li>Forecasting and uncertainty</li><li>Risk and resilience</li><li>Executive operating models</li></ul>
-  <div class="grid-3"><div class="card"><h3>From AI experimentation to enterprise capability</h3><p>What it takes to move from isolated pilots and proofs of concept to a durable operating model for AI-enabled decision-making.</p></div><div class="card"><h3>What decision intelligence actually means in practice</h3><p>A practical explanation of how forecasting, simulation, causal reasoning, and optimization come together to support better choices.</p></div><div class="card"><h3>Why uncertainty should be modeled, not ignored</h3><p>How leaders can use scenario thinking and uncertainty ranges to improve resilience rather than rely on single-point planning.</p></div><div class="card"><h3>The executive case for AI-native decision systems</h3><p>Why the long-term opportunity is not just automation, but building a systematic capability for enterprise judgment at scale.</p></div><div class="card"><h3>Forecasts are useful, but decisions require more</h3><p>Why prediction alone is not enough and how forecasting should connect to scenarios, actions, and trade-off evaluation.</p></div><div class="card"><h3>Building AI into the institution, not around it</h3><p>How organizations can embed AI into planning, operations, and leadership processes rather than keep it at the edge of the enterprise.</p></div></div>
 </section>
 
-<section class="section">
-  <div class="section-header">
-    <div><div class="kicker">Editorial Point of View</div><h2>Thought leadership grounded in executive reality</h2></div>
-    <p>The insights are framed for executives, boards, and transformation leaders.</p>
-  </div>
-  <div class="grid-3"><div class="card"><h3>Executive perspective</h3><p>Insights are framed around the questions senior leaders must answer, not around technical novelty for its own sake.</p></div><div class="card"><h3>Strategic relevance</h3><p>The content is designed to connect AI, risk, macro conditions, and enterprise decisions into one coherent strategic conversation.</p></div><div class="card"><h3>Applied thinking</h3><p>The purpose is not only to inform, but to help organizations think more clearly about action, timing, and operating choices.</p></div></div>
+<section class="split section">
+  <div class="panel"><p class="eyebrow-section">What Makes These Insights Different</p><h2 class="h2 medium">Thought leadership grounded in executive reality</h2><div class="simple-list"><div class="simple-item"><div class="title">Executive perspective</div><p>Insights are framed around the questions senior leaders must answer, not around technical novelty for its own sake.</p></div><div class="simple-item"><div class="title">Strategic relevance</div><p>The content is designed to connect AI, risk, macro conditions, and enterprise decisions into one coherent strategic conversation.</p></div><div class="simple-item"><div class="title">Applied thinking</div><p>The purpose is not only to inform, but to help organizations think more clearly about action, timing, and operating choices.</p></div></div></div>
+  <div class="blue-panel"><p class="eyebrow-section" style="color:rgba(255,255,255,.7)">Why This Page Matters</p><h2 class="h2 medium" style="color:white; margin-top:8px;">Credibility comes from how you frame the problem</h2><p>A strong Insights page gives Consilium.ai intellectual presence. It signals that the firm is not only implementing AI, but also shaping how leaders should think about enterprise transformation, uncertainty, and strategic choice.</p><div class="blue-list"><div class="blue-box"><div class="title">Demonstrates strategic depth</div></div><div class="blue-box"><div class="title">Supports executive trust</div></div><div class="blue-box"><div class="title">Creates thought-leadership pull</div></div><div class="blue-box"><div class="title">Strengthens the platform narrative</div></div></div></div>
 </section>
 
-<section class="cta">
-  <div class="kicker" style="color:rgba(255,255,255,.68)">Why This Page Matters</div>
-  <h2>Credibility comes from how you frame the problem</h2>
-  <p>A strong Insights page builds trust and gives your firm a clearer intellectual identity.</p>
-  <div class="hero-actions"><a class="button button-primary" href="contact.html">Discuss an Executive Briefing</a></div>
-</section>
+<section class="cta"><p class="eyebrow-section" style="color:rgba(255,255,255,.7)">Ready to Engage</p><h2>Use insight to shape stronger enterprise decisions</h2><p>Consilium.ai can help translate these themes into practical decision intelligence capabilities, executive briefings, and strategic platform engagements.</p><div class="cta-actions"><a class="btn" href="contact.html">Request a Demo</a><a class="btn-outline" href="contact.html">Discuss a Strategic Topic</a></div></section>
 
-    <footer class="footer">Consilium.ai · Static HTML conversion for GitHub Pages</footer>
+    <div class="footer-space"></div>
   </div>
 </body>
 </html>
