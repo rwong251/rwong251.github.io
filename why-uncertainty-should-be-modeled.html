@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Uncertainty Should Be Modeled, Not Ignored | Consilium.ai</title>
+  <meta name="description" content="A Consilium.ai white paper on uncertainty modeling, scenario thinking, and how leaders can make more resilient decisions under uncertainty." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .article-shell { max-width: 860px; }
+    .article-tag {
+      display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px;
+      background:rgba(255,255,255,.78); border:1px solid rgba(15,57,111,.10); color:#0f396f;
+      font-size:.86rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; backdrop-filter: blur(10px);
+    }
+    .article-meta-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; color:#5f6c7b; font-size:.98rem; }
+    .article-actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:26px; }
+    .article-prose { max-width: 860px; }
+    .article-prose h2 { margin: 0 0 18px 0; }
+    .article-prose p { margin: 0 0 20px 0; line-height: 1.9; color: #29405e; font-size: 1.04rem; }
+    .quote-card p, .quote-card blockquote { margin:0; color:#16385f; line-height:1.8; font-size:1.12rem; }
+    .article-contents { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; margin-top:22px; }
+    .article-contents .blue-box { background: rgba(255,255,255,.68); border:1px solid rgba(15,57,111,.08); }
+    .concept-panel {
+      margin: 10px 0 8px 0; padding: 22px 24px; border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(247,250,252,.92));
+      border: 1px solid rgba(15,57,111,.10); color: #0f396f; font-weight: 700;
+      text-align: center; font-size: 1.06rem; box-shadow: 0 14px 34px rgba(15,57,111,.08);
+    }
+    @media (max-width: 900px) { .article-contents { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a class="brand" href="index.html" aria-label="Consilium.ai home">
+        <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
+        <div>
+          <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
+          <div class="brand-sub">AI Decision Intelligence</div>
+        </div>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="decision-platform.html">Decision Platform</a>
+        <a href="decision-intelligence.html">Decision Intelligence</a>
+        <a href="use-cases.html">Use Cases</a>
+        <a class="active" href="insights.html">Insights</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="nav-cta" href="contact.html">Request a Demo</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="article-shell">
+          <div class="article-tag">Risk White Paper</div>
+          <h1>Why uncertainty should be modeled, not ignored</h1>
+          <p>
+            Modern enterprises operate in environments defined by uncertainty, yet many decision processes still behave as if a
+            single forecast is enough. This paper explains why leaders should replace false precision with scenario thinking,
+            uncertainty ranges, and decision evaluation across multiple plausible futures.
+          </p>
+          <div class="article-meta-row">
+            <span>Consilium.ai</span><span>•</span>
+            <span>Richard Wong, PhD</span><span>•</span>
+            <span>Risk</span>
+          </div>
+          <div class="article-actions">
+            <a class="btn" href="why_model_uncertainty.pdf" target="_blank" rel="noopener">Download PDF</a>
+            <a class="btn-outline" href="insights.html">Back to Insights</a>
+          </div>
+        </div>
+
+        <div style="position:relative;">
+          <div class="orb1"></div>
+          <div class="orb2"></div>
+          <div class="glass-wrap">
+            <div class="glass-card" style="background:rgba(15,57,111,.5);">
+              <div class="eyebrow">What this paper covers</div>
+              <div class="article-contents">
+                <div class="blue-box"><div class="title">Why point forecasts are fragile</div></div>
+                <div class="blue-box"><div class="title">Why uncertainty should be explicit</div></div>
+                <div class="blue-box"><div class="title">How scenarios improve decisions</div></div>
+                <div class="blue-box"><div class="title">Why simulation matters</div></div>
+                <div class="blue-box"><div class="title">Why distributions are better than single estimates</div></div>
+                <div class="blue-box"><div class="title">How resilient enterprises think under uncertainty</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel section">
+      <div class="article-prose">
+        <div class="note-box quote-card" style="margin-top:0;">
+          <blockquote>“The greatest risk in decision-making is not uncertainty itself, but the illusion that uncertainty does not exist.”</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel-soft section">
+      <div class="section-top">
+        <div>
+          <p class="eyebrow-section">White Paper</p>
+          <h2 class="h2 medium">From false precision to resilient decision-making</h2>
+        </div>
+        <p class="section-copy">
+          The central argument is that organizations do not become more resilient by pretending uncertainty is small. They
+          become more resilient by modeling it directly and evaluating decisions across multiple plausible futures.
+        </p>
+      </div>
+
+      <div class="article-prose" style="margin-top:30px;">
+        <h2>Introduction</h2>
+        <p>
+          Modern enterprises operate in environments defined by uncertainty, yet most decision processes remain anchored in
+          deterministic thinking. Leaders are often presented with forecasts, plans, and projections that imply a level of
+          precision that does not reflect the underlying variability of the real world. While these outputs are useful for
+          framing expectations, they are insufficient for guiding decisions that must perform across a range of possible futures.
+        </p>
+        <p>
+          The core issue is not that organizations fail to recognize uncertainty. Rather, it is that uncertainty is not
+          systematically modeled, quantified, and incorporated into decision-making. Instead, it is implicitly absorbed through
+          judgment, often inconsistently and without transparency. This creates a gap between the apparent rigor of analytical
+          outputs and the actual robustness of decisions. Decision intelligence addresses this gap by making uncertainty explicit
+          and operational. It transforms uncertainty from a source of ambiguity into a structured input that can be analyzed,
+          simulated, and incorporated into decisions.
+        </p>
+
+        <h2>The illusion of precision</h2>
+        <p>
+          Many analytical systems produce point estimates, such as a single forecast for revenue, demand, or cost. These
+          estimates are often treated as if they represent the most likely future, and decisions are optimized accordingly. While
+          this approach simplifies analysis, it introduces a fundamental flaw: it assumes that the future can be approximated by
+          a single trajectory.
+        </p>
+        <p>
+          In reality, most business environments are characterized by multiple plausible futures, each driven by different
+          combinations of macroeconomic conditions, competitive dynamics, and internal factors. By focusing on a single estimate,
+          organizations implicitly ignore the distribution of possible outcomes. This creates what can be described as the
+          illusion of precision. Decisions appear well-founded because they are supported by quantitative analysis, but they are
+          in fact optimized for a narrow and potentially unrealistic scenario.
+        </p>
+
+        <div class="concept-panel">
+          Resilience does not come from choosing the best decision for one forecast. It comes from choosing decisions that can
+          perform across a distribution of possible futures.
+        </div>
+
+        <h2>Uncertainty as a first-class input</h2>
+        <p>
+          To move beyond this limitation, uncertainty must be treated as a first-class input into decision-making rather than a
+          residual factor. This requires representing the future as a distribution of possible states rather than a single
+          expected value.
+        </p>
+        <p>
+          In practical terms, this involves generating scenarios that capture different combinations of drivers, including
+          macroeconomic shifts, market conditions, and operational variables. These scenarios are not predictions in the
+          traditional sense. Instead, they represent plausible futures that allow decision-makers to explore how outcomes vary
+          under different conditions. By explicitly modeling uncertainty, organizations gain visibility into the range of
+          possible outcomes and the factors that drive them. This enables a more informed evaluation of decisions, particularly
+          when trade-offs between upside, downside, and robustness must be considered.
+        </p>
+
+        <h2>Scenario thinking and decision evaluation</h2>
+        <p>
+          Scenario thinking is the mechanism through which uncertainty becomes actionable. Rather than asking what will happen,
+          leaders must ask how decisions will perform across a range of possible futures.
+        </p>
+        <p>
+          This shift changes the nature of decision-making. Instead of optimizing for a single expected outcome, decisions are
+          evaluated based on their performance across scenarios. This includes assessing expected value, downside risk, outcome
+          variability, and reversibility. The framework matters because it allows leaders to identify decisions that are robust
+          rather than merely optimal under a specific set of assumptions.
+        </p>
+
+        <h2>The role of simulation</h2>
+        <p>
+          Simulation is a critical tool for operationalizing scenario thinking. By modeling the interactions between variables
+          and generating a distribution of outcomes, simulation provides a quantitative basis for evaluating decisions under
+          uncertainty.
+        </p>
+        <p>
+          Monte Carlo simulation, in particular, enables organizations to explore a wide range of possible futures by repeatedly
+          sampling from distributions of key inputs. This approach captures both the variability of individual factors and the
+          interactions between them. When combined with causal modeling, simulation allows decision-makers to understand not only
+          what may happen, but why it may happen. This is essential for designing interventions that are effective across
+          different conditions.
+        </p>
+
+        <h2>Beyond prediction: from forecasts to distributions</h2>
+        <p>
+          Forecasting remains an important component of decision intelligence, but its role must evolve. Instead of producing
+          single-point estimates, forecasting systems should generate distributions that reflect the uncertainty inherent in the
+          data and the modeling process.
+        </p>
+        <p>
+          This shift from point estimates to distributions has significant implications. It enables organizations to quantify
+          confidence, identify risks, and evaluate the robustness of decisions. It also aligns analytical outputs with the
+          realities of decision-making, where uncertainty is unavoidable.
+        </p>
+
+        <h2>Enterprise implications</h2>
+        <p>
+          At the enterprise level, the failure to model uncertainty has cascading effects. Decisions made under false precision
+          can lead to overinvestment, underpreparedness for adverse scenarios, and misalignment across functions. For example,
+          aggressive hiring based on optimistic demand forecasts may create cost pressures if conditions change, while
+          conservative planning may result in missed opportunities.
+        </p>
+        <p>
+          By contrast, organizations that model uncertainty are better positioned to balance risk and opportunity. They can
+          design strategies that perform well across a range of conditions, rather than relying on a single expected outcome.
+          They can also coordinate decisions across functions using shared scenarios, reducing inconsistencies and improving
+          alignment. Importantly, modeling uncertainty also enables organizations to anticipate second- and third-order effects.
+          By simulating how decisions propagate through the system, leaders can identify unintended consequences and adjust
+          strategies accordingly.
+        </p>
+
+        <h2>Conclusion</h2>
+        <p>
+          Uncertainty is an inherent feature of the environments in which organizations operate. The challenge is not to
+          eliminate uncertainty, but to incorporate it into decision-making in a structured and disciplined way.
+        </p>
+        <p>
+          Organizations do not fail because they lack forecasts. They fail because they rely on forecasts that do not capture
+          the range of possible outcomes and the risks associated with them. By modeling uncertainty explicitly, decision
+          intelligence transforms ambiguity into insight and enables decisions that are both informed and robust. The
+          organizations that succeed will be those that move beyond deterministic thinking and build systems that evaluate
+          decisions across distributions of possible futures.
+        </p>
+      </div>
+    </section>
+
+    <section class="split section">
+      <div class="panel">
+        <p class="eyebrow-section">Why This Matters</p>
+        <h2 class="h2 medium">Deterministic planning creates hidden fragility</h2>
+        <div class="simple-list">
+          <div class="simple-item">
+            <div class="title">False confidence</div>
+            <p>Single-point planning often conceals the real range of possible outcomes and encourages overcommitment to a narrow future.</p>
+          </div>
+          <div class="simple-item">
+            <div class="title">Weak risk visibility</div>
+            <p>Downside exposure, reversibility costs, and second-order effects often remain invisible until conditions deteriorate.</p>
+          </div>
+          <div class="simple-item">
+            <div class="title">Poor cross-functional alignment</div>
+            <p>Without shared scenarios, different teams optimize to different assumptions and the enterprise loses coherence.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="blue-panel">
+        <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">Continue the Conversation</p>
+        <h2 class="h2 medium" style="color:white; margin-top:8px;">Use uncertainty to improve decisions</h2>
+        <p>
+          Consilium.ai and AAIDIS are designed to convert uncertainty, scenarios, and business context into decision intelligence
+          that improves resilience rather than relying on false precision.
+        </p>
+        <div class="blue-list">
+          <div class="blue-box"><div class="title">Scenario-based planning</div></div>
+          <div class="blue-box"><div class="title">Risk-aware decision support</div></div>
+          <div class="blue-box"><div class="title">Simulation-driven evaluation</div></div>
+          <div class="blue-box"><div class="title">Enterprise resilience design</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">Ready to Engage</p>
+      <h2>Model uncertainty before it becomes a business problem</h2>
+      <p>Discuss how Consilium.ai can help translate scenario thinking and uncertainty modeling into stronger enterprise decisions.</p>
+      <div class="cta-actions">
+        <a class="btn" href="contact.html">Request a Demo</a>
+        <a class="btn-outline" href="why_model_uncertainty.pdf" target="_blank" rel="noopener">Download PDF</a>
+      </div>
+    </section>
+
+    <div class="footer-space"></div>
+  </div>
+</body>
+</html>
