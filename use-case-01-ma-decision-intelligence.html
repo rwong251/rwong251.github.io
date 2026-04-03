@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Use Case 01 | M&A Decision Intelligence | Consilium.ai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#07111f;
+      --bg2:#0b1628;
+      --panel:#0e1c31;
+      --panel2:#10233d;
+      --line:rgba(255,255,255,.10);
+      --text:#e8eef7;
+      --muted:#aab7cc;
+      --teal:#33c7b7;
+      --teal2:#6de3d6;
+      --white:#ffffff;
+      --shadow:0 18px 48px rgba(0,0,0,.28);
+      --max:1240px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(51,199,183,.10), transparent 28%),
+        radial-gradient(circle at 90% 0%, rgba(109,227,214,.08), transparent 22%),
+        linear-gradient(180deg, #07111f 0%, #081423 28%, #0b1628 100%);
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max);margin:0 auto;padding:0 28px}
+    .header{
+      display:flex;align-items:center;justify-content:space-between;gap:24px;
+      padding:24px 0 10px 0;position:sticky;top:0;z-index:20;
+      backdrop-filter:blur(18px);
+      background:linear-gradient(180deg, rgba(7,17,31,.92), rgba(7,17,31,.65));
+      border-bottom:1px solid rgba(255,255,255,.04);
+    }
+    .brand{display:flex;gap:14px;align-items:center;min-width:0}
+    .brand-mark{
+      width:44px;height:44px;border-radius:14px;
+      background:linear-gradient(135deg, rgba(51,199,183,.22), rgba(22,55,102,.88));
+      border:1px solid rgba(255,255,255,.14);
+      display:grid;place-items:center;color:var(--white);font-weight:800;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.10), 0 12px 24px rgba(0,0,0,.18);
+    }
+    .brand-title{font-size:20px;font-weight:800;line-height:1}
+    .brand-title .green{color:var(--teal)}
+    .brand-sub{font-size:12px;color:var(--muted);margin-top:4px}
+    .nav{display:flex;gap:18px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+    .nav a{font-size:14px;color:#cfe0f0}
+    .nav a.active{color:var(--white)}
+    .nav-cta{
+      padding:10px 14px;border-radius:999px;background:rgba(51,199,183,.12);
+      border:1px solid rgba(51,199,183,.28);color:var(--white)!important
+    }
+    .hero{padding:58px 0 34px 0}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border-radius:999px;
+      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
+      color:var(--teal2);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    }
+    .hero h1{margin:18px 0 16px 0;font-size:56px;line-height:1.02;letter-spacing:-.04em;max-width:860px}
+    .hero p{margin:0;color:var(--muted);font-size:18px;line-height:1.8;max-width:760px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+    .btn,.btn-outline{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:14px 18px;border-radius:999px;font-weight:700;font-size:14px;transition:.18s ease;
+    }
+    .btn{background:linear-gradient(135deg, var(--teal), #1aa89a);color:#07202b;box-shadow:0 10px 24px rgba(51,199,183,.25)}
+    .btn-outline{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);color:var(--text)}
+    .hero-side{
+      position:relative;border-radius:28px;
+      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.025)), linear-gradient(180deg, rgba(16,35,61,.88), rgba(9,21,38,.96));
+      border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow);padding:22px;overflow:hidden;
+    }
+    .hero-side::before{
+      content:"";position:absolute;inset:-40% auto auto -15%;width:340px;height:340px;border-radius:50%;
+      background:radial-gradient(circle, rgba(51,199,183,.17), transparent 65%);pointer-events:none;
+    }
+    .micro-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;position:relative;z-index:1}
+    .micro-card{
+      min-height:132px;padding:18px;border-radius:18px;background:rgba(255,255,255,.035);
+      border:1px solid rgba(255,255,255,.07)
+    }
+    .micro-card .kicker{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--teal2);font-weight:700}
+    .micro-card .big{margin-top:12px;font-size:21px;font-weight:800;line-height:1.15}
+    .micro-card .small{margin-top:10px;font-size:13px;line-height:1.6;color:var(--muted)}
+    section{padding:28px 0}
+    .section-head{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:end;margin-bottom:22px}
+    .section-kicker{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--teal2);font-weight:700;margin:0 0 10px 0}
+    .section-head h2{margin:0;font-size:38px;line-height:1.08;letter-spacing:-.03em}
+    .section-copy{margin:0;color:var(--muted);font-size:17px;line-height:1.8}
+    .panel{
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015)), linear-gradient(180deg, rgba(14,28,49,.88), rgba(9,20,36,.96));
+      border:1px solid rgba(255,255,255,.08);border-radius:26px;box-shadow:var(--shadow);padding:26px;
+    }
+    .tree-card{overflow:auto;border-radius:22px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);padding:18px}
+    .tree-note{margin:16px 0 0 0;color:var(--muted);font-size:15px;line-height:1.7}
+    .node-list{display:grid;gap:18px}
+    .node{
+      display:grid;grid-template-columns:180px 1fr;gap:20px;padding:22px;border-radius:22px;
+      border:1px solid rgba(255,255,255,.08);background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.018));
+    }
+    .node-id{display:flex;flex-direction:column;gap:10px}
+    .node-badge{
+      width:max-content;padding:8px 12px;border-radius:999px;background:rgba(51,199,183,.12);border:1px solid rgba(51,199,183,.25);
+      color:var(--teal2);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase
+    }
+    .node-stage{font-size:13px;color:var(--muted);line-height:1.6}
+    .node h3{margin:0 0 10px 0;font-size:28px;line-height:1.1;letter-spacing:-.03em}
+    .lead{margin:0 0 18px 0;color:#d8e4f2;font-size:17px;line-height:1.8}
+    .subgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .subcard{padding:16px;border-radius:18px;background:rgba(255,255,255,.028);border:1px solid rgba(255,255,255,.06)}
+    .subcard h4{margin:0 0 8px 0;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--teal2)}
+    .subcard p{margin:0;color:var(--muted);font-size:15px;line-height:1.7}
+    .audit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .audit-card{padding:18px;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07)}
+    .audit-card .title{margin:0 0 10px 0;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--teal2);font-weight:800}
+    .audit-card p{margin:0;color:var(--muted);font-size:15px;line-height:1.7}
+    .closing{
+      padding:30px;border-radius:26px;background:linear-gradient(135deg, rgba(22,55,102,.92), rgba(10,23,40,.95));
+      border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)
+    }
+    .closing h2{margin:0 0 12px 0;font-size:36px;line-height:1.08;letter-spacing:-.03em}
+    .closing p{margin:0;color:#d5e3f3;font-size:18px;line-height:1.8;max-width:920px}
+    .footer-space{height:42px}
+    @media (max-width: 1100px){
+      .hero-grid,.section-head,.node,.subgrid,.audit-grid{grid-template-columns:1fr}
+      .hero h1{font-size:46px}
+    }
+    @media (max-width: 760px){
+      .container{padding:0 18px}
+      .header{position:static}
+      .nav{display:none}
+      .hero{padding-top:34px}
+      .hero h1{font-size:38px}
+      .section-head h2,.closing h2{font-size:30px}
+      .node h3{font-size:24px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <a class="brand" href="index.html" aria-label="Consilium.ai home">
+        <div class="brand-mark">C</div>
+        <div>
+          <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
+          <div class="brand-sub">AI Decision Intelligence</div>
+        </div>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="decision-platform.html">Decision Platform</a>
+        <a href="decision-intelligence.html">Decision Intelligence</a>
+        <a class="active" href="use-cases.html">Use Cases</a>
+        <a href="insights.html">Insights</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="nav-cta" href="contact.html">Request a Demo</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow">Use Case 01 · Corporate Strategy &amp; M&amp;A</div>
+          <h1>Evaluating an acquisition as a sequence of decisions</h1>
+          <p>
+            A Chief Strategy Officer is asked to evaluate a target. The question appears simple at first: should we pursue this company? In reality, the decision unfolds through diligence, valuation, financing, market reaction, negotiation, competitive response, regulators, and post-close integration. AAIDIS supports the process the way a strong chess player evaluates a position: by thinking forward through possible outcomes and backward to the move that still makes sense now.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#decision-tree">View Decision Tree</a>
+            <a class="btn-outline" href="use-cases.html">Back to Use Cases</a>
+          </div>
+        </div>
+        <div class="hero-side">
+          <div class="micro-grid">
+            <div class="micro-card">
+              <div class="kicker">Mandate</div>
+              <div class="big">Go or no-go</div>
+              <div class="small">Determine whether the target creates real strategic value before capital and credibility are committed.</div>
+            </div>
+            <div class="micro-card">
+              <div class="kicker">Pressure</div>
+              <div class="big">Many paths can break</div>
+              <div class="small">Numbers may be overstated, bidders may enter, regulators may intervene, and financing may become fragile.</div>
+            </div>
+            <div class="micro-card">
+              <div class="kicker">AAIDIS role</div>
+              <div class="big">Clarify each decision gate</div>
+              <div class="small">Reveal what must be believed, what can go wrong, and what conditions preserve value.</div>
+            </div>
+            <div class="micro-card">
+              <div class="kicker">Executive output</div>
+              <div class="big">Board-ready decision support</div>
+              <div class="small">A recommendation that is strategic, financial, market-aware, and explicit about downside.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="decision-tree">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Decision Tree</p>
+          <h2>The acquisition path AAIDIS evaluates</h2>
+        </div>
+        <p class="section-copy">
+          The transaction is not treated as a single decision. It is treated as a chain of decision nodes. Each node changes the problem. Each node activates a different part of AAIDIS. Each node can preserve value, erode value, or stop the deal entirely.
+        </p>
+      </div>
+      <div class="tree-card">
+        <svg viewBox="0 0 1500 760" width="100%" role="img" aria-label="M&A decision tree diagram">
+          <defs>
+            <linearGradient id="bgGlow" x1="0" x2="1">
+              <stop offset="0%" stop-color="#33c7b7" stop-opacity=".22"/>
+              <stop offset="100%" stop-color="#163766" stop-opacity=".22"/>
+            </linearGradient>
+            <linearGradient id="nodeFill" x1="0" x2="1">
+              <stop offset="0%" stop-color="#10233d"/>
+              <stop offset="100%" stop-color="#0c1b2f"/>
+            </linearGradient>
+            <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity=".25"/>
+            </filter>
+          </defs>
+          <rect x="18" y="18" width="1464" height="724" rx="24" fill="url(#bgGlow)" stroke="rgba(255,255,255,.08)"/>
+          <g stroke="#53d7ca" stroke-opacity=".45" stroke-width="4" fill="none" stroke-linecap="round">
+            <path d="M130 115 H245"/>
+            <path d="M405 115 H520"/>
+            <path d="M680 115 H795"/>
+            <path d="M955 115 H1070"/>
+            <path d="M1230 115 H1345"/>
+            <path d="M1405 145 V245 H1345"/>
+            <path d="M1230 275 H1120"/>
+            <path d="M1060 305 V405 H1120"/>
+            <path d="M1230 435 H1345"/>
+            <path d="M1405 465 V565 H1345"/>
+            <path d="M1230 595 H1120"/>
+          </g>
+          <g font-family="Inter, sans-serif" filter="url(#softShadow)">
+            <g transform="translate(40,70)">
+              <rect width="190" height="90" rx="18" fill="url(#nodeFill)" stroke="rgba(255,255,255,.10)"/>
+              <text x="18" y="28" font-size="12" fill="#77e9dc" font-weight="800" letter-spacing="1.2">D0 · MANDATE</text>
+              <text x="18" y="57" font-size="24" fill="#ffffff" font-weight="800">Evaluate target</text>
+            </g>
+            <g transform="translate(255,70)">
+              <rect width="250" height="90" rx="18" fill="url(#nodeFill)" stroke="rgba(255,255,255,.10)"/>
+              <text x="18" y="28" font-size="12" fill="#77e9dc" font-weight="800" letter-spacing="1.2">D1 · INTEGRITY</text>
+              <text x="18" y="57" font-size="24" fill="#ffffff" font-weight="800">Can we trust the numbers?</text>
+            </g>
+            <g transform="translate(530,70)">
+              <rect width="250" height="90" rx="18" fill="url(#nodeFill)" stroke="rgba(255,255,255,.10)"/>
+              <text x="18" y="28" font-size="12" fill="#77e9dc" font-weight="800" letter-spacing="1.2">D2 · STRATEGIC FIT</text>
+              <text x="18" y="57" font-size="24" fill="#ffffff" font-weight="800">Is the asset durable?</text>
+            </g>
+            <g transform="translate(805,70)">
+              <rect width="250" height="90" rx="18" fill="url(#nodeFill)" stroke="rgba(255,255,255,.10)"/>
+              <text x="18" y="28" font-size="12" fill="#77e9dc" font-weight="800" letter-spacing="1.2">D3 · VALUATION</text>
+              <text x="18" y="57" font-size="24" fill="#ffffff" font-weight="800">What is it worth?</text>
+            </g>
+            <g transform="translate(1080,70)">
+              <rect width="250" height="90" rx="18" fill="url(#nodeFill)" stroke="rgba(255,255,255,.10)"/>
+              <text x="18" y="28" font-size="12" fill="#77e9dc" font-weight="800" letter-spacing="1.2">D4 · STRUCTURE</text>
+              <text x="18" y="57" font-size="24" fill="#ffffff" font-weight="800">How do we finance it?</text>
+            </g>
+            <g transform="translate(1310,200)">
+              <rect width="150" height="90" rx="18" fill="url(#nodeFill)" stroke="rgba(255,255,255,.10)"/>
+              <text x="18" y="28" font-size="12" fill="#77e9dc" font-weight="800" letter-spacing="1.2">D5 · MARKETS</text>
+              <text x="18" y="57" font-size="22" fill="#ffffff" font-weight="800">How will markets react?</text>
+            </g>
+            <g transform="translate(870,260)">
+              <rect width="250" height="90" rx="18" fill="url(#nodeFill)" stroke="rgba(255,255,255,.10)"/>
+              <text x="18" y="28" font-size="12" fill="#77e9dc" font-weight="800" letter-spacing="1.2">D6 · NEGOTIATION</text>
+              <text x="18" y="57" font-size="24" fill="#ffffff" font-weight="800">Counteroffer arrives</text>
+            </g>
+            <g transform="translate(1090,390)">
+              <rect width="240" height="90" rx="18" fill="url(#nodeFill)" stroke="rgba(255,255,255,.10)"/>
+              <text x="18" y="28" font-size="12" fill="#77e9dc" font-weight="800" letter-spacing="1.2">D7 · THIRD-PARTY BIDDER</text>
+              <text x="18" y="57" font-size="24" fill="#ffffff" font-weight="800">Do we escalate or exit?</text>
+            </g>
+            <g transform="translate(1310,520)">
+              <rect width="150" height="90" rx="18" fill="url(#nodeFill)" stroke="rgba(255,255,255,.10)"/>
+              <text x="18" y="28" font-size="12" fill="#77e9dc" font-weight="800" letter-spacing="1.2">D8 · REGULATORS</text>
+              <text x="18" y="57" font-size="22" fill="#ffffff" font-weight="800">Will the deal clear?</text>
+            </g>
+            <g transform="translate(870,580)">
+              <rect width="240" height="90" rx="18" fill="url(#nodeFill)" stroke="rgba(255,255,255,.10)"/>
+              <text x="18" y="28" font-size="12" fill="#77e9dc" font-weight="800" letter-spacing="1.2">D9 · FINAL COMMITMENT</text>
+              <text x="18" y="57" font-size="24" fill="#ffffff" font-weight="800">Proceed, renegotiate, or walk</text>
+            </g>
+            <g transform="translate(1090,580)">
+              <rect width="240" height="90" rx="18" fill="url(#nodeFill)" stroke="rgba(255,255,255,.10)"/>
+              <text x="18" y="28" font-size="12" fill="#77e9dc" font-weight="800" letter-spacing="1.2">D10 · INTEGRATION</text>
+              <text x="18" y="57" font-size="24" fill="#ffffff" font-weight="800">Did the thesis hold?</text>
+            </g>
+          </g>
+          <g font-family="Inter, sans-serif">
+            <text x="74" y="220" font-size="13" fill="#aab7cc">Integrity failure can re-route valuation, deal structure, or go/no-go entirely.</text>
+            <text x="870" y="228" font-size="13" fill="#aab7cc">Each node changes the economics, the risk, or the conditions for proceeding.</text>
+            <text x="1035" y="710" font-size="13" fill="#aab7cc">AAIDIS evaluates the full path, not just the next move.</text>
+          </g>
+        </svg>
+      </div>
+      <p class="tree-note">
+        The tree shows the acquisition as a chain of interdependent decisions rather than a single yes-or-no moment. The discipline of AAIDIS is to evaluate the whole path: what must be true, what other actors may do, where downside begins to dominate, and what conditions still preserve value.
+      </p>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Sequential Decision Script</p>
+          <h2>How AAIDIS assists at each decision node</h2>
+        </div>
+        <p class="section-copy">
+          The script below is intentionally non-technical. Each section explains the decision in business terms and shows the capacity in which AAIDIS is being used. The point is not that many tools are available. The point is that each one answers a specific question at a specific juncture.
+        </p>
+      </div>
+      <div class="node-list">
+        <div class="node">
+          <div class="node-id">
+            <div class="node-badge">D1 · Integrity</div>
+            <div class="node-stage">The first risk is not future uncertainty. It is present misrepresentation.</div>
+          </div>
+          <div>
+            <h3>Can we trust what we are seeing?</h3>
+            <p class="lead">
+              Before valuation, the CSO needs confidence that the target’s reported performance reflects underlying economic reality. This is where many large deals go wrong. Growth can be overstated. Margins can be managed. Narrative can outrun substance.
+            </p>
+            <div class="subgrid">
+              <div class="subcard">
+                <h4>How AAIDIS is used</h4>
+                <p>AAIDIS examines whether the company’s financial relationships behave as they should, flags patterns that look inconsistent with peers, and reviews disclosures, accounting language, and diligence materials for inconsistencies that deserve skepticism.</p>
+              </div>
+              <div class="subcard">
+                <h4>What becomes clearer</h4>
+                <p>The team can distinguish between a business that is performing well and one that is merely being presented well. If material concerns emerge, valuation, deal structure, or the entire transaction path can change immediately.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="node">
+          <div class="node-id">
+            <div class="node-badge">D2 · Strategic Fit</div>
+            <div class="node-stage">A strong story is not the same as durable strategic value.</div>
+          </div>
+          <div>
+            <h3>Is this asset durable across plausible futures?</h3>
+            <p class="lead">
+              Once the numbers are credible enough to work with, the decision shifts to strategic durability. The core issue is not whether the asset looks attractive today. It is whether it still creates value if demand softens, margins compress, competitors react, or rates remain unfavorable.
+            </p>
+            <div class="subgrid">
+              <div class="subcard">
+                <h4>How AAIDIS is used</h4>
+                <p>AAIDIS isolates what is structurally driving the target’s performance versus what is cyclical or temporary, then evaluates how the business behaves under different industry, macroeconomic, and competitive scenarios.</p>
+              </div>
+              <div class="subcard">
+                <h4>What becomes clearer</h4>
+                <p>The acquisition thesis stops being narrative-only. The CSO can see whether the target is strategically strong, conditionally attractive, or fragile once the environment stops cooperating.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="node">
+          <div class="node-id">
+            <div class="node-badge">D3 · Valuation</div>
+            <div class="node-stage">Value is not a number. It is a range conditioned on what must hold.</div>
+          </div>
+          <div>
+            <h3>What is the business worth under uncertainty?</h3>
+            <p class="lead">
+              At this stage, the CSO and CFO need more than a base-case valuation. They need to know how value changes when assumptions move, when earnings are normalized, and when downside cases are taken seriously rather than footnoted.
+            </p>
+            <div class="subgrid">
+              <div class="subcard">
+                <h4>How AAIDIS is used</h4>
+                <p>AAIDIS adjusts for non-sustainable performance, develops valuation ranges under multiple scenarios, and brings downside-oriented risk analysis into the process so the team can see how quickly the economics deteriorate under stress.</p>
+              </div>
+              <div class="subcard">
+                <h4>What becomes clearer</h4>
+                <p>The board does not receive a false sense of precision. It sees where value is durable, where it becomes thin, and where the deal crosses from strategic to speculative.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="node">
+          <div class="node-id">
+            <div class="node-badge">D4 · Structure & Financing</div>
+            <div class="node-stage">The right deal financed the wrong way can still fail.</div>
+          </div>
+          <div>
+            <h3>How should the offer be structured and financed?</h3>
+            <p class="lead">
+              By now the team is no longer asking only whether the company is attractive. It is asking whether the company is attractive at this price, financed in this way, under these conditions. Financing affects leverage, liquidity, flexibility, and how much room management has left if the world turns less favorable.
+            </p>
+            <div class="subgrid">
+              <div class="subcard">
+                <h4>How AAIDIS is used</h4>
+                <p>AAIDIS evaluates all-cash, debt-funded, equity-funded, hybrid, and structured approaches, and compares how each affects leverage, cash flow burden, refinancing exposure, dilution, and strategic flexibility.</p>
+              </div>
+              <div class="subcard">
+                <h4>What becomes clearer</h4>
+                <p>The team can see whether the deal is being financed in a way that preserves resilience or quietly creates fragility that will only surface later.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="node">
+          <div class="node-id">
+            <div class="node-badge">D5 · Market Perception</div>
+            <div class="node-stage">A transaction is judged not only by intrinsic value, but by how markets price it.</div>
+          </div>
+          <div>
+            <h3>How will credit and equity markets view the merger?</h3>
+            <p class="lead">
+              Before an offer is finalized, the company has to consider how outside investors and lenders are likely to interpret the transaction. An acquisition framed as disciplined and value-creating can strengthen confidence. The same acquisition, financed poorly or priced aggressively, can trigger doubt about judgment and financial control.
+            </p>
+            <div class="subgrid">
+              <div class="subcard">
+                <h4>How AAIDIS is used</h4>
+                <p>AAIDIS evaluates how the deal structure is likely to be interpreted by equity holders and credit markets, including the impact on perceived discipline, dilution, leverage, spread widening, downgrade risk, and overall credibility.</p>
+              </div>
+              <div class="subcard">
+                <h4>What becomes clearer</h4>
+                <p>The leadership team can distinguish between a deal that genuinely creates value and one that may be economically sound in theory but poorly received in practice.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="node">
+          <div class="node-id">
+            <div class="node-badge">D6 · Negotiation</div>
+            <div class="node-stage">Momentum is dangerous when it substitutes for valuation discipline.</div>
+          </div>
+          <div>
+            <h3>What do we do when the seller counters?</h3>
+            <p class="lead">
+              Once a counteroffer arrives, the problem changes. The team is no longer evaluating the original opportunity. It is evaluating whether the acquisition still creates value at a new price. This is often the moment where discipline is tested most directly.
+            </p>
+            <div class="subgrid">
+              <div class="subcard">
+                <h4>How AAIDIS is used</h4>
+                <p>AAIDIS recalculates how the new terms affect risk-adjusted value, identifies what changed materially versus what is negotiation pressure, and makes the decision boundary visible: raise, hold, or exit.</p>
+              </div>
+              <div class="subcard">
+                <h4>What becomes clearer</h4>
+                <p>The company can see where a higher bid preserves strategic logic and where it simply transfers value to the seller while exposing shareholders to larger downside.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="node">
+          <div class="node-id">
+            <div class="node-badge">D7 · Third-Party Bidder</div>
+            <div class="node-stage">The deal now depends on the behavior of other actors, not just on your own logic.</div>
+          </div>
+          <div>
+            <h3>What happens if another bidder jumps in?</h3>
+            <p class="lead">
+              A competing bidder can change the economics and the psychology of the transaction at once. The question becomes whether escalation improves strategic outcomes or simply creates a bidding war in which everyone pays more and the seller captures the value.
+            </p>
+            <div class="subgrid">
+              <div class="subcard">
+                <h4>How AAIDIS is used</h4>
+                <p>AAIDIS uses agent-based simulation to model how competing bidders are likely to behave, how the seller may respond, and how pricing dynamics evolve when multiple parties interact strategically.</p>
+              </div>
+              <div class="subcard">
+                <h4>What becomes clearer</h4>
+                <p>The team can judge whether to escalate, reshape the offer, or walk away before competitive intensity pushes the deal beyond its economic value.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="node">
+          <div class="node-id">
+            <div class="node-badge">D8 · Regulators</div>
+            <div class="node-stage">Approval risk is not just legal friction. It reshapes time, value, and feasibility.</div>
+          </div>
+          <div>
+            <h3>What if regulators push back or block the transaction?</h3>
+            <p class="lead">
+              Even a strategically compelling deal can weaken quickly if approval is delayed, remedies are required, or the merger is challenged on anti-trust grounds. At this point the company must evaluate the economics of the transaction under regulatory friction, not under ideal conditions.
+            </p>
+            <div class="subgrid">
+              <div class="subcard">
+                <h4>How AAIDIS is used</h4>
+                <p>AAIDIS uses behavioral and scenario-based analysis to model how regulators may respond to the deal, estimate the effect of delay or remedies, and re-test whether the transaction still holds up under those altered conditions.</p>
+              </div>
+              <div class="subcard">
+                <h4>What becomes clearer</h4>
+                <p>The company can decide whether to proceed, renegotiate structure, or exit before regulatory uncertainty silently consumes the value it thought it was buying.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="node">
+          <div class="node-id">
+            <div class="node-badge">D9–D10 · Commitment & Integration</div>
+            <div class="node-stage">The deal is not proven when it is signed. It is proven when the thesis survives contact with execution.</div>
+          </div>
+          <div>
+            <h3>Do we still proceed, and does the deal deliver after close?</h3>
+            <p class="lead">
+              The board eventually needs a final recommendation. But even then, the decision is conditional. It reflects what has been learned about reporting quality, valuation, financing, market perception, negotiation dynamics, competitive pressure, and regulatory risk. After closing, the original thesis must continue to be tested against reality.
+            </p>
+            <div class="subgrid">
+              <div class="subcard">
+                <h4>How AAIDIS is used</h4>
+                <p>AAIDIS synthesizes the full path into a final recommendation, then continues to track whether synergy realization, cash flow, customer retention, financial quality, and operating execution are validating or undermining the original decision.</p>
+              </div>
+              <div class="subcard">
+                <h4>What becomes clearer</h4>
+                <p>The acquisition is treated as an evolving decision system rather than a single moment of approval. The company can detect early when execution is slipping or when pre-close assumptions were weaker than believed.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Audit View</p>
+          <h2>How the reasoning stays grounded</h2>
+        </div>
+        <p class="section-copy">
+          This use case is designed to feel realistic because the logic stays attached to actual decision questions. AAIDIS is not presented as a bundle of impressive-sounding tools. It is presented as a system that helps answer what a CSO, CFO, CEO, and board would genuinely want to know.
+        </p>
+      </div>
+      <div class="audit-grid">
+        <div class="audit-card">
+          <div class="title">Integrity layer</div>
+          <p>Tests whether financial behavior, reporting patterns, and narrative disclosures align closely enough to trust the business being evaluated.</p>
+        </div>
+        <div class="audit-card">
+          <div class="title">Strategic + valuation layer</div>
+          <p>Determines whether the target remains attractive across plausible futures and what the business is worth once temporary or distorted performance is stripped out.</p>
+        </div>
+        <div class="audit-card">
+          <div class="title">Financing + market layer</div>
+          <p>Evaluates whether the deal can be financed responsibly and how equity and credit markets are likely to interpret that decision.</p>
+        </div>
+        <div class="audit-card">
+          <div class="title">Behavioral layer</div>
+          <p>Models how other actors may respond, including bidders, sellers, and regulators, so the company does not assume the environment will remain static.</p>
+        </div>
+        <div class="audit-card">
+          <div class="title">Commitment layer</div>
+          <p>Clarifies the conditions under which the company should proceed, renegotiate, or walk away rather than treating commitment as a binary impulse.</p>
+        </div>
+        <div class="audit-card">
+          <div class="title">Learning layer</div>
+          <p>Continues beyond signing and close, testing whether the transaction is delivering what the original thesis promised and flagging early deviation.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <h2>An acquisition is not a single decision.</h2>
+      <p>
+        It is a chain of decisions shaped by uncertainty, reaction, and consequence. AAIDIS helps leadership teams evaluate that chain with greater realism, stronger discipline, and clearer awareness of what can go wrong before it does.
+      </p>
+      <div class="hero-actions" style="margin-top:24px">
+        <a class="btn" href="contact.html">Discuss Your Use Case</a>
+        <a class="btn-outline" href="use-cases.html">Back to Use Cases</a>
+      </div>
+    </section>
+
+    <div class="footer-space"></div>
+  </div>
+</body>
+</html>
