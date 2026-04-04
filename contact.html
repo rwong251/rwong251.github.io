@@ -7,37 +7,159 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style-fixed-sticky.css" />
 </head>
 <body>
+  <div class="site-header-wrap">
+    <div class="site-shell">
+      <header class="header">
+        <a class="brand" href="index.html" aria-label="Consilium.ai home">
+          <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
+          <div>
+            <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
+            <div class="brand-sub">AI Decision Intelligence</div>
+          </div>
+        </a>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="decision-platform.html">Decision Platform</a>
+          <a href="decision-intelligence.html">Decision Intelligence</a>
+          <a href="use-cases.html">Use Cases</a>
+          <a href="insights.html">Insights</a>
+          <a href="about.html">About</a>
+          <a class="active" href="contact.html">Contact</a>
+          <a class="nav-cta" href="contact.html">Request a Demo</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
   <div class="container">
-    <header class="header">
-      <a class="brand" href="index.html" aria-label="Consilium.ai home">
-        <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
+    <section class="hero">
+      <div class="hero-inner" style="grid-template-columns:1.05fr .95fr;">
         <div>
-          <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
-          <div class="brand-sub">AI Decision Intelligence</div>
+          <div class="hero-tag">Contact Consilium.ai</div>
+          <h1>Start a conversation about <span class="accent">better decisions</span></h1>
+          <p>Whether you are exploring a strategic use case, an enterprise AI initiative, or a broader decision intelligence capability, Consilium.ai is built to engage where leadership questions carry real stakes.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#contact-form">Request a Demo</a>
+            <a class="btn-outline" href="#contact-form">Start a Discussion</a>
+          </div>
         </div>
-      </a>
-      <nav class="nav" aria-label="Primary navigation"><a class="" href="index.html">Home</a><a class="" href="decision-platform.html">Decision Platform</a><a class="" href="decision-intelligence.html">Decision Intelligence</a><a class="" href="use-cases.html">Use Cases</a><a class="" href="insights.html">Insights</a><a class="" href="about.html">About</a><a class="active" href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Request a Demo</a></nav>
-    </header>
-    
-<section class="hero">
-  <div class="hero-inner" style="grid-template-columns:1.05fr .95fr;">
-    <div><div class="hero-tag">Contact Consilium.ai</div><h1>Start a conversation about <span class="accent">better decisions</span></h1><p>Whether you are exploring a strategic use case, an enterprise AI initiative, or a broader decision intelligence capability, Consilium.ai is built to engage where leadership questions carry real stakes.</p><div class="hero-actions"><a class="btn" href="#contact-form">Request a Demo</a><a class="btn-outline" href="#contact-form">Start a Discussion</a></div></div>
-    <div style="position:relative;"><div class="orb1"></div><div class="orb2"></div><div class="glass-wrap"><div class="glass-card" style="background:rgba(15,57,111,.5);"><div class="eyebrow">Ways to Engage</div><div class="simple-list"><div class="glass-card"><div class="big">Platform Demo</div><div class="small" style="margin-top:8px; color:rgba(255,255,255,.82);">Explore how AAIDIS and Consilium.ai can support forecasting, scenario planning, optimization, and executive decision support.</div></div><div class="glass-card"><div class="big">Strategic Use Case Discussion</div><div class="small" style="margin-top:8px; color:rgba(255,255,255,.82);">Discuss a business problem, leadership question, or decision challenge where decision intelligence may create value.</div></div><div class="glass-card"><div class="big">Executive Briefing</div><div class="small" style="margin-top:8px; color:rgba(255,255,255,.82);">Engage around enterprise AI strategy, decision intelligence, risk, uncertainty, or operating model transformation.</div></div></div></div></div></div>
-  </div>
-</section>
+        <div style="position:relative;">
+          <div class="orb1"></div>
+          <div class="orb2"></div>
+          <div class="glass-wrap">
+            <div class="glass-card" style="background:rgba(15,57,111,.5);">
+              <div class="eyebrow">Ways to Engage</div>
+              <div class="simple-list">
+                <div class="glass-card">
+                  <div class="big">Platform Demo</div>
+                  <div class="small" style="margin-top:8px; color:rgba(255,255,255,.82);">Explore how AAIDIS and Consilium.ai can support forecasting, scenario planning, optimization, and executive decision support.</div>
+                </div>
+                <div class="glass-card">
+                  <div class="big">Strategic Use Case Discussion</div>
+                  <div class="small" style="margin-top:8px; color:rgba(255,255,255,.82);">Discuss a business problem, leadership question, or decision challenge where decision intelligence may create value.</div>
+                </div>
+                <div class="glass-card">
+                  <div class="big">Executive Briefing</div>
+                  <div class="small" style="margin-top:8px; color:rgba(255,255,255,.82);">Engage around enterprise AI strategy, decision intelligence, risk, uncertainty, or operating model transformation.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section class="split section">
-  <div id="contact-form" class="panel"><p class="eyebrow-section">Get In Touch</p><h2 class="h2 medium">Tell us what decision challenge you are facing</h2><p class="section-copy">This page can be connected to your preferred contact workflow, whether that is a form, email address, scheduling link, or CRM intake flow. For now, the structure below provides a clean branded layout for your future contact capture experience.</p><div class="form-grid"><div><label>Full Name</label><input placeholder="Your name" /></div><div><label>Email</label><input placeholder="you@company.com" /></div><div><label>Company</label><input placeholder="Organization name" /></div><div><label>Inquiry Type</label><select><option>Platform Demo</option><option>Use Case Discussion</option><option>Executive Briefing</option><option>Partnership Inquiry</option><option>General Question</option></select></div></div><div style="margin-top:16px;"><label>Message</label><textarea placeholder="Tell us about your business need, decision area, or strategic question"></textarea></div><div class="form-actions"><a class="btn" href="#">Send Inquiry</a><a class="btn-secondary" href="#">Schedule a Conversation</a></div></div>
-  <div style="display:grid; gap:32px;">
-    <div class="panel"><p class="eyebrow-section">Common Reasons To Reach Out</p><div class="list-grid" style="margin-top:24px;"><div class="list-card">Decision platform conversations</div><div class="list-card">Use case exploration</div><div class="list-card">Enterprise AI strategy discussions</div><div class="list-card">Thought leadership and speaking inquiries</div><div class="list-card">Partnership and advisory opportunities</div><div class="list-card">General questions about Consilium.ai</div></div></div>
-    <div class="blue-panel"><p class="eyebrow-section" style="color:rgba(255,255,255,.7)">What Happens Next</p><h2 class="h2 medium" style="color:white; margin-top:8px;">A clear and practical engagement path</h2><div class="blue-list"><div class="blue-box"><div class="eyebrow" style="color:#B8F0C9;">01</div><div class="title" style="margin-top:4px;">Share your context</div><p>Describe the business challenge, decision area, or question your organization is trying to address.</p></div><div class="blue-box"><div class="eyebrow" style="color:#B8F0C9;">02</div><div class="title" style="margin-top:4px;">Frame the opportunity</div><p>We identify where decision intelligence, scenario analysis, forecasting, or strategic support may be most relevant.</p></div><div class="blue-box"><div class="eyebrow" style="color:#B8F0C9;">03</div><div class="title" style="margin-top:4px;">Plan the next step</div><p>Determine whether the best path is a demo, an executive discussion, a use-case engagement, or a broader platform conversation.</p></div></div></div>
-  </div>
-</section>
+    <section class="split section">
+      <div id="contact-form" class="panel">
+        <p class="eyebrow-section">Get In Touch</p>
+        <h2 class="h2 medium">Tell us what decision challenge you are facing</h2>
+        <p class="section-copy">This page can be connected to your preferred contact workflow, whether that is a form, email address, scheduling link, or CRM intake flow. For now, the structure below provides a clean branded layout for your future contact capture experience.</p>
 
-<section class="cta"><p class="eyebrow-section" style="color:rgba(255,255,255,.7)">Ready to Engage</p><h2>Let’s discuss your business need</h2><p>Consilium.ai is designed to support leaders facing complexity, uncertainty, and high-stakes choices. Reach out to begin the conversation.</p><div class="cta-actions"><a class="btn" href="#contact-form">Request a Demo</a><a class="btn-outline" href="#contact-form">Start a Conversation</a></div></section>
+        <div class="form-grid">
+          <div>
+            <label for="full-name">Full Name</label>
+            <input id="full-name" placeholder="Your name" />
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" placeholder="you@company.com" />
+          </div>
+          <div>
+            <label for="company">Company</label>
+            <input id="company" placeholder="Organization name" />
+          </div>
+          <div>
+            <label for="inquiry-type">Inquiry Type</label>
+            <select id="inquiry-type">
+              <option>Platform Demo</option>
+              <option>Use Case Discussion</option>
+              <option>Executive Briefing</option>
+              <option>Partnership Inquiry</option>
+              <option>General Question</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell us about your business need, decision area, or strategic question"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <a class="btn" href="#">Send Inquiry</a>
+          <a class="btn-secondary" href="#">Schedule a Conversation</a>
+        </div>
+      </div>
+
+      <div style="display:grid; gap:32px;">
+        <div class="panel">
+          <p class="eyebrow-section">Common Reasons To Reach Out</p>
+          <div class="list-grid" style="margin-top:24px;">
+            <div class="list-card">Decision platform conversations</div>
+            <div class="list-card">Use case exploration</div>
+            <div class="list-card">Enterprise AI strategy discussions</div>
+            <div class="list-card">Thought leadership and speaking inquiries</div>
+            <div class="list-card">Partnership and advisory opportunities</div>
+            <div class="list-card">General questions about Consilium.ai</div>
+          </div>
+        </div>
+
+        <div class="blue-panel">
+          <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">What Happens Next</p>
+          <h2 class="h2 medium" style="color:white; margin-top:8px;">A clear and practical engagement path</h2>
+          <div class="blue-list">
+            <div class="blue-box">
+              <div class="eyebrow" style="color:#B8F0C9;">01</div>
+              <div class="title" style="margin-top:4px;">Share your context</div>
+              <p>Describe the business challenge, decision area, or question your organization is trying to address.</p>
+            </div>
+            <div class="blue-box">
+              <div class="eyebrow" style="color:#B8F0C9;">02</div>
+              <div class="title" style="margin-top:4px;">Frame the opportunity</div>
+              <p>We identify where decision intelligence, scenario analysis, forecasting, or strategic support may be most relevant.</p>
+            </div>
+            <div class="blue-box">
+              <div class="eyebrow" style="color:#B8F0C9;">03</div>
+              <div class="title" style="margin-top:4px;">Plan the next step</div>
+              <p>Determine whether the best path is a demo, an executive discussion, a use-case engagement, or a broader platform conversation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">Ready to Engage</p>
+      <h2>Let’s discuss your business need</h2>
+      <p>Consilium.ai is designed to support leaders facing complexity, uncertainty, and high-stakes choices. Reach out to begin the conversation.</p>
+      <div class="cta-actions">
+        <a class="btn" href="#contact-form">Request a Demo</a>
+        <a class="btn-outline" href="#contact-form">Start a Conversation</a>
+      </div>
+    </section>
 
     <div class="footer-space"></div>
   </div>
