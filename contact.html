@@ -141,6 +141,30 @@ textarea {
 .blue-box {
   padding: 20px 22px;
 }
+.contact-top-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: stretch;
+}
+
+.contact-top-grid > .panel {
+  height: 100%;
+}
+
+.contact-bottom-full {
+  margin-top: 32px;
+}
+
+.contact-bottom-full .blue-panel {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .contact-top-grid {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 <body>
@@ -199,83 +223,85 @@ textarea {
       </div>
     </section>
 
-    <section class="split section">
-      <div id="contact-form" class="panel">
-        <p class="eyebrow-section">Get In Touch</p>
-        <h2 class="h2 medium">Tell us what decision challenge you are facing</h2>
-        
-        <div class="form-grid">
-          <div>
-            <label for="full-name">Full Name</label>
-            <input id="full-name" placeholder="Your name" />
-          </div>
-          <div>
-            <label for="email">Email</label>
-            <input id="email" placeholder="you@company.com" />
-          </div>
-          <div>
-            <label for="company">Company</label>
-            <input id="company" placeholder="Organization name" />
-          </div>
-          <div>
-            <label for="inquiry-type">Inquiry Type</label>
-            <select id="inquiry-type">
-              <option>Platform Demo</option>
-              <option>Use Case Discussion</option>
-              <option>Executive Briefing</option>
-              <option>Partnership Inquiry</option>
-              <option>General Question</option>
-            </select>
-          </div>
+<section class="section">
+  <div class="contact-top-grid">
+    <div id="contact-form" class="panel">
+      <p class="eyebrow-section">Get In Touch</p>
+      <h2 class="h2 medium">Tell us what decision challenge you are facing</h2>
+      
+      <div class="form-grid">
+        <div>
+          <label for="full-name">Full Name</label>
+          <input id="full-name" placeholder="Your name" />
         </div>
-
-        <div style="margin-top:16px;">
-          <label for="message">Message</label>
-          <textarea id="message" placeholder="Tell us about your business need, decision area, or strategic question"></textarea>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" placeholder="you@company.com" />
         </div>
-
-        <div class="form-actions">
-          <a class="btn" href="#">Send Inquiry</a>
-          <a class="btn-secondary" href="#">Schedule a Conversation</a>
+        <div>
+          <label for="company">Company</label>
+          <input id="company" placeholder="Organization name" />
+        </div>
+        <div>
+          <label for="inquiry-type">Inquiry Type</label>
+          <select id="inquiry-type">
+            <option>Platform Demo</option>
+            <option>Use Case Discussion</option>
+            <option>Executive Briefing</option>
+            <option>Partnership Inquiry</option>
+            <option>General Question</option>
+          </select>
         </div>
       </div>
 
-      <div style="display:grid; gap:32px;">
-        <div class="panel">
-          <p class="eyebrow-section">Common Reasons To Reach Out</p>
-          <div class="list-grid" style="margin-top:24px;">
-            <div class="list-card">Decision platform conversations</div>
-            <div class="list-card">Use case exploration</div>
-            <div class="list-card">Enterprise AI strategy discussions</div>
-            <div class="list-card">Thought leadership and speaking inquiries</div>
-            <div class="list-card">Partnership and advisory opportunities</div>
-            <div class="list-card">General questions about Consilium.ai</div>
-          </div>
-        </div>
+      <div style="margin-top:16px;">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Tell us about your business need, decision area, or strategic question"></textarea>
+      </div>
 
-        <div class="blue-panel">
-          <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">What Happens Next</p>
-          <h2 class="h2 medium" style="color:white; margin-top:8px;">A clear and practical engagement path</h2>
-          <div class="blue-list">
-            <div class="blue-box">
-              <div class="eyebrow" style="color:#B8F0C9;">01</div>
-              <div class="title" style="margin-top:4px;">Share your context</div>
-              <p>Describe the business challenge, decision area, or question your organization is trying to address.</p>
-            </div>
-            <div class="blue-box">
-              <div class="eyebrow" style="color:#B8F0C9;">02</div>
-              <div class="title" style="margin-top:4px;">Frame the opportunity</div>
-              <p>We identify where decision intelligence, scenario analysis, forecasting, or strategic support may be most relevant.</p>
-            </div>
-            <div class="blue-box">
-              <div class="eyebrow" style="color:#B8F0C9;">03</div>
-              <div class="title" style="margin-top:4px;">Plan the next step</div>
-              <p>Determine whether the best path is a demo, an executive discussion, a use-case engagement, or a broader platform conversation.</p>
-            </div>
-          </div>
+      <div class="form-actions">
+        <a class="btn" href="#">Send Inquiry</a>
+        <a class="btn-secondary" href="#">Schedule a Conversation</a>
+      </div>
+    </div>
+
+    <div class="panel">
+      <p class="eyebrow-section">Common Reasons To Reach Out</p>
+      <div class="list-grid" style="margin-top:24px;">
+        <div class="list-card">Decision platform conversations</div>
+        <div class="list-card">Use case exploration</div>
+        <div class="list-card">Enterprise AI strategy discussions</div>
+        <div class="list-card">Thought leadership and speaking inquiries</div>
+        <div class="list-card">Partnership and advisory opportunities</div>
+        <div class="list-card">General questions about Consilium.ai</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-bottom-full">
+    <div class="blue-panel">
+      <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">What Happens Next</p>
+      <h2 class="h2 medium" style="color:white; margin-top:8px;">A clear and practical engagement path</h2>
+      <div class="blue-list">
+        <div class="blue-box">
+          <div class="eyebrow" style="color:#B8F0C9;">01</div>
+          <div class="title" style="margin-top:4px;">Share your context</div>
+          <p>Describe the business challenge, decision area, or question your organization is trying to address.</p>
+        </div>
+        <div class="blue-box">
+          <div class="eyebrow" style="color:#B8F0C9;">02</div>
+          <div class="title" style="margin-top:4px;">Frame the opportunity</div>
+          <p>We identify where decision intelligence, scenario analysis, forecasting, or strategic support may be most relevant.</p>
+        </div>
+        <div class="blue-box">
+          <div class="eyebrow" style="color:#B8F0C9;">03</div>
+          <div class="title" style="margin-top:4px;">Plan the next step</div>
+          <p>Determine whether the best path is a demo, an executive discussion, a use-case engagement, or a broader platform conversation.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <section class="cta">
       <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">Ready to Engage</p>
