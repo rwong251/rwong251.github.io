@@ -5,65 +5,150 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Forecasts Are Useful, but Decisions Require More | Consilium.ai</title>
   <meta name="description" content="A Consilium.ai white paper on why prediction alone is insufficient and how forecasting must connect to scenarios, actions, and decision-making." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .article-shell { max-width: 860px; }
+    .article-tag {
+      display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:999px;
+      background:rgba(255,255,255,.78); border:1px solid rgba(15,57,111,.10); color:#0f396f;
+      font-size:.86rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; backdrop-filter: blur(10px);
+    }
+    .article-meta-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px; color:#5f6c7b; font-size:.98rem; }
+    .article-actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:26px; }
+    .article-prose { max-width: 860px; }
+    .article-prose h2 { margin: 0 0 18px 0; }
+    .article-prose p { margin: 0 0 20px 0; line-height: 1.9; color: #29405e; font-size: 1.04rem; }
+    .article-prose ul { margin: 0 0 20px 22px; padding: 0; color: #29405e; }
+    .article-prose li { margin: 0 0 12px 0; line-height: 1.9; font-size: 1.04rem; }
+    .quote-card p, .quote-card blockquote { margin:0; color:#16385f; line-height:1.8; font-size:1.12rem; }
+    .article-contents { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:14px; margin-top:22px; }
+    .article-contents .blue-box { background: rgba(255,255,255,.68); border:1px solid rgba(15,57,111,.08); }
+    .concept-panel {
+      margin: 10px 0 8px 0; padding: 22px 24px; border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(247,250,252,.92));
+      border: 1px solid rgba(15,57,111,.10); color: #0f396f; font-weight: 700;
+      text-align: center; font-size: 1.06rem; box-shadow: 0 14px 34px rgba(15,57,111,.08);
+    }
+    .simple-list {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      margin-top: 18px;
+    }
+    .simple-item .title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .simple-item p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--slate);
+    }
+    .blue-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    @media (max-width: 900px) { .article-contents { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
-  <div class="site-header-wrap">
-    <div class="site-shell">
-      <header class="header">
-        <a class="brand" href="index.html">
-          <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
-          <div>
-            <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
-            <div class="brand-sub">AI Decision Intelligence</div>
-          </div>
-        </a>
-
-        <nav class="nav">
-          <a href="index.html">Home</a>
-          <a href="decision-platform.html">Decision Platform</a>
-          <a href="decision-intelligence.html">Decision Intelligence</a>
-          <a href="use-cases.html">Use Cases</a>
-          <a class="active" href="insights.html">Insights</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-          <a class="nav-cta" href="contact.html">Request a Demo</a>
-        </nav>
-      </header>
-    </div>
+<div class="site-header-wrap">
+  <div class="site-shell">
+    <header class="header">
+      <a class="brand" href="index.html" aria-label="Consilium.ai home">
+        <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
+        <div>
+          <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
+          <div class="brand-sub">AI Decision Intelligence</div>
+        </div>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html">Home</a>
+        <a href="decision-platform.html">Decision Platform</a>
+        <a href="decision-intelligence.html">Decision Intelligence</a>
+        <a href="use-cases.html">Use Cases</a>
+        <a class="active" href="insights.html">Insights</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="nav-cta" href="contact.html">Request a Demo</a>
+      </nav>
+    </header>
   </div>
+</div>
 
-  <div class="container">
-    <section class="hero">
-      <div class="hero-inner">
-        <div class="article-shell">
-          <div class="article-tag">Forecasting White Paper</div>
-          <h1>Forecasts Are Useful, but Decisions Require More</h1>
-          <p>
-            Forecasting has long been a cornerstone of enterprise analytics, providing organizations with forward-looking estimates of demand, revenue, costs, and other key variables. Advances in machine learning and data availability have significantly improved the accuracy of these forecasts, enabling organizations to anticipate trends with greater precision. However, despite these improvements, many organizations continue to struggle with decision-making.
-          </p>
-          <p>
-            The reason is that forecasting, while necessary, is not sufficient. A forecast answers the question of what is likely to happen, but it does not answer the more important question of what should be done. Decisions require evaluating alternatives, considering trade-offs, and accounting for uncertainty, none of which are fully addressed by a single-point prediction.
-          </p>
-          <p>
-            This paper argues that forecasting must be integrated into a broader decision intelligence framework that connects predictions to scenarios, actions, and outcomes.
-          </p>
+<div class="container">
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="article-shell">
+        <div class="article-tag">Forecasting White Paper</div>
+        <h1>Forecasts Are Useful, but Decisions Require More</h1>
+        <p>
+          Forecasting has long been a cornerstone of enterprise analytics, providing organizations with forward-looking estimates of demand, revenue, costs, and other key variables. Advances in machine learning and data availability have significantly improved the accuracy of these forecasts, enabling organizations to anticipate trends with greater precision. However, despite these improvements, many organizations continue to struggle with decision-making.
+        </p>
+        <p>
+          The reason is that forecasting, while necessary, is not sufficient. A forecast answers the question of what is likely to happen, but it does not answer the more important question of what should be done. Decisions require evaluating alternatives, considering trade-offs, and accounting for uncertainty, none of which are fully addressed by a single-point prediction.
+        </p>
+        <p>
+          This paper argues that forecasting must be integrated into a broader decision intelligence framework that connects predictions to scenarios, actions, and outcomes.
+        </p>
+        <div class="article-meta-row">
+          <span>Consilium.ai</span><span>•</span>
+          <span>Richard Wong, PhD</span><span>•</span>
+          <span>Forecasting</span>
+        </div>
+        <div class="article-actions">
+          <a class="btn" href="forecast_useful_but_decisions_require_more.pdf" target="_blank" rel="noopener">Download PDF</a>
+          <a class="btn-outline" href="insights.html">Back to Insights</a>
+        </div>
+      </div>
 
-          <div class="article-actions">
-            <a class="btn" href="forecast_useful_but_decisions_require_more.pdf" target="_blank">Download PDF</a>
-            <a class="btn-outline" href="insights.html">Back to Insights</a>
+      <div style="position:relative;">
+        <div class="orb1"></div>
+        <div class="orb2"></div>
+        <div class="glass-wrap">
+          <div class="glass-card" style="background:rgba(15,57,111,.5);">
+            <div class="eyebrow">What this paper covers</div>
+            <div class="article-contents">
+              <div class="blue-box"><div class="title">Why forecasting is necessary but insufficient</div></div>
+              <div class="blue-box"><div class="title">Why prediction alone does not determine action</div></div>
+              <div class="blue-box"><div class="title">Why scenario-based evaluation matters</div></div>
+              <div class="blue-box"><div class="title">Why forecasts must connect to actions</div></div>
+              <div class="blue-box"><div class="title">How trade-offs should be evaluated explicitly</div></div>
+              <div class="blue-box"><div class="title">How simulation and optimization extend forecasting</div></div>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="panel section">
-      <blockquote class="quote-card">
-        “<em>A forecast tells you what may happen. A decision requires understanding what to do when it does not.</em>”
-      </blockquote>
-    </section>
+  <section class="panel section">
+    <div class="article-prose">
+      <div class="note-box quote-card" style="margin-top:0;">
+        <blockquote>“A forecast tells you what may happen. A decision requires understanding what to do when it does not.”</blockquote>
+      </div>
+    </div>
+  </section>
 
-    <section class="panel-soft section">
+  <section class="panel-soft section">
+    <div class="section-top">
+      <div>
+        <p class="eyebrow-section">White Paper</p>
+        <h2 class="h2 medium">Why prediction is not the same as decision support</h2>
+      </div>
+      <p class="section-copy">
+        The central argument is that forecasting provides a baseline expectation, but effective decisions require a broader system that evaluates scenarios, constraints, trade-offs, and actions under uncertainty.
+      </p>
+    </div>
+
+    <div class="article-prose" style="margin-top:30px;">
       <h2>Introduction</h2>
       <p>
         Forecasting has long been a cornerstone of enterprise analytics, providing organizations with forward-looking estimates of demand, revenue, costs, and other key variables. Advances in machine learning and data availability have significantly improved the accuracy of these forecasts, enabling organizations to anticipate trends with greater precision. However, despite these improvements, many organizations continue to struggle with decision-making. The reason is that forecasting, while necessary, is not sufficient. A forecast answers the question of what is likely to happen, but it does not answer the more important question of what should be done. Decisions require evaluating alternatives, considering trade-offs, and accounting for uncertainty, none of which are fully addressed by a single-point prediction. This paper argues that forecasting must be integrated into a broader decision intelligence framework that connects predictions to scenarios, actions, and outcomes.
@@ -87,6 +172,10 @@
       <p>
         Without these elements, forecasts remain disconnected from action. Organizations may know what is likely to happen, but they do not have a systematic way to determine what they should do in response.
       </p>
+
+      <div class="concept-panel">
+        Forecasting becomes strategically valuable when it is connected to scenarios, actions, trade-offs, and decision consequences rather than treated as an endpoint.
+      </div>
 
       <h2>The Need for Scenario-Based Evaluation</h2>
       <p>
@@ -126,18 +215,55 @@
       <p>
         Forecasting remains a valuable and necessary capability, but it is only one component of effective decision-making. Organizations that rely solely on predictions risk making decisions that are narrowly optimized and vulnerable to uncertainty. The next step is to integrate forecasting into a broader decision intelligence system that connects predictions to scenarios, actions, and outcomes. By doing so, organizations can move from knowing what may happen to understanding what they should do. The distinction is subtle, but critical. It is the difference between insight and action, and ultimately, between incremental improvement and sustained competitive advantage.
       </p>
-    </section>
+    </div>
+  </section>
 
-    <section class="cta">
-      <h2>Move from prediction to decision intelligence</h2>
-      <p>
-        Discuss how Consilium.ai can help transform forecasting into a system for decision-making under uncertainty.
-      </p>
-      <div class="cta-actions">
-        <a class="btn" href="contact.html">Request a Demo</a>
-        <a class="btn-outline" href="forecast_useful_but_decisions_require_more.pdf" target="_blank">Download PDF</a>
+  <section class="split section">
+    <div class="panel">
+      <p class="eyebrow-section">What Makes Forecasts Incomplete</p>
+      <h2 class="h2 medium">A forecast does not choose the action</h2>
+      <div class="simple-list">
+        <div class="simple-item">
+          <div class="title">Point estimates hide uncertainty</div>
+          <p>Even strong forecasts can create false confidence when decisions are anchored on a central projection rather than evaluated across a range of plausible futures.</p>
+        </div>
+        <div class="simple-item">
+          <div class="title">Action sets are usually missing</div>
+          <p>Forecasts often describe what may happen without structuring the actual choices leadership can take in response.</p>
+        </div>
+        <div class="simple-item">
+          <div class="title">Trade-offs remain implicit</div>
+          <p>Expected value, downside risk, flexibility, and reversibility must be evaluated explicitly if leaders are to choose well under uncertainty.</p>
+        </div>
       </div>
-    </section>
-  </div>
+    </div>
+
+    <div class="blue-panel">
+      <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">Continue the Conversation</p>
+      <h2 class="h2 medium" style="color:white; margin-top:8px;">Turn forecasting into decision intelligence</h2>
+      <p>
+        Consilium.ai and AAIDIS are designed to help organizations connect forecasts to scenarios, constraints, actions, and trade-offs so leaders can make stronger decisions under uncertainty.
+      </p>
+      <div class="blue-list">
+        <div class="blue-box"><div class="title">Scenario-based evaluation</div></div>
+        <div class="blue-box"><div class="title">Constraint-aware decisions</div></div>
+        <div class="blue-box"><div class="title">Simulation and optimization</div></div>
+        <div class="blue-box"><div class="title">Executive decision support</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">Ready to Engage</p>
+    <h2>Move from prediction to decision intelligence</h2>
+    <p>Discuss how Consilium.ai can help transform forecasting into a system for decision-making under uncertainty.</p>
+    <div class="cta-actions">
+      <a class="btn" href="contact.html">Request a Demo</a>
+      <a class="btn-outline" href="forecast_useful_but_decisions_require_more.pdf" target="_blank" rel="noopener">Download PDF</a>
+    </div>
+  </section>
+
+  <div class="footer-space"></div>
+</div>
 </body>
 </html>
