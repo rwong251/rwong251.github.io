@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Use Case 03 | Hiring Decision Under Demand Uncertainty | Consilium.ai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+<style>
+  .corridor {
+    position: relative;
+  }
+
+  .event-band {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 0.975fr) minmax(320px, 0.8fr);
+    gap: 18px;
+    align-items: stretch;
+    position: relative;
+    margin: 18px 0 22px;
+  }
+
+  .event-marker {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    min-height: 100%;
+  }
+
+  .event-marker::before {
+    content: "";
+    position: absolute;
+    top: -22px;
+    bottom: -22px;
+    left: 43%;
+    transform: translateX(-50%);
+    width: 4px;
+    background: linear-gradient(180deg, #6f95bf 0%, #5e84b0 100%);
+    border-radius: 999px;
+    opacity: 0.95;
+    z-index: 0;
+  }
+
+  .event-dot {
+    position: relative;
+    z-index: 1;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 5px solid #1f5aa6;
+    margin-top: 18px;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 3px rgba(31, 90, 166, 0.08);
+  }
+
+  .event-main,
+  .event-side {
+    min-width: 0;
+    background: #f8fbff;
+    border: 1.5px dashed rgba(76, 130, 196, 0.38);
+    border-radius: 28px;
+    padding: 24px 26px;
+  }
+
+  .event-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .event-side {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .event-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 16px;
+  }
+
+  .event-top > div:first-child {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .event-top h3 {
+    margin: 8px 0 0;
+    line-height: 1.05;
+    max-width: 16ch;
+  }
+
+  .event-main > p {
+    margin: 0;
+    max-width: 62ch;
+    line-height: 1.55;
+  }
+
+  .event-side .metric-stack {
+    width: 100%;
+    margin: 0;
+  }
+
+  .event-side .metric-card {
+    width: 100%;
+    margin: 0;
+    border-radius: 22px;
+    box-sizing: border-box;
+  }
+
+  .event-label {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .event-top .signal {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 1180px) {
+    .event-band {
+      grid-template-columns: 64px 1fr;
+    }
+
+    .event-side {
+      grid-column: 2 / 3;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .event-band {
+      grid-template-columns: 40px 1fr;
+      gap: 14px;
+    }
+
+    .event-main,
+    .event-side {
+      padding: 20px 18px;
+      border-radius: 22px;
+    }
+
+    .event-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .event-top h3 {
+      max-width: none;
+    }
+
+    .event-marker::before {
+      width: 3px;
+    }
+
+    .event-dot {
+      width: 16px;
+      height: 16px;
+      border-width: 4px;
+    }
+  }
+</style>
+
+</head>
+<body>
+  <div class="site-header-wrap">
+    <div class="site-shell">
+      <header class="header">
+        <a class="brand" href="index.html" aria-label="Consilium.ai home">
+          <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
+          <div>
+            <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
+            <div class="brand-sub">AI Decision Intelligence</div>
+          </div>
+        </a>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="decision-platform.html">Decision Platform</a>
+          <a href="decision-intelligence.html">Decision Intelligence</a>
+          <a class="active" href="use-cases.html">Use Cases</a>
+          <a href="insights.html">Insights</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a class="nav-cta" href="contact.html">Request a Demo</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <section class="hero section">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-tag">Use Case 03 · Hiring Under Demand Uncertainty</div>
+          <h1>AAIDIS helps leadership decide when growth justifies hiring and when it only creates labor drag.</h1>
+          <p>Demand surges often look clearer than they are. Pipeline optimism, customer concentration, and temporary bottlenecks can all create pressure to hire before the business has validated true demand durability.</p><p>An executive team must decide whether to accelerate hiring, use contractors, preserve a capacity buffer, or hold fixed costs flat while labor market conditions and service expectations continue to shift.</p><p>AAIDIS connects demand forecasting, operational diagnostics, scenario simulation, and decision logic so that workforce commitments reflect real need rather than momentum.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#decision-corridor">View Decision Corridor</a>
+            <a class="btn-outline" href="use-cases.html">Back to Use Cases</a>
+          </div>
+        </div>
+
+        <div style="position:relative;">
+          <div class="orb1"></div>
+          <div class="orb2"></div>
+          <div class="glass-wrap">
+            <div class="metric-grid-2">
+              <div class="glass-card"><div class="eyebrow">Demand context</div><div class="big">A strong quarter can disguise fragile demand</div><p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">Macro conditions, pipeline quality, and customer concentration can make temporary demand look structural if leadership moves too quickly.</p></div><div class="glass-card"><div class="eyebrow">AAIDIS role</div><div class="big">Separate real capacity need from noisy growth signals</div><p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">AAIDIS helps leadership decide whether the answer is more headcount, more flexible labor, better process design, or deliberate restraint.</p></div><div class="glass-card"><div class="eyebrow">Economic lens</div><div class="big">Labor becomes expensive when fixed cost outruns demand</div><p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">Each gate shows how hiring pace, workforce mix, and downside preparation change the economics of growth and the risk of over-employment.</p></div><div class="glass-card"><div class="eyebrow">Reversibility</div><div class="big">The cost to unwind rises after hiring commitments are made</div><p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">Once recruiting ramps, offers are accepted, and teams are reorganized, a mistaken demand signal becomes far more expensive to correct.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel section">
+      <div class="section-top">
+        <div>
+          <p class="eyebrow-section">Workforce Response Lifecycle</p>
+          <h2 class="h2 medium">Where this hiring path sits in the broader workforce planning cycle</h2>
+        </div>
+        <p class="section-copy">The corridor below follows one disciplined path through a period of uncertain demand. It makes explicit the decisions around hiring pace, labor mix, utilization, and downside triggers before structural cost is locked in.</p>
+      </div>
+
+      <div class="cards-4" style="margin-top:32px;">
+        <div class="list-card">01 · Demand signal review</div><div class="list-card">02 · Capacity mapping</div><div class="list-card">03 · Hiring pace</div><div class="list-card">04 · Labor mix</div><div class="list-card">05 · Buffer design</div><div class="list-card">06 · Demand revision</div><div class="list-card">07 · Downside planning</div><div class="list-card">08 · Cost commitment</div><div class="list-card">09 · Recruiting execution</div><div class="list-card">10 · Onboarding</div><div class="list-card">11 · Stabilization</div><div class="list-card">12 · Review</div>
+      </div>
+
+      <p class="section-copy" style="margin-top:28px; max-width:none;">In this illustrative case, AAIDIS supports controlled hiring, a larger flexible-labor mix, and predefined downside triggers rather than a full-speed expansion of fixed headcount.</p>
+    </section>
+
+    <section id="decision-corridor" class="panel section">
+      <div class="section-top">
+        <div>
+          <p class="eyebrow-section">Decision Corridor</p>
+          <h2 class="h2 medium">A workforce corridor with hiring, labor mix, and downside decisions</h2>
+        </div>
+        <p class="section-copy">Each node is a committed workforce choice. AAIDIS helps leadership decide when capacity is genuinely needed, when process friction is the real bottleneck, and when flexibility is economically superior to fixed hiring.</p>
+      </div>
+
+      <div class="legend">
+        <strong>Legend:</strong><br>
+        Gray blocks show the <strong>AAIDIS Engines Activated</strong> at that decision point.<br>
+        Colored signals show the <strong>AAIDIS decision output</strong>.<br>
+        Event bands show external developments that force leadership to respond.<br>
+        Heat bars show the <strong>cost to unwind</strong> at that stage of the process.
+      </div>
+
+      <div class="corridor">
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D1 · Hiring Pace Commitment</div>
+                <h3>Increase hiring by 25% over the next two quarters or maintain the current hiring pace?</h3>
+              </div>
+              <div class="signal signal-caution">Conditional Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Prediction / Forecasting</span><span class="chip">Causal</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Whether the current demand signal reflects durable revenue conversion or a temporary mix of backlog normalization, sales optimism, and concentrated customer activity.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Increase hiring only in the most constrained roles and hold the broader hiring plan until demand quality strengthens.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$1.3M planning cost</div><div class="s">Commercial, finance, and operations effort over roughly 3 weeks to validate demand quality before committing to broad hiring.</div></div>
+              <div class="metric-card"><div class="k">Fixed cost avoided</div><div class="v">$6.8M</div><div class="s">Avoided by refusing to scale all functions on the basis of a demand signal that still contains concentrated risk.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Low cost to unwind</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-band">
+          <div class="event-marker"><div class="event-dot"></div></div>
+          <div class="event-main">
+            <div class="event-top">
+              <div>
+                <div class="event-label">Event · Labor market tightening</div>
+                <h3>Wage inflation accelerates in the critical talent pool</h3>
+              </div>
+              <div class="signal signal-caution">External Shock</div>
+            </div>
+            <p>The labor market moves against the company, increasing the cost of full-time hiring and raising the economic value of flexibility while the demand picture remains incomplete.</p>
+          </div>
+          <div class="event-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative impact</div><div class="v">+11% wage pressure</div><div class="s">The cost of moving too aggressively into fixed labor rises before revenue durability is fully established.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D2 · Workforce Structure</div>
+                <h3>Shift 30% of incremental capacity to contractors or commit to full-time hires?</h3>
+              </div>
+              <div class="signal signal-go">Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Optimization</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">How contractor availability, skill needs, and cost volatility affect the optimal blend of fixed labor and flexible capacity under uncertain growth.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Use a blended model with contractors carrying a defined share of incremental capacity until demand stabilizes.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$2.6M cumulative cost</div><div class="s">By week 5, recruiting, legal, and workforce planning costs rise as the organization redesigns staffing assumptions.</div></div>
+              <div class="metric-card"><div class="k">Flexibility preserved</div><div class="v">$5.2M</div><div class="s">Preserved by preventing an unnecessary step-up in fixed payroll while keeping service capacity available.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Still manageable</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D3 · Capacity Buffer</div>
+                <h3>Operate with excess capacity buffer or run near full utilization?</h3>
+              </div>
+              <div class="signal signal-caution">Conditional Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Simulation</span><span class="chip">Risk Measurement</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">How service-level expectations, productivity variability, and burnout risk change the economics of operating with a deliberately higher labor buffer.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Maintain a moderate capacity buffer in the most volatile workflows rather than run the system at near-full utilization.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$3.8M cumulative cost</div><div class="s">About 7 weeks in, with scheduling, productivity diagnostics, and service modeling now shaping workforce design.</div></div>
+              <div class="metric-card"><div class="k">Downside avoided</div><div class="v">$4.6M</div><div class="s">Avoided by reducing burnout, missed service commitments, and reactive premium labor spending in critical periods.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Moderate</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-band">
+          <div class="event-marker"><div class="event-dot"></div></div>
+          <div class="event-main">
+            <div class="event-top">
+              <div>
+                <div class="event-label">Event · Demand revision</div>
+                <h3>One major customer delays a large program launch</h3>
+              </div>
+              <div class="signal signal-caution">External Shock</div>
+            </div>
+            <p>A concentrated revenue source shifts timing, weakening the near-term demand picture and exposing how quickly over-hiring could turn into underutilized labor.</p>
+          </div>
+          <div class="event-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative impact</div><div class="v">$14M revenue pushed out</div><div class="s">The delay forces a sharper look at fixed-cost commitment and the need for formal downside triggers.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D4 · Downside Action Plan</div>
+                <h3>Predefine workforce reduction triggers or manage reactively if demand declines?</h3>
+              </div>
+              <div class="signal signal-go">Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Risk Measurement</span><span class="chip">Simulation</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Which demand, utilization, and margin thresholds should trigger hiring pauses, contractor reductions, or deeper workforce actions before deterioration compounds.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Predefine explicit utilization and margin triggers for workforce actions rather than rely on ad hoc reactions.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$4.9M cumulative cost</div><div class="s">By week 10, leadership time and HR operating effort are substantial, but still far below the cost of a delayed correction.</div></div>
+              <div class="metric-card"><div class="k">Value preserved</div><div class="v">$7.9M</div><div class="s">Protected by reducing the probability of a late, disruptive workforce response after labor costs have already outrun demand.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Meaningful but controllable</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg fill6"></div><div class="seg fill7"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D5 · Cost Structure Lock-In</div>
+                <h3>Commit to a higher fixed cost base or preserve operating flexibility?</h3>
+              </div>
+              <div class="signal signal-caution">Hold</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Valuation</span><span class="chip">Agentic / Cognitive</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Whether the remaining demand evidence justifies a structurally higher payroll base or whether preserving flexibility still dominates on a risk-adjusted basis.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Hold full structural hiring commitments and preserve flexibility until demand conversion strengthens materially.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$5.5M cumulative cost</div><div class="s">Execution has consumed meaningful management time by week 12, but a disciplined hold still avoids a more expensive reversal.</div></div>
+              <div class="metric-card"><div class="k">Fixed cost avoided</div><div class="v">$10.7M</div><div class="s">Avoided by delaying full-time expansion until the economics support a durable increase in structural labor.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">High but still cheaper than over-hiring</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg fill6"></div><div class="seg fill7"></div><div class="seg fill8"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta">
+      <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">From Example to Application</p>
+      <h2>Discuss how AAIDIS would structure your workforce decision corridor</h2>
+      <p>This example is illustrative, but the problem is common. Hiring decisions often harden around optimism long before the demand picture is stable enough to justify permanent cost.</p><p>AAIDIS helps leadership decide when to add fixed labor, when to use flexible capacity, and when a disciplined hold protects the business better than expansion.</p>
+      <div class="cta-actions">
+        <a class="btn" href="contact.html">Discuss your use case</a>
+        <a class="btn-outline" href="decision-platform.html">Learn more about AAIDIS</a>
+      </div>
+    </section>
+
+    <div class="footer-space"></div>
+  </div>
+</body>
+</html>

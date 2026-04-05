@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Use Case 06 | Strategic Pivot Corridor | Consilium.ai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+<style>
+  .corridor {
+    position: relative;
+  }
+
+  .event-band {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 0.975fr) minmax(320px, 0.8fr);
+    gap: 18px;
+    align-items: stretch;
+    position: relative;
+    margin: 18px 0 22px;
+  }
+
+  .event-marker {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    min-height: 100%;
+  }
+
+  .event-marker::before {
+    content: "";
+    position: absolute;
+    top: -22px;
+    bottom: -22px;
+    left: 43%;
+    transform: translateX(-50%);
+    width: 4px;
+    background: linear-gradient(180deg, #6f95bf 0%, #5e84b0 100%);
+    border-radius: 999px;
+    opacity: 0.95;
+    z-index: 0;
+  }
+
+  .event-dot {
+    position: relative;
+    z-index: 1;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 5px solid #1f5aa6;
+    margin-top: 18px;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 3px rgba(31, 90, 166, 0.08);
+  }
+
+  .event-main,
+  .event-side {
+    min-width: 0;
+    background: #f8fbff;
+    border: 1.5px dashed rgba(76, 130, 196, 0.38);
+    border-radius: 28px;
+    padding: 24px 26px;
+  }
+
+  .event-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .event-side {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .event-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 16px;
+  }
+
+  .event-top > div:first-child {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .event-top h3 {
+    margin: 8px 0 0;
+    line-height: 1.05;
+    max-width: 16ch;
+  }
+
+  .event-main > p {
+    margin: 0;
+    max-width: 62ch;
+    line-height: 1.55;
+  }
+
+  .event-side .metric-stack {
+    width: 100%;
+    margin: 0;
+  }
+
+  .event-side .metric-card {
+    width: 100%;
+    margin: 0;
+    border-radius: 22px;
+    box-sizing: border-box;
+  }
+
+  .event-label {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .event-top .signal {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 1180px) {
+    .event-band {
+      grid-template-columns: 64px 1fr;
+    }
+
+    .event-side {
+      grid-column: 2 / 3;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .event-band {
+      grid-template-columns: 40px 1fr;
+      gap: 14px;
+    }
+
+    .event-main,
+    .event-side {
+      padding: 20px 18px;
+      border-radius: 22px;
+    }
+
+    .event-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .event-top h3 {
+      max-width: none;
+    }
+
+    .event-marker::before {
+      width: 3px;
+    }
+
+    .event-dot {
+      width: 16px;
+      height: 16px;
+      border-width: 4px;
+    }
+  }
+</style>
+
+</head>
+<body>
+  <div class="site-header-wrap">
+    <div class="site-shell">
+      <header class="header">
+        <a class="brand" href="index.html" aria-label="Consilium.ai home">
+          <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
+          <div>
+            <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
+            <div class="brand-sub">AI Decision Intelligence</div>
+          </div>
+        </a>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="decision-platform.html">Decision Platform</a>
+          <a href="decision-intelligence.html">Decision Intelligence</a>
+          <a class="active" href="use-cases.html">Use Cases</a>
+          <a href="insights.html">Insights</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a class="nav-cta" href="contact.html">Request a Demo</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <section class="hero section">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-tag">Use Case 06 · Strategic Pivot</div>
+          <h1>AAIDIS helps leadership decide when a market signal requires a strategic pivot and when it only invites expensive overreaction.</h1>
+          <p>Strategic pivots are difficult because the early signals are rarely clean. Technology shifts, regulatory change, and customer behavior can all point to a real structural break—or to noise that leadership misreads as inevitability.</p><p>An executive team must decide whether to maintain its core strategy, reallocate capital into an emerging segment, move quickly, run a dual strategy, or hold until the signal strengthens.</p><p>AAIDIS connects structural signal detection, exposure measurement, scenario simulation, organizational readiness, and agentic guidance so that pivot decisions reflect both market economics and execution reality.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#decision-corridor">View Decision Corridor</a>
+            <a class="btn-outline" href="use-cases.html">Back to Use Cases</a>
+          </div>
+        </div>
+
+        <div style="position:relative;">
+          <div class="orb1"></div>
+          <div class="orb2"></div>
+          <div class="glass-wrap">
+            <div class="metric-grid-2">
+              <div class="glass-card"><div class="eyebrow">Signal context</div><div class="big">Early disruption signals are usually ambiguous</div><p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">Technology shifts, customer adoption, and policy moves often appear meaningful before leadership knows whether they are durable enough to justify strategic redirection.</p></div><div class="glass-card"><div class="eyebrow">AAIDIS role</div><div class="big">Translate structural change into a disciplined commitment path</div><p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">AAIDIS helps leadership decide whether to stay the course, hedge, pivot gradually, or commit more fully based on changing economics and execution readiness.</p></div><div class="glass-card"><div class="eyebrow">Economic lens</div><div class="big">Track exposure, reallocation cost, and strategic value at risk</div><p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">Each gate shows how capital, competitive timing, and organizational capability affect the economics of staying versus pivoting.</p></div><div class="glass-card"><div class="eyebrow">Reversibility</div><div class="big">Delay and overreaction are both expensive</div><p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">The cost to unwind rises after capital and operating focus shift, but the cost of waiting can also compound once the market break becomes real.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel section">
+      <div class="section-top">
+        <div>
+          <p class="eyebrow-section">Strategic Pivot Lifecycle</p>
+          <h2 class="h2 medium">Where this strategic choice sits in the broader transformation cycle</h2>
+        </div>
+        <p class="section-copy">The corridor below follows one disciplined path through a potential strategic pivot. It shows how leadership can move from signal detection to exposure mapping, path simulation, timing, and commitment without letting fashion or fear drive the decision.</p>
+      </div>
+
+      <div class="cards-4" style="margin-top:32px;">
+        <div class="list-card">01 · Signal detection</div><div class="list-card">02 · Exposure mapping</div><div class="list-card">03 · Strategic direction</div><div class="list-card">04 · Resource reallocation</div><div class="list-card">05 · Speed decision</div><div class="list-card">06 · Dual-strategy test</div><div class="list-card">07 · Readiness review</div><div class="list-card">08 · Commitment point</div><div class="list-card">09 · Execution</div><div class="list-card">10 · Market feedback</div><div class="list-card">11 · Reassessment</div><div class="list-card">12 · Strategic stabilization</div>
+      </div>
+
+      <p class="section-copy" style="margin-top:28px; max-width:none;">In this illustrative case, AAIDIS supports a phased pivot with deliberate resource reallocation and a defined commitment point rather than an abrupt enterprise-wide swing.</p>
+    </section>
+
+    <section id="decision-corridor" class="panel section">
+      <div class="section-top">
+        <div>
+          <p class="eyebrow-section">Decision Corridor</p>
+          <h2 class="h2 medium">A corridor for strategic direction, capital reallocation, and commitment timing</h2>
+        </div>
+        <p class="section-copy">Each gate forces a real strategic tradeoff. AAIDIS helps leadership decide when change is structural enough to justify a pivot, how much to reallocate, and how fast to move without outrunning organizational reality.</p>
+      </div>
+
+      <div class="legend">
+        <strong>Legend:</strong><br>
+        Gray blocks show the <strong>AAIDIS Engines Activated</strong> at that decision point.<br>
+        Colored signals show the <strong>AAIDIS decision output</strong>.<br>
+        Event bands show external developments that force leadership to respond.<br>
+        Heat bars show the <strong>cost to unwind</strong> at that stage of the process.
+      </div>
+
+      <div class="corridor">
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D1 · Strategic Direction</div>
+                <h3>Maintain the current core strategy or initiate a pivot into an emerging segment?</h3>
+              </div>
+              <div class="signal signal-caution">Conditional Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Causal</span><span class="chip">Prediction / Forecasting</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Whether the observed market change is likely to alter long-run economics materially enough to justify moving resources away from the current core.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Initiate a measured pivot thesis rather than declare a full strategic redirection on the basis of early signals alone.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$2.1M front-end cost</div><div class="s">Initial strategy, market, and finance work over roughly 4 weeks to test whether the signal is structural or noisy.</div></div>
+              <div class="metric-card"><div class="k">Value at risk clarified</div><div class="v">$26M</div><div class="s">Clarified by quantifying how much of the current earnings base is genuinely exposed if the signal proves durable.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Low cost to unwind</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-band">
+          <div class="event-marker"><div class="event-dot"></div></div>
+          <div class="event-main">
+            <div class="event-top">
+              <div>
+                <div class="event-label">Event · Regulatory shift</div>
+                <h3>New policy accelerates customer movement toward the emerging segment</h3>
+              </div>
+              <div class="signal signal-caution">External Shock</div>
+            </div>
+            <p>A regulatory change shortens the expected adoption timeline and makes inaction more expensive than it appeared in the original base case.</p>
+          </div>
+          <div class="event-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative impact</div><div class="v">Adoption curve pulled forward</div><div class="s">The pivot becomes less hypothetical and more time-sensitive.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D2 · Resource Reallocation</div>
+                <h3>Reallocate 20–30% of capital to the new strategy or protect the existing business?</h3>
+              </div>
+              <div class="signal signal-caution">Conditional Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Optimization</span><span class="chip">Valuation</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">How much capital can be moved without destabilizing the current earnings base, and whether that reallocation creates enough strategic option value to justify the tradeoff.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Reallocate a defined minority of capital to the emerging strategy while protecting the highest-return elements of the core business.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$4.7M cumulative cost</div><div class="s">By week 7, portfolio, operating, and capital-allocation work have become materially engaged.</div></div>
+              <div class="metric-card"><div class="k">Strategic option value</div><div class="v">$18.3M</div><div class="s">Created by gaining a credible position in the emerging segment without immediately impairing the current core.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Still manageable</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D3 · Speed of Pivot</div>
+                <h3>Execute a rapid pivot or make a phased transition?</h3>
+              </div>
+              <div class="signal signal-go">Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Simulation</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">How competitive timing, market adoption curves, and execution capacity change the tradeoff between moving fast enough to matter and moving so fast that the organization breaks.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Execute a phased transition with explicit milestones rather than a rapid enterprise-wide pivot.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$6.2M cumulative cost</div><div class="s">About 9 weeks in, with strategy, technology, and operating changes beginning to interact materially.</div></div>
+              <div class="metric-card"><div class="k">Downside avoided</div><div class="v">$12.1M</div><div class="s">Avoided by reducing execution failure risk while still moving quickly enough to establish strategic relevance.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Moderate</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-band">
+          <div class="event-marker"><div class="event-dot"></div></div>
+          <div class="event-main">
+            <div class="event-top">
+              <div>
+                <div class="event-label">Event · Execution constraint</div>
+                <h3>Critical capability gaps slow the organization’s ability to pivot</h3>
+              </div>
+              <div class="signal signal-caution">External Shock</div>
+            </div>
+            <p>Talent and systems readiness lag the ambition of the pivot, increasing the risk that capital is deployed ahead of execution capacity.</p>
+          </div>
+          <div class="event-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative impact</div><div class="v">2 critical capability gaps</div><div class="s">Readiness becomes as important as market attractiveness in determining the correct next move.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D4 · Dual Strategy</div>
+                <h3>Run parallel strategies or fully commit to one path?</h3>
+              </div>
+              <div class="signal signal-caution">Hold</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Optimization</span><span class="chip">Agentic / Cognitive</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Whether the company has the resource depth to sustain both paths long enough to learn, or whether dual execution would simply dilute focus and returns.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Run a bounded dual strategy temporarily, with explicit performance thresholds for narrowing to one path.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$7.8M cumulative cost</div><div class="s">By week 12, organizational strain and opportunity cost become visible as both strategic paths compete for attention.</div></div>
+              <div class="metric-card"><div class="k">Optionality preserved</div><div class="v">$9.4M</div><div class="s">Preserved by buying time to learn while preventing an irreversible commitment before capability gaps are addressed.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Meaningful but controllable</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg fill6"></div><div class="seg fill7"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D5 · Commitment Point</div>
+                <h3>Fully commit to the new strategy or revert to the core?</h3>
+              </div>
+              <div class="signal signal-go">Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Agentic / Decision Layer</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Whether early performance signals, readiness improvement, and market adoption now justify a clearer strategic commitment rather than continued hedging.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Commit to the new strategy in the targeted segment while formally exiting the temporary hedge posture.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$9.1M cumulative cost</div><div class="s">Execution has become meaningfully committed by week 15, making disciplined commitment more valuable than indefinite indecision.</div></div>
+              <div class="metric-card"><div class="k">Strategic value created</div><div class="v">$24.6M</div><div class="s">Created by moving from exploratory posture to a defined strategic position once evidence and readiness align.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">High but justified by stronger evidence</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg fill6"></div><div class="seg fill7"></div><div class="seg fill8"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta">
+      <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">From Example to Application</p>
+      <h2>Discuss how AAIDIS would structure your strategic pivot corridor</h2>
+      <p>This example is illustrative, but the decision pattern is common. Leaders often face structural change before the evidence is clean enough to make a comfortable commitment.</p><p>AAIDIS helps leadership decide whether to stay, hedge, phase, or pivot more fully by linking market economics to organizational readiness and the real cost of delay.</p>
+      <div class="cta-actions">
+        <a class="btn" href="contact.html">Discuss your use case</a>
+        <a class="btn-outline" href="decision-platform.html">Learn more about AAIDIS</a>
+      </div>
+    </section>
+
+    <div class="footer-space"></div>
+  </div>
+</body>
+</html>

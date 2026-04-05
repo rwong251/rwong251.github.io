@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Use Case 01 | M&A Decision Corridor | Consilium.ai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* --- Fix event rows so they always match the intended corridor layout --- */
+
+    .corridor {
+      position: relative;
+    }
+
+    .event-band {
+      display: grid;
+      grid-template-columns: 84px minmax(0, 0.975fr) minmax(320px, 0.8fr);
+      gap: 18px;
+      align-items: stretch;
+      position: relative;
+      margin: 18px 0 22px;
+    }
+
+    .event-marker {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      min-height: 100%;
+    }
+
+    .event-marker::before {
+      content: "";
+      position: absolute;
+      top: -22px;
+      bottom: -22px;
+      left: 43%;
+      transform: translateX(-50%);
+      width: 4px;
+      background: linear-gradient(180deg, #6f95bf 0%, #5e84b0 100%);
+      border-radius: 999px;
+      opacity: 0.95;
+      z-index: 0;
+    }
+
+    .event-dot {
+      position: relative;
+      z-index: 1;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 5px solid #1f5aa6;
+      margin-top: 18px;
+      box-sizing: border-box;
+      box-shadow: 0 0 0 3px rgba(31, 90, 166, 0.08);
+    }
+
+    .event-main,
+    .event-side {
+      min-width: 0;
+      background: #f8fbff;
+      border: 1.5px dashed rgba(76, 130, 196, 0.38);
+      border-radius: 28px;
+      padding: 24px 26px;
+    }
+
+    .event-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .event-side {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .event-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    .event-top > div:first-child {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .event-top h3 {
+      margin: 8px 0 0;
+      line-height: 1.05;
+      max-width: 16ch;
+    }
+
+    .event-main > p {
+      margin: 0;
+      max-width: 62ch;
+      line-height: 1.55;
+    }
+
+    .event-side .metric-stack {
+      width: 100%;
+      margin: 0;
+    }
+
+    .event-side .metric-card {
+      width: 100%;
+      margin: 0;
+      border-radius: 22px;
+      box-sizing: border-box;
+    }
+
+    .event-label {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    /* Keep the badge from dropping awkwardly */
+    .event-top .signal {
+      flex: 0 0 auto;
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+
+    /* Ensure event rows do not collapse at typical desktop widths */
+    @media (max-width: 1180px) {
+      .event-band {
+        grid-template-columns: 64px 1fr;
+      }
+
+      .event-side {
+        grid-column: 2 / 3;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .event-band {
+        grid-template-columns: 40px 1fr;
+        gap: 14px;
+      }
+
+      .event-main,
+      .event-side {
+        padding: 20px 18px;
+        border-radius: 22px;
+      }
+
+      .event-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .event-top h3 {
+        max-width: none;
+      }
+
+      .event-marker::before {
+        width: 3px;
+      }
+
+      .event-dot {
+        width: 16px;
+        height: 16px;
+        border-width: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-header-wrap">
+    <div class="site-shell">
+      <header class="header">
+        <a class="brand" href="index.html" aria-label="Consilium.ai home">
+          <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
+          <div>
+            <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
+            <div class="brand-sub">AI Decision Intelligence</div>
+          </div>
+        </a>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="decision-platform.html">Decision Platform</a>
+          <a href="decision-intelligence.html">Decision Intelligence</a>
+          <a class="active" href="use-cases.html">Use Cases</a>
+          <a href="insights.html">Insights</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a class="nav-cta" href="contact.html">Request a Demo</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <section class="hero section">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-tag">Use Case 01 · Corporate Strategy &amp; M&amp;A</div>
+          <h1>AAIDIS guides the deal through decision gates, not just diligence steps.</h1>
+          <p>
+            M&amp;A failure is not hypothetical. From fraud and misreported performance, to overpayment and poor strategic fit, transactions can destroy tens—and in some cases hundreds—of billions of dollars in enterprise value.
+          </p>
+          <p>
+            A Chief Strategy Officer is tasked with evaluating a multi-billion dollar acquisition. The process unfolds across valuation, structure, market response, negotiation, external events, and the rising cost to unwind weak decisions over time.
+          </p>
+          <p>
+            AAIDIS closes the gaps that often emerge in complex decisions—across information, analysis, cognitive bias, and time—so that decisions remain grounded, objective, and complete.
+          </p>
+          <div class="hero-actions">
+            <a class="btn" href="#decision-corridor">View Decision Corridor</a>
+            <a class="btn-outline" href="use-cases.html">Back to Use Cases</a>
+          </div>
+        </div>
+
+        <div style="position:relative;">
+          <div class="orb1"></div>
+          <div class="orb2"></div>
+          <div class="glass-wrap">
+            <div class="metric-grid-2">
+              <div class="glass-card">
+                <div class="eyebrow">Deal scale</div>
+                <div class="big">Magnitude amplifies decision consequences</div>
+                <p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">
+                  At this scale, small errors compound into large outcomes—making disciplined decision-making more important than speed or momentum.
+                </p>
+              </div>
+
+              <div class="glass-card">
+                <div class="eyebrow">AAIDIS role</div>
+                <div class="big">Drive better decision outcomes</div>
+                <p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">
+                  AAIDIS evaluates the situation, anticipates how it may evolve, and advises the next move—whether to proceed, revise, or stop—so that value is preserved under uncertainty.
+                </p>
+              </div>
+
+              <div class="glass-card">
+                <div class="eyebrow">Economic lens</div>
+                <div class="big">Make the cost of decisions visible</div>
+                <p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">
+                  Each stage makes explicit the time invested, capital at risk, and value preserved—so leadership understands the economic impact of continuing, revising, or stopping.
+                </p>
+              </div>
+
+              <div class="glass-card">
+                <div class="eyebrow">Reversibility</div>
+                <div class="big">Cost to unwind increases over time</div>
+                <p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">
+                  As the process advances, the cost to unwind decisions rises—through sunk time, capital, and strategic commitment—making early discipline critical.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel section">
+      <div class="section-top">
+        <div>
+          <p class="eyebrow-section">M&amp;A Lifecycle Overview</p>
+          <h2 class="h2 medium">Where this decision path sits in the broader M&amp;A process</h2>
+        </div>
+        <p class="section-copy">
+          The corridor below illustrates one AAIDIS-evaluated path through the full M&amp;A lifecycle. In this example, the disciplined path does not proceed all the way to close because the economics weaken before later-stage commitment.
+        </p>
+      </div>
+
+      <div class="cards-4" style="margin-top:32px;">
+        <div class="list-card">01 · Target screening</div>
+        <div class="list-card">02 · Integrity review</div>
+        <div class="list-card">03 · Strategic fit</div>
+        <div class="list-card">04 · Valuation</div>
+
+        <div class="list-card">05 · Deal structure</div>
+        <div class="list-card">06 · Announcement &amp; market reaction</div>
+        <div class="list-card">07 · Negotiation</div>
+        <div class="list-card">08 · Competing bidder</div>
+
+        <div class="list-card">09 · Regulatory review</div>
+        <div class="list-card">10 · Signing</div>
+        <div class="list-card">11 · Closing</div>
+        <div class="list-card">12 · Integration</div>
+      </div>
+
+      <p class="section-copy" style="margin-top:28px; max-width:none;">
+        In this illustrative case, AAIDIS identifies an economically disciplined stop before later-stage costs, breakup-fee exposure, regulatory remedies, and post-close integration risk begin to dominate the process.
+      </p>
+    </section>
+
+    <section id="decision-corridor" class="panel section">
+      <div class="section-top">
+        <div>
+          <p class="eyebrow-section">Decision Corridor</p>
+          <h2 class="h2 medium">A gated M&amp;A process with AAIDIS-informed outcomes</h2>
+        </div>
+        <p class="section-copy">Each gate asks a real executive question. AAIDIS contributes through specific engines. The result is a concrete signal: GO, CONDITIONAL GO, HOLD, or STOP before more time and money are consumed.</p>
+      </div>
+
+      <div class="legend">
+        <strong>Legend:</strong><br>
+        Gray blocks show the <strong>AAIDIS Engines Activated</strong> at that decision point.<br>
+        Colored signals show the <strong>AAIDIS decision output</strong>.<br>
+        Event bands show external developments that force leadership to respond.<br>
+        Heat bars show the <strong>cost to unwind</strong> at that stage of the process.
+      </div>
+
+      <div class="corridor">
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D1 · Integrity &amp; Reporting Quality</div>
+                <h3>Can we trust the business we think we are buying?</h3>
+              </div>
+              <div class="signal signal-caution">Conditional Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Risk Measurement</span><span class="chip">Classification</span><span class="chip">Generative</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Whether reported financial results reflect genuine performance or anomalous reporting behavior that requires skepticism and adjustment.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Proceed, but only with adjusted assumptions and tighter diligence scope.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$0.9M cost to date</div><div class="s">Initial strategy, finance, legal, and external diligence effort over roughly 3 weeks.</div></div>
+              <div class="metric-card"><div class="k">Value preserved</div><div class="v">$180M</div><div class="s">Avoided by correcting the early valuation lens before the process anchors on overstated quality.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Low cost to unwind</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D2 · Strategic Fit</div>
+                <h3>Does the target still make sense across plausible futures?</h3>
+              </div>
+              <div class="signal signal-go">Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Causal</span><span class="chip">Prediction / Forecasting</span><span class="chip">Simulation</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Whether the acquisition thesis is durable or whether performance depends too heavily on temporary conditions, favorable timing, or fragile assumptions.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Proceed to full valuation because the asset remains strategically attractive under multiple scenarios.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$1.8M cumulative cost</div><div class="s">Expanded internal team time, market work, and advisory support after 6 weeks.</div></div>
+              <div class="metric-card"><div class="k">Value preserved</div><div class="v">$220M</div><div class="s">Protected by avoiding a thesis built only on optimistic base-case assumptions.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Still manageable</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D3 · Risk-Adjusted Valuation</div>
+                <h3>What is the business worth once earnings are normalized and downside is taken seriously?</h3>
+              </div>
+              <div class="signal signal-caution">Conditional Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Valuation</span><span class="chip">Risk Measurement</span><span class="chip">Simulation</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Where the valuation range holds, where it breaks, and how much downside is being ignored if the company carries optimistic assumptions into the bid.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Reprice and set a disciplined walk-away boundary before negotiation momentum takes over.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$3.1M cumulative cost</div><div class="s">Roughly 9 weeks into the process, with deeper finance and diligence effort committed.</div></div>
+              <div class="metric-card"><div class="k">Overpayment avoided</div><div class="v">$320M</div><div class="s">Preserved by refusing to carry optimistic earnings assumptions straight into the offer range.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Moderate</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D4 · Deal Structure &amp; Financing</div>
+                <h3>Can we finance the deal without quietly weakening the company?</h3>
+              </div>
+              <div class="signal signal-go">Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Optimization</span><span class="chip">Risk Measurement</span><span class="chip">Valuation</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Which financing structure preserves resilience, liquidity, and strategic flexibility rather than merely making the deal look feasible on paper.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Proceed with a more conservative hybrid structure rather than a debt-heavy bid.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$4.4M cumulative cost</div><div class="s">Roughly 12 weeks in, with treasury, legal, and financing work increasing sharply.</div></div>
+              <div class="metric-card"><div class="k">Risk reduction</div><div class="v">$140M</div><div class="s">Equivalent reduction in financing stress and flexibility loss versus a more aggressive debt-funded structure.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Moderate to rising</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg fill6"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-band">
+          <div class="event-marker"><div class="event-dot"></div></div>
+          <div class="event-main">
+            <div class="event-top">
+              <div>
+                <div class="event-label">Event · Deal announcement and market reaction</div>
+                <h3>Equity market reacts negatively: stock price declines 15%</h3>
+              </div>
+              <div class="signal signal-caution">External Shock</div>
+            </div>
+            <p>The deal is announced, but the equity market reacts negatively. Shareholders interpret the offer as too expensive or too dilutive, and financing credibility begins to weaken.</p>
+          </div>
+          <div class="event-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative impact</div><div class="v">-15% stock decline</div><div class="s">The market response increases pressure on leadership to revisit structure, price, or both.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D5 · Response to Market Reaction</div>
+                <h3>Should leadership revise the offer or change the debt-equity mix?</h3>
+              </div>
+              <div class="signal signal-caution">Conditional Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Prediction / Forecasting</span><span class="chip">Interactive</span><span class="chip">Optimization</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Whether the negative market reaction reflects a temporary dislocation or a structural concern about price, dilution, and balance-sheet stress.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Revise the financing mix to reduce dilution pressure while holding valuation discipline.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$5.2M cumulative cost</div><div class="s">By this point, internal and external effort is meaningful and market feedback now affects the economic path of the deal.</div></div>
+              <div class="metric-card"><div class="k">Value protected</div><div class="v">$95M</div><div class="s">Preserved by reducing dilution and restoring financing credibility before negotiation advances.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Meaningful but still controllable</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg fill6"></div><div class="seg fill7"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D6 · Negotiation Strategy</div>
+                <h3>Does the deal still create value at the revised terms?</h3>
+              </div>
+              <div class="signal signal-caution">Hold</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Optimization</span><span class="chip">Agentic / Cognitive</span><span class="chip">Risk Measurement</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">The threshold where added price stops reflecting rational strategy and starts destroying value through asymmetrical downside.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Hold the revised ceiling and do not chase the seller above the disciplined range already established.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$6.5M cumulative cost</div><div class="s">About 15 weeks in, with management time and external work now highly visible.</div></div>
+              <div class="metric-card"><div class="k">Overpayment avoided</div><div class="v">$210M</div><div class="s">Protected by refusing to let negotiation momentum override the economics already established.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">High if the company loses discipline</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg fill6"></div><div class="seg fill7"></div><div class="seg fill8"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-band">
+          <div class="event-marker"><div class="event-dot"></div></div>
+          <div class="event-main">
+            <div class="event-top">
+              <div>
+                <div class="event-label">Event · Competitive disruption</div>
+                <h3>Competing bidder enters the process</h3>
+              </div>
+              <div class="signal signal-caution">External Shock</div>
+            </div>
+            <p>A second bidder changes the pricing dynamics, increases seller leverage, and raises the risk of a bidding war in which economic value transfers to the seller.</p>
+          </div>
+          <div class="event-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Breakup-fee context</div><div class="v">$55M</div><div class="s">Illustrative breakup-fee exposure now becomes relevant to the economics of stopping, revising, or losing the deal.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D7 · Response to Competing Bidder</div>
+                <h3>Should we revise our offer or exit based on new competitive dynamics?</h3>
+              </div>
+              <div class="signal signal-stop">Stop</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Agentic / Cognitive</span><span class="chip">Simulation</span><span class="chip">Optimization</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">How competitor behavior, seller behavior, and escalation pressure evolve once another bidder enters and the process shifts from valuation to strategic interaction.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Exit rather than revise the offer beyond disciplined value thresholds.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$7.4M sunk cost</div><div class="s">The company has already invested significant time and money by the time the bidder enters.</div></div>
+              <div class="metric-card"><div class="k">Value preserved by stopping</div><div class="v">$285M</div><div class="s">Preserved by avoiding an escalation that would have moved the company into unattractive economics, even after breakup-fee exposure.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">High, but still cheaper than overpaying</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg fill6"></div><div class="seg fill7"></div><div class="seg fill8"></div><div class="seg fill9"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-band">
+          <div class="event-marker"><div class="event-dot"></div></div>
+          <div class="event-main">
+            <div class="event-top">
+              <div>
+                <div class="event-label">Event · Regulatory challenge emerges</div>
+                <h3>Anti-trust concerns surface around overlapping business lines</h3>
+              </div>
+              <div class="signal signal-caution">External Shock</div>
+            </div>
+            <p>Even if the company had stayed in the process, regulators could have required remedies, delayed closing, or altered the economics through divestiture demands.</p>
+          </div>
+          <div class="event-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative downstream pressure</div><div class="v">Delay + divestiture risk</div><div class="s">Future-stage remedies can reduce synergy, extend timing, and increase the cost of reversing course.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D8 · Regulatory Response Strategy</div>
+                <h3>If the deal continued, should leadership divest overlapping assets, revise structure, or walk away?</h3>
+              </div>
+              <div class="signal signal-stop">Stop</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Risk Measurement</span><span class="chip">Simulation</span><span class="chip">Interactive</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Whether a divestiture-based remedy would preserve enough strategic and financial value to justify continuing into a slower, more expensive approval path.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Do not continue into a remedy-driven path where delay, divestiture, and reduced synergies further weaken the economics.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative later-stage cost</div><div class="v">$12M–$20M</div><div class="s">Potential additional legal, financing, management, breakup-fee, and delay cost if the process continued despite weakened economics.</div></div>
+              <div class="metric-card"><div class="k">Potential value at risk</div><div class="v">$350M+</div><div class="s">Illustrative downside if the company forced the deal through and then had to absorb weaker terms, remedies, or altered strategic fit.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Very high later in the path</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg fill6"></div><div class="seg fill7"></div><div class="seg fill8"></div><div class="seg fill9"></div><div class="seg fill10"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta">
+      <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">From Example to Application</p>
+      <h2>Apply this decision discipline to your next strategic move</h2>
+      <p>The scenario you just explored is illustrative, but the underlying challenge is real. Weak assumptions rarely fail all at once. They weaken the decision as the process advances.</p>
+      <p>Consilium.ai, powered by AAIDIS, is designed to support leaders through exactly these moments—where valuation, risk, strategy, market perception, external events, and uncertainty must be evaluated together, not in isolation.</p>
+      <p>Whether you are evaluating an acquisition, testing a strategic shift, or navigating uncertainty in capital allocation, the objective is the same: <strong>make decisions that remain sound as conditions evolve.</strong></p>
+      <div class="cta-actions">
+        <a class="btn" href="contact.html">Discuss your use case</a>
+        <a class="btn-outline" href="use-cases.html">Explore additional use cases</a>
+      </div>
+    </section>
+
+    <div class="footer-space"></div>
+  </div>
+</body>
+</html>

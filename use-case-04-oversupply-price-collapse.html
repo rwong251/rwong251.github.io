@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Use Case 04 | Oversupply &amp; Price Collapse Corridor | Consilium.ai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+<style>
+  .corridor {
+    position: relative;
+  }
+
+  .event-band {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 0.975fr) minmax(320px, 0.8fr);
+    gap: 18px;
+    align-items: stretch;
+    position: relative;
+    margin: 18px 0 22px;
+  }
+
+  .event-marker {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    min-height: 100%;
+  }
+
+  .event-marker::before {
+    content: "";
+    position: absolute;
+    top: -22px;
+    bottom: -22px;
+    left: 43%;
+    transform: translateX(-50%);
+    width: 4px;
+    background: linear-gradient(180deg, #6f95bf 0%, #5e84b0 100%);
+    border-radius: 999px;
+    opacity: 0.95;
+    z-index: 0;
+  }
+
+  .event-dot {
+    position: relative;
+    z-index: 1;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 5px solid #1f5aa6;
+    margin-top: 18px;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 3px rgba(31, 90, 166, 0.08);
+  }
+
+  .event-main,
+  .event-side {
+    min-width: 0;
+    background: #f8fbff;
+    border: 1.5px dashed rgba(76, 130, 196, 0.38);
+    border-radius: 28px;
+    padding: 24px 26px;
+  }
+
+  .event-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .event-side {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .event-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 16px;
+  }
+
+  .event-top > div:first-child {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .event-top h3 {
+    margin: 8px 0 0;
+    line-height: 1.05;
+    max-width: 16ch;
+  }
+
+  .event-main > p {
+    margin: 0;
+    max-width: 62ch;
+    line-height: 1.55;
+  }
+
+  .event-side .metric-stack {
+    width: 100%;
+    margin: 0;
+  }
+
+  .event-side .metric-card {
+    width: 100%;
+    margin: 0;
+    border-radius: 22px;
+    box-sizing: border-box;
+  }
+
+  .event-label {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .event-top .signal {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 1180px) {
+    .event-band {
+      grid-template-columns: 64px 1fr;
+    }
+
+    .event-side {
+      grid-column: 2 / 3;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .event-band {
+      grid-template-columns: 40px 1fr;
+      gap: 14px;
+    }
+
+    .event-main,
+    .event-side {
+      padding: 20px 18px;
+      border-radius: 22px;
+    }
+
+    .event-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .event-top h3 {
+      max-width: none;
+    }
+
+    .event-marker::before {
+      width: 3px;
+    }
+
+    .event-dot {
+      width: 16px;
+      height: 16px;
+      border-width: 4px;
+    }
+  }
+</style>
+
+</head>
+<body>
+  <div class="site-header-wrap">
+    <div class="site-shell">
+      <header class="header">
+        <a class="brand" href="index.html" aria-label="Consilium.ai home">
+          <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
+          <div>
+            <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
+            <div class="brand-sub">AI Decision Intelligence</div>
+          </div>
+        </a>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="decision-platform.html">Decision Platform</a>
+          <a href="decision-intelligence.html">Decision Intelligence</a>
+          <a class="active" href="use-cases.html">Use Cases</a>
+          <a href="insights.html">Insights</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a class="nav-cta" href="contact.html">Request a Demo</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <section class="hero section">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-tag">Use Case 04 · Oversupply &amp; Price Collapse</div>
+          <h1>AAIDIS helps leadership respond before excess supply turns pricing pressure into balance-sheet damage.</h1>
+          <p>Oversupply does not only lower price. It changes inventory value, procurement economics, channel behavior, and the speed at which the company must decide whether to defend margin or defend market share.</p><p>An executive team must choose whether to match the market down, liquidate inventory, reduce forward commitments, reallocate supply, or hold discipline while competitors flood the category.</p><p>AAIDIS connects demand absorption, inventory risk, procurement exposure, and strategic response into one decision corridor so leadership does not confuse activity with disciplined action.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#decision-corridor">View Decision Corridor</a>
+            <a class="btn-outline" href="use-cases.html">Back to Use Cases</a>
+          </div>
+        </div>
+
+        <div style="position:relative;">
+          <div class="orb1"></div>
+          <div class="orb2"></div>
+          <div class="glass-wrap">
+            <div class="metric-grid-2">
+              <div class="glass-card"><div class="eyebrow">Shock context</div><div class="big">Competitor oversupply can depress price faster than contracts reset</div><p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">Production surges, import flows, and seasonal timing can flood the market before procurement, logistics, and sales teams have time to adapt.</p></div><div class="glass-card"><div class="eyebrow">AAIDIS role</div><div class="big">Evaluate whether to defend price, volume, or balance-sheet health</div><p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">AAIDIS helps leadership determine which response preserves value rather than simply following the market into a destructive cycle.</p></div><div class="glass-card"><div class="eyebrow">Economic lens</div><div class="big">Track inventory value, margin loss, and downside avoided</div><p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">Each gate makes visible how price action, inventory posture, and purchasing decisions change the economics of the cycle.</p></div><div class="glass-card"><div class="eyebrow">Reversibility</div><div class="big">Weak procurement and pricing decisions compound quickly</div><p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">Once inventory builds and contracts remain in force, the company has fewer clean exits and more expensive corrections.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel section">
+      <div class="section-top">
+        <div>
+          <p class="eyebrow-section">Oversupply Response Lifecycle</p>
+          <h2 class="h2 medium">Where this market-shock path sits in the broader pricing and inventory cycle</h2>
+        </div>
+        <p class="section-copy">The corridor below follows one disciplined path through a market oversupply event. It shows how leadership can evaluate price reaction, inventory posture, procurement commitments, and channel reallocation before the market forces a worse outcome.</p>
+      </div>
+
+      <div class="cards-4" style="margin-top:32px;">
+        <div class="list-card">01 · Shock detection</div><div class="list-card">02 · Absorption review</div><div class="list-card">03 · Pricing reaction</div><div class="list-card">04 · Inventory posture</div><div class="list-card">05 · Procurement reset</div><div class="list-card">06 · Channel reallocation</div><div class="list-card">07 · Competitor response</div><div class="list-card">08 · Strategic choice</div><div class="list-card">09 · Execution</div><div class="list-card">10 · Stabilization</div><div class="list-card">11 · Exposure review</div><div class="list-card">12 · Cycle assessment</div>
+      </div>
+
+      <p class="section-copy" style="margin-top:28px; max-width:none;">In this illustrative case, AAIDIS supports selective liquidation, reduced forward purchasing, and channel reallocation rather than a reflexive race to the bottom on price.</p>
+    </section>
+
+    <section id="decision-corridor" class="panel section">
+      <div class="section-top">
+        <div>
+          <p class="eyebrow-section">Decision Corridor</p>
+          <h2 class="h2 medium">A corridor for oversupply, pricing, inventory, and procurement decisions</h2>
+        </div>
+        <p class="section-copy">Each gate is a committed response to a market flooded with supply. AAIDIS helps leadership decide when to protect margin, when to release inventory, and when to reduce exposure before the balance sheet absorbs the shock.</p>
+      </div>
+
+      <div class="legend">
+        <strong>Legend:</strong><br>
+        Gray blocks show the <strong>AAIDIS Engines Activated</strong> at that decision point.<br>
+        Colored signals show the <strong>AAIDIS decision output</strong>.<br>
+        Event bands show external developments that force leadership to respond.<br>
+        Heat bars show the <strong>cost to unwind</strong> at that stage of the process.
+      </div>
+
+      <div class="corridor">
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D1 · Pricing Reaction</div>
+                <h3>Match competitor price declines or hold pricing and accept volume loss?</h3>
+              </div>
+              <div class="signal signal-caution">Conditional Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Prediction / Forecasting</span><span class="chip">Causal</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Whether the market is entering a temporary dislocation or a broader price reset, and how much demand can be retained without transferring excessive value to customers.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Take selective tactical price actions in the most vulnerable channels while refusing a broad category-wide collapse in realized price.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$1.9M response cost</div><div class="s">Commercial, pricing, and market intelligence work over roughly 2 weeks to frame the first pricing response.</div></div>
+              <div class="metric-card"><div class="k">Margin preserved</div><div class="v">$8.4M</div><div class="s">Preserved by avoiding a full category markdown before the company knows how much demand can be retained selectively.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Low cost to unwind</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-band">
+          <div class="event-marker"><div class="event-dot"></div></div>
+          <div class="event-main">
+            <div class="event-top">
+              <div>
+                <div class="event-label">Event · Supply shock deepens</div>
+                <h3>A large competitor materially over-ships into the market</h3>
+              </div>
+              <div class="signal signal-caution">External Shock</div>
+            </div>
+            <p>The oversupply proves larger than expected, accelerating price pressure and raising the risk that existing inventory will be valued on an outdated market assumption.</p>
+          </div>
+          <div class="event-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative impact</div><div class="v">+18% category supply</div><div class="s">The deeper shock changes the economics of inventory posture and makes procurement decisions more urgent.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D2 · Inventory Exposure</div>
+                <h3>Liquidate inventory quickly or hold inventory in expectation of price recovery?</h3>
+              </div>
+              <div class="signal signal-caution">Conditional Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Simulation</span><span class="chip">Risk Measurement</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">How spoilage risk, storage cost, and the expected timing of market normalization affect the value of holding inventory versus releasing it sooner.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Liquidate the most vulnerable inventory bands quickly and hold only inventory with a defensible recovery window.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$3.3M cumulative cost</div><div class="s">By week 4, inventory analytics, sales coordination, and logistics planning materially increase execution effort.</div></div>
+              <div class="metric-card"><div class="k">Write-down avoided</div><div class="v">$6.1M</div><div class="s">Avoided by moving the riskiest inventory before a deeper price reset forces larger valuation losses.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Still manageable</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D3 · Procurement Adjustment</div>
+                <h3>Reduce forward purchasing commitments or maintain contracted volumes?</h3>
+              </div>
+              <div class="signal signal-go">Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Optimization</span><span class="chip">Simulation</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Whether supplier obligations, expected price trajectory, and lead times justify reducing future commitments despite operational and relationship friction.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Reduce forward commitments and renegotiate the most exposed contracts rather than continue feeding inventory into a falling market.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$4.8M cumulative cost</div><div class="s">About 6 weeks in, with procurement, legal, and supplier-management effort rising as the company resets commitments.</div></div>
+              <div class="metric-card"><div class="k">Downside avoided</div><div class="v">$9.2M</div><div class="s">Avoided by preventing additional inventory accumulation at prices that no longer reflect market reality.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Moderate</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-band">
+          <div class="event-marker"><div class="event-dot"></div></div>
+          <div class="event-main">
+            <div class="event-top">
+              <div>
+                <div class="event-label">Event · Channel divergence</div>
+                <h3>Regional demand remains stronger in alternative channels</h3>
+              </div>
+              <div class="signal signal-caution">External Shock</div>
+            </div>
+            <p>Not all demand weakens equally. Some regions and channels retain absorption capacity, creating an opportunity to redirect supply instead of accepting uniform degradation.</p>
+          </div>
+          <div class="event-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative impact</div><div class="v">2 channels outperform</div><div class="s">The shock is no longer only about price. It becomes a distribution and allocation problem as well.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D4 · Market Reallocation</div>
+                <h3>Redirect supply to alternative regions and channels or maintain current distribution?</h3>
+              </div>
+              <div class="signal signal-go">Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Optimization</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">How regional demand variation, logistics limits, and channel economics change the value of redeploying supply rather than keeping the existing distribution footprint unchanged.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Reallocate supply toward higher-absorption channels and regions even at the cost of added logistics complexity.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$6.1M cumulative cost</div><div class="s">By week 9, logistics and commercial coordination are meaningful, but still economically preferable to broad market deterioration.</div></div>
+              <div class="metric-card"><div class="k">Value preserved</div><div class="v">$7.6M</div><div class="s">Protected by shifting supply into demand pockets that can absorb volume without the same level of discounting.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Meaningful but controllable</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg fill6"></div><div class="seg fill7"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D5 · Strategic Position</div>
+                <h3>Defend market share or protect margin?</h3>
+              </div>
+              <div class="signal signal-caution">Hold</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Agentic / Strategic Layer</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Whether incremental share gained through aggressive discounting would create durable strategic benefit or merely deepen the cycle of value transfer to the market.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Protect margin and financial flexibility rather than chase temporary share in a distorted market.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$7.0M cumulative cost</div><div class="s">Roughly 11 weeks in, with the company already materially committed to a response path and the cost of reversal increasing.</div></div>
+              <div class="metric-card"><div class="k">Value preserved</div><div class="v">$12.5M</div><div class="s">Protected by refusing a destructive share-defense strategy that would worsen cash generation and inventory economics.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">High but cheaper than a price war</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg fill6"></div><div class="seg fill7"></div><div class="seg fill8"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta">
+      <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">From Example to Application</p>
+      <h2>Discuss how AAIDIS would structure your oversupply corridor</h2>
+      <p>This example is illustrative, but the discipline is directly applicable to categories where excess supply can quickly destabilize pricing and inventory economics.</p><p>AAIDIS helps leadership decide whether to move price, release inventory, reset procurement, or reduce exposure before weak decisions compound across the P and L and the balance sheet.</p>
+      <div class="cta-actions">
+        <a class="btn" href="contact.html">Discuss your use case</a>
+        <a class="btn-outline" href="decision-platform.html">Learn more about AAIDIS</a>
+      </div>
+    </section>
+
+    <div class="footer-space"></div>
+  </div>
+</body>
+</html>

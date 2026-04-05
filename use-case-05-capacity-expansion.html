@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Use Case 05 | Capacity Expansion Decision Corridor | Consilium.ai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+
+<style>
+  .corridor {
+    position: relative;
+  }
+
+  .event-band {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 0.975fr) minmax(320px, 0.8fr);
+    gap: 18px;
+    align-items: stretch;
+    position: relative;
+    margin: 18px 0 22px;
+  }
+
+  .event-marker {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    min-height: 100%;
+  }
+
+  .event-marker::before {
+    content: "";
+    position: absolute;
+    top: -22px;
+    bottom: -22px;
+    left: 43%;
+    transform: translateX(-50%);
+    width: 4px;
+    background: linear-gradient(180deg, #6f95bf 0%, #5e84b0 100%);
+    border-radius: 999px;
+    opacity: 0.95;
+    z-index: 0;
+  }
+
+  .event-dot {
+    position: relative;
+    z-index: 1;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 5px solid #1f5aa6;
+    margin-top: 18px;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 3px rgba(31, 90, 166, 0.08);
+  }
+
+  .event-main,
+  .event-side {
+    min-width: 0;
+    background: #f8fbff;
+    border: 1.5px dashed rgba(76, 130, 196, 0.38);
+    border-radius: 28px;
+    padding: 24px 26px;
+  }
+
+  .event-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .event-side {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .event-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 16px;
+  }
+
+  .event-top > div:first-child {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .event-top h3 {
+    margin: 8px 0 0;
+    line-height: 1.05;
+    max-width: 16ch;
+  }
+
+  .event-main > p {
+    margin: 0;
+    max-width: 62ch;
+    line-height: 1.55;
+  }
+
+  .event-side .metric-stack {
+    width: 100%;
+    margin: 0;
+  }
+
+  .event-side .metric-card {
+    width: 100%;
+    margin: 0;
+    border-radius: 22px;
+    box-sizing: border-box;
+  }
+
+  .event-label {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .event-top .signal {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 1180px) {
+    .event-band {
+      grid-template-columns: 64px 1fr;
+    }
+
+    .event-side {
+      grid-column: 2 / 3;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .event-band {
+      grid-template-columns: 40px 1fr;
+      gap: 14px;
+    }
+
+    .event-main,
+    .event-side {
+      padding: 20px 18px;
+      border-radius: 22px;
+    }
+
+    .event-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .event-top h3 {
+      max-width: none;
+    }
+
+    .event-marker::before {
+      width: 3px;
+    }
+
+    .event-dot {
+      width: 16px;
+      height: 16px;
+      border-width: 4px;
+    }
+  }
+</style>
+
+</head>
+<body>
+  <div class="site-header-wrap">
+    <div class="site-shell">
+      <header class="header">
+        <a class="brand" href="index.html" aria-label="Consilium.ai home">
+          <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
+          <div>
+            <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
+            <div class="brand-sub">AI Decision Intelligence</div>
+          </div>
+        </a>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="index.html">Home</a>
+          <a href="decision-platform.html">Decision Platform</a>
+          <a href="decision-intelligence.html">Decision Intelligence</a>
+          <a class="active" href="use-cases.html">Use Cases</a>
+          <a href="insights.html">Insights</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a class="nav-cta" href="contact.html">Request a Demo</a>
+        </nav>
+      </header>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <section class="hero section">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-tag">Use Case 05 · Capacity Expansion</div>
+          <h1>AAIDIS helps leadership decide when to commit capital, when to phase, and when delay protects more value than speed.</h1>
+          <p>Capacity expansion decisions can destroy value when temporary demand is mistaken for structural demand. They tie together capital intensity, financing conditions, operating constraints, and competitive timing.</p><p>An executive team must decide whether to approve a major expansion, outsource instead, build for peak demand, or delay until the demand signal and financing conditions strengthen.</p><p>AAIDIS closes the gaps between demand interpretation, bottleneck diagnosis, scenario economics, and capital structure so the investment path remains disciplined.</p>
+          <div class="hero-actions">
+            <a class="btn" href="#decision-corridor">View Decision Corridor</a>
+            <a class="btn-outline" href="use-cases.html">Back to Use Cases</a>
+          </div>
+        </div>
+
+        <div style="position:relative;">
+          <div class="orb1"></div>
+          <div class="orb2"></div>
+          <div class="glass-wrap">
+            <div class="metric-grid-2">
+              <div class="glass-card"><div class="eyebrow">Investment context</div><div class="big">Capacity looks urgent when bottlenecks are visible</div><p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">But visible constraint does not always mean durable demand. Labor, equipment, and process frictions can create false pressure to build.</p></div><div class="glass-card"><div class="eyebrow">AAIDIS role</div><div class="big">Distinguish real expansion need from expensive momentum</div><p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">AAIDIS helps leadership decide whether to build, outsource, phase, or delay based on risk-adjusted economics rather than operating emotion.</p></div><div class="glass-card"><div class="eyebrow">Economic lens</div><div class="big">Track capital at risk, downside exposure, and value preserved</div><p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">Each gate shows how demand durability, build scale, and financing structure change the economics of a large capital commitment.</p></div><div class="glass-card"><div class="eyebrow">Reversibility</div><div class="big">Bad expansion decisions are costly to unwind</div><p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">Once contracts are signed and capacity is built, fixed cost, financing obligations, and exit barriers make reversal much more expensive.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel section">
+      <div class="section-top">
+        <div>
+          <p class="eyebrow-section">Expansion Lifecycle</p>
+          <h2 class="h2 medium">Where this investment path sits in the broader capacity planning cycle</h2>
+        </div>
+        <p class="section-copy">The corridor below illustrates one disciplined path through a capacity decision. It shows how leadership can move from demand validation to constraint mapping, expansion design, financing, and timing without assuming that growth pressure automatically justifies a build.</p>
+      </div>
+
+      <div class="cards-4" style="margin-top:32px;">
+        <div class="list-card">01 · Demand review</div><div class="list-card">02 · Constraint mapping</div><div class="list-card">03 · Investment commitment</div><div class="list-card">04 · Expansion model</div><div class="list-card">05 · Scale decision</div><div class="list-card">06 · Financing structure</div><div class="list-card">07 · Timing decision</div><div class="list-card">08 · Contracting</div><div class="list-card">09 · Build execution</div><div class="list-card">10 · Ramp-up</div><div class="list-card">11 · Utilization review</div><div class="list-card">12 · Post-investment assessment</div>
+      </div>
+
+      <p class="section-copy" style="margin-top:28px; max-width:none;">In this illustrative case, AAIDIS supports a phased expansion with hybrid financing rather than a full immediate build sized to peak demand.</p>
+    </section>
+
+    <section id="decision-corridor" class="panel section">
+      <div class="section-top">
+        <div>
+          <p class="eyebrow-section">Decision Corridor</p>
+          <h2 class="h2 medium">A corridor for capital commitment, build design, and timing decisions</h2>
+        </div>
+        <p class="section-copy">Each gate commits capital or changes trajectory. AAIDIS helps leadership decide when visible demand truly justifies expansion and when the economics favor a more flexible path.</p>
+      </div>
+
+      <div class="legend">
+        <strong>Legend:</strong><br>
+        Gray blocks show the <strong>AAIDIS Engines Activated</strong> at that decision point.<br>
+        Colored signals show the <strong>AAIDIS decision output</strong>.<br>
+        Event bands show external developments that force leadership to respond.<br>
+        Heat bars show the <strong>cost to unwind</strong> at that stage of the process.
+      </div>
+
+      <div class="corridor">
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D1 · Investment Commitment</div>
+                <h3>Approve a $180M capacity expansion or defer the investment for 12 months?</h3>
+              </div>
+              <div class="signal signal-caution">Conditional Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Prediction / Forecasting</span><span class="chip">Causal</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Whether current demand is structurally durable enough to justify a major capital commitment or whether recent strength still depends too heavily on cyclical or customer-specific factors.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Approve the project in principle, but only as a phased commitment tied to stronger demand confirmation.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$3.2M front-end cost</div><div class="s">Initial engineering, finance, and scenario work over roughly 4 weeks to establish whether the build case is even worth advancing.</div></div>
+              <div class="metric-card"><div class="k">Capital at risk reduced</div><div class="v">$72M</div><div class="s">Avoided by refusing an all-at-once commitment before demand durability is established.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Low cost to unwind</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-band">
+          <div class="event-marker"><div class="event-dot"></div></div>
+          <div class="event-main">
+            <div class="event-top">
+              <div>
+                <div class="event-label">Event · Cost inflation</div>
+                <h3>Equipment quotes and construction inputs move higher</h3>
+              </div>
+              <div class="signal signal-caution">External Shock</div>
+            </div>
+            <p>Capex inflation tightens the economics of a full build and raises the value of testing smaller or more flexible expansion paths before contracting.</p>
+          </div>
+          <div class="event-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative impact</div><div class="v">+9% capex pressure</div><div class="s">The project now faces a sharper tradeoff between speed, scale, and return threshold.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D2 · Expansion Model</div>
+                <h3>Build internal capacity or outsource production?</h3>
+              </div>
+              <div class="signal signal-caution">Conditional Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Simulation</span><span class="chip">Valuation</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">How supplier reliability, margin tradeoffs, and service performance compare between internal expansion and a more flexible outsourced bridge solution.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Use selective outsourced capacity as a bridge while internal expansion proceeds in phases.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$5.4M cumulative cost</div><div class="s">By week 7, supplier diligence, operations planning, and finance work materially deepen the decision.</div></div>
+              <div class="metric-card"><div class="k">Flexibility preserved</div><div class="v">$14.1M</div><div class="s">Preserved by reducing the need for immediate full-scale internal build while still supporting customer demand.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Still manageable</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D3 · Scale of Expansion</div>
+                <h3>Build for peak demand or build for base demand?</h3>
+              </div>
+              <div class="signal signal-go">Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Simulation</span><span class="chip">Risk Measurement</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Whether sizing for the upper end of the demand range creates sufficient upside to justify the additional fixed-cost and underutilization risk if demand normalizes.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Build for base demand with defined expansion options rather than size the asset for peak conditions.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$7.8M cumulative cost</div><div class="s">About 10 weeks in, with design assumptions now carrying real capital consequences.</div></div>
+              <div class="metric-card"><div class="k">Downside avoided</div><div class="v">$22.4M</div><div class="s">Avoided by not embedding peak-demand assumptions into permanent capacity and fixed-cost structure.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Moderate</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="event-band">
+          <div class="event-marker"><div class="event-dot"></div></div>
+          <div class="event-main">
+            <div class="event-top">
+              <div>
+                <div class="event-label">Event · Credit tightening</div>
+                <h3>Financing conditions deteriorate as spreads widen</h3>
+              </div>
+              <div class="signal signal-caution">External Shock</div>
+            </div>
+            <p>Debt markets become less favorable, raising the cost of a leverage-heavy build and making financing structure a more consequential strategic choice.</p>
+          </div>
+          <div class="event-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative impact</div><div class="v">+140 bps financing pressure</div><div class="s">The project now requires stronger discipline on capital structure and pacing.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D4 · Financing Structure</div>
+                <h3>Fund with debt, equity, or a hybrid structure?</h3>
+              </div>
+              <div class="signal signal-go">Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Optimization</span><span class="chip">Valuation</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">Which financing mix preserves resilience, keeps returns acceptable, and avoids weakening the company if the demand path disappoints.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Use a hybrid structure that preserves balance-sheet flexibility rather than pursue a debt-heavy build.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$9.6M cumulative cost</div><div class="s">By week 13, treasury, legal, and board attention become materially engaged in the capital decision.</div></div>
+              <div class="metric-card"><div class="k">Risk reduction</div><div class="v">$13.7M</div><div class="s">Equivalent reduction in financing stress versus a more aggressive leverage choice under wider spreads.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">Meaningful but controllable</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg fill6"></div><div class="seg fill7"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stage">
+          <div class="stage-marker"><div class="marker-dot"></div></div>
+          <div class="stage-main">
+            <div class="stage-top">
+              <div>
+                <div class="node-label">D5 · Timing</div>
+                <h3>Start immediately or delay until demand confirmation strengthens?</h3>
+              </div>
+              <div class="signal signal-go">Go</div>
+            </div>
+            <div class="engine-box">
+              <div class="engine-title">AAIDIS Engines Activated</div>
+              <span class="chip">Optimization</span><span class="chip">Simulation</span>
+            </div>
+            <div class="what-box">
+              <div class="label">What AAIDIS determines</div>
+              <div class="text">How order backlog quality, competitor capacity additions, and the value of optionality change the economic cost of immediate action versus delay.</div>
+            </div>
+            <div class="decision-box">
+              <div class="label">AAIDIS-informed decision</div>
+              <div class="decision">Proceed now with a phased start and explicit decision checkpoints rather than a full-speed unconditional launch.</div>
+            </div>
+          </div>
+          <div class="stage-side">
+            <div class="metric-stack">
+              <div class="metric-card"><div class="k">Illustrative economics</div><div class="v">$10.8M cumulative cost</div><div class="s">Execution commitment is now meaningful, but still materially more flexible than a full-scale immediate build.</div></div>
+              <div class="metric-card"><div class="k">Value preserved</div><div class="v">$18.9M</div><div class="s">Protected by locking in the most attractive elements of the project while preserving the option to slow or expand based on confirmed demand.</div></div>
+            </div>
+            <div class="reversibility">
+              <div class="head"><div class="title">Reversibility cost</div><div class="caption">High but better than full commitment</div></div>
+              <div class="bar-row"><div class="seg fill1"></div><div class="seg fill2"></div><div class="seg fill3"></div><div class="seg fill4"></div><div class="seg fill5"></div><div class="seg fill6"></div><div class="seg fill7"></div><div class="seg fill8"></div><div class="seg"></div><div class="seg"></div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="cta">
+      <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">From Example to Application</p>
+      <h2>Discuss how AAIDIS would structure your capacity expansion corridor</h2>
+      <p>This example is illustrative, but the investment logic is practical. Capacity decisions become dangerous when visible bottlenecks are confused with durable economic justification.</p><p>AAIDIS helps leadership decide what to build, when to phase, how to finance it, and how much optionality to preserve before fixed cost and capital structure harden.</p>
+      <div class="cta-actions">
+        <a class="btn" href="contact.html">Discuss your use case</a>
+        <a class="btn-outline" href="decision-platform.html">Learn more about AAIDIS</a>
+      </div>
+    </section>
+
+    <div class="footer-space"></div>
+  </div>
+</body>
+</html>
