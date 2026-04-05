@@ -6,305 +6,128 @@
   <title>Forecasts Are Useful, but Decisions Require More | Consilium.ai</title>
   <meta name="description" content="A Consilium.ai white paper on why prediction alone is insufficient and how forecasting must connect to scenarios, actions, and decision-making." />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    /* --- Fix event rows so they always match the intended corridor layout --- */
-
-    .corridor {
-      position: relative;
-    }
-
-    .event-band {
-      display: grid;
-      grid-template-columns: 84px minmax(0, 0.975fr) minmax(320px, 0.8fr);
-      gap: 18px;
-      align-items: stretch;
-      position: relative;
-      margin: 18px 0 22px;
-    }
-
-    .event-marker {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
-      min-height: 100%;
-    }
-
-    .event-marker::before {
-      content: "";
-      position: absolute;
-      top: -22px;
-      bottom: -22px;
-      left: 43%;
-      transform: translateX(-50%);
-      width: 4px;
-      background: linear-gradient(180deg, #6f95bf 0%, #5e84b0 100%);
-      border-radius: 999px;
-      opacity: 0.95;
-      z-index: 0;
-    }
-
-    .event-dot {
-      position: relative;
-      z-index: 1;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: #ffffff;
-      border: 5px solid #1f5aa6;
-      margin-top: 18px;
-      box-sizing: border-box;
-      box-shadow: 0 0 0 3px rgba(31, 90, 166, 0.08);
-    }
-
-    .event-main,
-    .event-side {
-      min-width: 0;
-      background: #f8fbff;
-      border: 1.5px dashed rgba(76, 130, 196, 0.38);
-      border-radius: 28px;
-      padding: 24px 26px;
-    }
-
-    .event-main {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
-
-    .event-side {
-      display: flex;
-      align-items: flex-start;
-    }
-
-    .event-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 16px;
-    }
-
-    .event-top > div:first-child {
-      min-width: 0;
-      flex: 1 1 auto;
-    }
-
-    .event-top h3 {
-      margin: 8px 0 0;
-      line-height: 1.05;
-      max-width: 16ch;
-    }
-
-    .event-main > p {
-      margin: 0;
-      max-width: 62ch;
-      line-height: 1.55;
-    }
-
-    .event-side .metric-stack {
-      width: 100%;
-      margin: 0;
-    }
-
-    .event-side .metric-card {
-      width: 100%;
-      margin: 0;
-      border-radius: 22px;
-      box-sizing: border-box;
-    }
-
-    .event-label {
-      display: inline-block;
-      font-size: 0.9rem;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-
-    /* Keep the badge from dropping awkwardly */
-    .event-top .signal {
-      flex: 0 0 auto;
-      white-space: nowrap;
-      margin-top: 10px;
-    }
-
-    /* Ensure event rows do not collapse at typical desktop widths */
-    @media (max-width: 1180px) {
-      .event-band {
-        grid-template-columns: 64px 1fr;
-      }
-
-      .event-side {
-        grid-column: 2 / 3;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .event-band {
-        grid-template-columns: 40px 1fr;
-        gap: 14px;
-      }
-
-      .event-main,
-      .event-side {
-        padding: 20px 18px;
-        border-radius: 22px;
-      }
-
-      .event-top {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .event-top h3 {
-        max-width: none;
-      }
-
-      .event-marker::before {
-        width: 3px;
-      }
-
-      .event-dot {
-        width: 16px;
-        height: 16px;
-        border-width: 4px;
-      }
-    }
-  </style>
 </head>
 <body>
   <div class="site-header-wrap">
     <div class="site-shell">
+      <header class="header">
+        <a class="brand" href="index.html">
+          <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
+          <div>
+            <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
+            <div class="brand-sub">AI Decision Intelligence</div>
+          </div>
+        </a>
 
-
-    <!-- Header -->
-    <header class="header">
-      <a class="brand" href="index.html">
-        <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
-        <div>
-          <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
-          <div class="brand-sub">AI Decision Intelligence</div>
-        </div>
-      </a>
-
-      <nav class="nav">
-        <a href="index.html">Home</a>
-        <a href="decision-platform.html">Decision Platform</a>
-        <a href="decision-intelligence.html">Decision Intelligence</a>
-        <a href="use-cases.html">Use Cases</a>
-        <a class="active" href="insights.html">Insights</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a class="nav-cta" href="contact.html">Request a Demo</a>
-      </nav>
-    </header>
+        <nav class="nav">
+          <a href="index.html">Home</a>
+          <a href="decision-platform.html">Decision Platform</a>
+          <a href="decision-intelligence.html">Decision Intelligence</a>
+          <a href="use-cases.html">Use Cases</a>
+          <a class="active" href="insights.html">Insights</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+          <a class="nav-cta" href="contact.html">Request a Demo</a>
+        </nav>
+      </header>
+    </div>
   </div>
-</div>
+
   <div class="container">
     <section class="hero">
       <div class="hero-inner">
-
         <div class="article-shell">
           <div class="article-tag">Forecasting White Paper</div>
-
-          <h1>Forecasts are useful, but decisions require more</h1>
-
+          <h1>Forecasts Are Useful, but Decisions Require More</h1>
           <p>
-            Forecasting remains a cornerstone of enterprise analytics, yet many organizations continue to struggle with decision-making.
-            The challenge is not prediction accuracy alone, but the lack of a system that connects forecasts to scenarios, actions,
-            and trade-off evaluation. This paper explains why forecasting must evolve into a component of a broader decision system.
+            Forecasting has long been a cornerstone of enterprise analytics, providing organizations with forward-looking estimates of demand, revenue, costs, and other key variables. Advances in machine learning and data availability have significantly improved the accuracy of these forecasts, enabling organizations to anticipate trends with greater precision. However, despite these improvements, many organizations continue to struggle with decision-making.
+          </p>
+          <p>
+            The reason is that forecasting, while necessary, is not sufficient. A forecast answers the question of what is likely to happen, but it does not answer the more important question of what should be done. Decisions require evaluating alternatives, considering trade-offs, and accounting for uncertainty, none of which are fully addressed by a single-point prediction.
+          </p>
+          <p>
+            This paper argues that forecasting must be integrated into a broader decision intelligence framework that connects predictions to scenarios, actions, and outcomes.
           </p>
 
           <div class="article-actions">
-            <a class="btn" href="forecast_useful_but_decisions_require_more.pdf" target="_blank">
-              Download PDF
-            </a>
+            <a class="btn" href="forecast_useful_but_decisions_require_more.pdf" target="_blank">Download PDF</a>
             <a class="btn-outline" href="insights.html">Back to Insights</a>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- Quote -->
     <section class="panel section">
       <blockquote class="quote-card">
-        “A forecast tells you what may happen. A decision requires understanding what to do when it does not.”
+        “<em>A forecast tells you what may happen. A decision requires understanding what to do when it does not.</em>”
       </blockquote>
     </section>
 
-    <!-- Content -->
     <section class="panel-soft section">
-
       <h2>Introduction</h2>
       <p>
-        Forecasting has long been a cornerstone of enterprise analytics, providing forward-looking estimates of demand,
-        revenue, and cost. While advances in machine learning have improved accuracy, organizations continue to struggle
-        with decision-making because prediction alone does not determine action. A forecast answers what is likely to happen,
-        but it does not answer what should be done.
+        Forecasting has long been a cornerstone of enterprise analytics, providing organizations with forward-looking estimates of demand, revenue, costs, and other key variables. Advances in machine learning and data availability have significantly improved the accuracy of these forecasts, enabling organizations to anticipate trends with greater precision. However, despite these improvements, many organizations continue to struggle with decision-making. The reason is that forecasting, while necessary, is not sufficient. A forecast answers the question of what is likely to happen, but it does not answer the more important question of what should be done. Decisions require evaluating alternatives, considering trade-offs, and accounting for uncertainty, none of which are fully addressed by a single-point prediction. This paper argues that forecasting must be integrated into a broader decision intelligence framework that connects predictions to scenarios, actions, and outcomes.
       </p>
 
-      <h2>The role and limitation of forecasting</h2>
+      <h2>The Role and Limitation of Forecasting</h2>
       <p>
-        Forecasts provide a baseline expectation and support planning, but they are inherently limited. They represent the
-        most likely future based on historical patterns, yet real-world environments are defined by uncertainty, structural
-        change, and external shocks. Even when confidence intervals are available, decision processes often default to the
-        central estimate, creating a false sense of certainty.
+        Forecasting plays a critical role in informing decisions. It provides a baseline expectation for future conditions and helps organizations plan resources, set targets, and coordinate activities. In many cases, improvements in forecasting accuracy can lead to tangible benefits, such as reduced inventory costs or improved capacity utilization. However, forecasting has inherent limitations. It is fundamentally an exercise in estimating the most likely future based on historical data and current information. Even the most sophisticated models cannot fully capture the complexity and uncertainty of real-world environments. More importantly, forecasts are typically presented as point estimates. While confidence intervals may be included, decision-making processes often focus on the central prediction. This creates a disconnect between the analytical output and the reality of uncertainty.
       </p>
 
-      <h2>From prediction to decision</h2>
+      <h2>From Prediction to Decision</h2>
       <p>
-        Prediction estimates outcomes. Decisions require selecting actions under uncertainty. This requires evaluating
-        alternatives, incorporating constraints, and assessing outcomes across different scenarios. Without these elements,
-        forecasts remain disconnected from action, leaving organizations with insight but no structured way to decide.
+        A key distinction must be made between prediction and decision. Prediction is concerned with estimating what will happen, while decision-making is concerned with choosing among alternatives under uncertainty. The latter requires additional elements that go beyond forecasting, including:
+      </p>
+      <ul>
+        <li>The set of possible actions</li>
+        <li>The constraints under which decisions are made</li>
+        <li>The evaluation of outcomes across different scenarios</li>
+        <li>The trade-offs between expected value, risk, and flexibility</li>
+      </ul>
+      <p>
+        Without these elements, forecasts remain disconnected from action. Organizations may know what is likely to happen, but they do not have a systematic way to determine what they should do in response.
       </p>
 
-      <h2>Scenario-based evaluation</h2>
+      <h2>The Need for Scenario-Based Evaluation</h2>
       <p>
-        Forecasts must be embedded within a scenario framework. Instead of relying on a single projection, organizations
-        should evaluate decisions across multiple plausible futures. This approach allows leaders to identify strategies
-        that are robust, rather than narrowly optimized for one expected outcome.
+        To bridge this gap, forecasts must be embedded within a scenario-based framework. Instead of relying on a single predicted outcome, organizations should consider a range of possible futures and evaluate how decisions perform across them. This approach recognizes that forecasts are inherently uncertain and that different scenarios may have materially different implications for decision-making. For example, a demand forecast may suggest moderate growth, but alternative scenarios could include both stronger-than-expected expansion and unexpected contraction. By evaluating decisions across these scenarios, organizations can identify strategies that are robust rather than narrowly optimized. This reduces the risk of overcommitting to a single forecast and improves resilience in the face of uncertainty.
       </p>
 
-      <h2>Connecting forecasts to actions</h2>
+      <h2>Connecting Forecasts to Actions</h2>
       <p>
-        Forecasting should not be an isolated function. It must be directly integrated into decision workflows. Forecasts
-        become inputs into models that evaluate pricing, capacity, inventory, and investment decisions across scenarios.
-        This transforms forecasting from a descriptive capability into a prescriptive one.
+        Another critical step is connecting forecasts to actions. In many organizations, forecasting is treated as a separate function, producing outputs that are then handed off to decision-makers. This separation creates friction and limits the impact of forecasting. Decision intelligence integrates forecasting directly into the decision process. Forecasts become inputs into models that evaluate different actions, taking into account constraints and objectives. This enables organizations to move from passive prediction to active decision-making. For example, rather than simply forecasting demand, an organization can evaluate how different pricing strategies, inventory policies, or capacity decisions perform under various demand scenarios. This transforms forecasting from a descriptive tool into a prescriptive capability.
       </p>
 
-      <h2>Trade-off evaluation</h2>
+      <h2>Trade-Off Evaluation</h2>
       <p>
-        Decisions involve balancing expected value, risk, variability, and reversibility. Forecasting alone does not
-        provide a framework for evaluating these trade-offs. Decision intelligence makes these dimensions explicit,
-        allowing organizations to select strategies aligned with their objectives and risk tolerance.
+        Decisions inherently involve trade-offs. A strategy that maximizes expected value may also increase downside risk, while a more conservative approach may reduce risk at the cost of lower potential returns. Forecasting alone does not provide a framework for evaluating these trade-offs. Decision intelligence introduces a structured approach to trade-off evaluation. This includes assessing:
+      </p>
+      <ul>
+        <li>Expected outcomes across scenarios</li>
+        <li>Downside risk and tail events</li>
+        <li>Variability and sensitivity to assumptions</li>
+        <li>Reversibility and the cost of being wrong</li>
+      </ul>
+      <p>
+        By making these dimensions explicit, organizations can compare alternatives in a more disciplined manner and select strategies that align with their risk tolerance and objectives.
       </p>
 
-      <h2>Simulation and optimization</h2>
+      <h2>The Role of Simulation and Optimization</h2>
       <p>
-        Simulation enables organizations to explore how outcomes evolve under uncertainty, while optimization identifies
-        the best actions given constraints and objectives. Together, they extend forecasting into a full decision system
-        capable of evaluating actions rather than just predicting outcomes.
+        Simulation and optimization are essential components of this framework. Simulation allows organizations to model how outcomes evolve under different scenarios, capturing both uncertainty and interactions between variables. Optimization enables the selection of actions that best achieve desired objectives, given constraints and the distribution of possible outcomes. Together, these techniques extend the value of forecasting by connecting predictions to decisions. They enable organizations to move beyond static plans and adopt adaptive strategies that respond to changing conditions.
       </p>
 
-      <h2>Enterprise implications</h2>
+      <h2>Enterprise Implications</h2>
       <p>
-        Integrating forecasting into decision intelligence improves coordination, resilience, and agility. Organizations
-        can align decisions across functions, prepare for multiple scenarios, and respond more effectively to changing
-        conditions.
+        At the enterprise level, the integration of forecasting into decision intelligence has several important implications. First, it improves coordination across functions. When forecasts are used within a shared decision framework, different teams can align their actions based on consistent assumptions and scenarios. This reduces conflicts and improves overall efficiency. Second, it enhances resilience. By considering multiple scenarios and evaluating trade-offs, organizations can design strategies that perform well across a range of conditions, rather than relying on a single expected outcome. Third, it accelerates decision-making. With a structured framework in place, organizations can evaluate alternatives more quickly and respond to changes in the environment with greater agility.
       </p>
 
       <h2>Conclusion</h2>
       <p>
-        Forecasting remains essential, but it is only one component of effective decision-making. Organizations that move
-        beyond prediction and build systems that connect forecasts to scenarios, actions, and trade-offs will achieve
-        stronger and more resilient outcomes.
+        Forecasting remains a valuable and necessary capability, but it is only one component of effective decision-making. Organizations that rely solely on predictions risk making decisions that are narrowly optimized and vulnerable to uncertainty. The next step is to integrate forecasting into a broader decision intelligence system that connects predictions to scenarios, actions, and outcomes. By doing so, organizations can move from knowing what may happen to understanding what they should do. The distinction is subtle, but critical. It is the difference between insight and action, and ultimately, between incremental improvement and sustained competitive advantage.
       </p>
-
     </section>
 
-    <!-- CTA -->
     <section class="cta">
       <h2>Move from prediction to decision intelligence</h2>
       <p>
@@ -312,12 +135,9 @@
       </p>
       <div class="cta-actions">
         <a class="btn" href="contact.html">Request a Demo</a>
-        <a class="btn-outline" href="forecast_useful_but_decisions_require_more.pdf" target="_blank">
-          Download PDF
-        </a>
+        <a class="btn-outline" href="forecast_useful_but_decisions_require_more.pdf" target="_blank">Download PDF</a>
       </div>
     </section>
-
   </div>
 </body>
 </html>
