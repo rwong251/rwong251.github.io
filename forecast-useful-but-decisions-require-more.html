@@ -6,10 +6,177 @@
   <title>Forecasts Are Useful, but Decisions Require More | Consilium.ai</title>
   <meta name="description" content="A Consilium.ai white paper on why prediction alone is insufficient and how forecasting must connect to scenarios, actions, and decision-making." />
   <link rel="stylesheet" href="style.css" />
-</head>
+  <style>
+    /* --- Fix event rows so they always match the intended corridor layout --- */
 
+    .corridor {
+      position: relative;
+    }
+
+    .event-band {
+      display: grid;
+      grid-template-columns: 84px minmax(0, 0.975fr) minmax(320px, 0.8fr);
+      gap: 18px;
+      align-items: stretch;
+      position: relative;
+      margin: 18px 0 22px;
+    }
+
+    .event-marker {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      min-height: 100%;
+    }
+
+    .event-marker::before {
+      content: "";
+      position: absolute;
+      top: -22px;
+      bottom: -22px;
+      left: 43%;
+      transform: translateX(-50%);
+      width: 4px;
+      background: linear-gradient(180deg, #6f95bf 0%, #5e84b0 100%);
+      border-radius: 999px;
+      opacity: 0.95;
+      z-index: 0;
+    }
+
+    .event-dot {
+      position: relative;
+      z-index: 1;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 5px solid #1f5aa6;
+      margin-top: 18px;
+      box-sizing: border-box;
+      box-shadow: 0 0 0 3px rgba(31, 90, 166, 0.08);
+    }
+
+    .event-main,
+    .event-side {
+      min-width: 0;
+      background: #f8fbff;
+      border: 1.5px dashed rgba(76, 130, 196, 0.38);
+      border-radius: 28px;
+      padding: 24px 26px;
+    }
+
+    .event-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .event-side {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    .event-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 16px;
+    }
+
+    .event-top > div:first-child {
+      min-width: 0;
+      flex: 1 1 auto;
+    }
+
+    .event-top h3 {
+      margin: 8px 0 0;
+      line-height: 1.05;
+      max-width: 16ch;
+    }
+
+    .event-main > p {
+      margin: 0;
+      max-width: 62ch;
+      line-height: 1.55;
+    }
+
+    .event-side .metric-stack {
+      width: 100%;
+      margin: 0;
+    }
+
+    .event-side .metric-card {
+      width: 100%;
+      margin: 0;
+      border-radius: 22px;
+      box-sizing: border-box;
+    }
+
+    .event-label {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    /* Keep the badge from dropping awkwardly */
+    .event-top .signal {
+      flex: 0 0 auto;
+      white-space: nowrap;
+      margin-top: 10px;
+    }
+
+    /* Ensure event rows do not collapse at typical desktop widths */
+    @media (max-width: 1180px) {
+      .event-band {
+        grid-template-columns: 64px 1fr;
+      }
+
+      .event-side {
+        grid-column: 2 / 3;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .event-band {
+        grid-template-columns: 40px 1fr;
+        gap: 14px;
+      }
+
+      .event-main,
+      .event-side {
+        padding: 20px 18px;
+        border-radius: 22px;
+      }
+
+      .event-top {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .event-top h3 {
+        max-width: none;
+      }
+
+      .event-marker::before {
+        width: 3px;
+      }
+
+      .event-dot {
+        width: 16px;
+        height: 16px;
+        border-width: 4px;
+      }
+    }
+  </style>
+</head>
 <body>
-  <div class="container">
+  <div class="site-header-wrap">
+    <div class="site-shell">
+
 
     <!-- Header -->
     <header class="header">
@@ -32,8 +199,9 @@
         <a class="nav-cta" href="contact.html">Request a Demo</a>
       </nav>
     </header>
-
-    <!-- Hero -->
+  </div>
+</div>
+  <div class="container">
     <section class="hero">
       <div class="hero-inner">
 
