@@ -8,10 +8,174 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+
+<style>
+  .corridor {
+    position: relative;
+  }
+
+  .event-band {
+    display: grid;
+    grid-template-columns: 84px minmax(0, 0.975fr) minmax(320px, 0.8fr);
+    gap: 18px;
+    align-items: stretch;
+    position: relative;
+    margin: 18px 0 22px;
+  }
+
+  .event-marker {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    min-height: 100%;
+  }
+
+  .event-marker::before {
+    content: "";
+    position: absolute;
+    top: -22px;
+    bottom: -22px;
+    left: 43%;
+    transform: translateX(-50%);
+    width: 4px;
+    background: linear-gradient(180deg, #6f95bf 0%, #5e84b0 100%);
+    border-radius: 999px;
+    opacity: 0.95;
+    z-index: 0;
+  }
+
+  .event-dot {
+    position: relative;
+    z-index: 1;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 5px solid #1f5aa6;
+    margin-top: 18px;
+    box-sizing: border-box;
+    box-shadow: 0 0 0 3px rgba(31, 90, 166, 0.08);
+  }
+
+  .event-main,
+  .event-side {
+    min-width: 0;
+    background: #f8fbff;
+    border: 1.5px dashed rgba(76, 130, 196, 0.38);
+    border-radius: 28px;
+    padding: 24px 26px;
+  }
+
+  .event-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .event-side {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .event-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 16px;
+  }
+
+  .event-top > div:first-child {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .event-top h3 {
+    margin: 8px 0 0;
+    line-height: 1.05;
+    max-width: 16ch;
+  }
+
+  .event-main > p {
+    margin: 0;
+    max-width: 62ch;
+    line-height: 1.55;
+  }
+
+  .event-side .metric-stack {
+    width: 100%;
+    margin: 0;
+  }
+
+  .event-side .metric-card {
+    width: 100%;
+    margin: 0;
+    border-radius: 22px;
+    box-sizing: border-box;
+  }
+
+  .event-label {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .event-top .signal {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 1180px) {
+    .event-band {
+      grid-template-columns: 64px 1fr;
+    }
+
+    .event-side {
+      grid-column: 2 / 3;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .event-band {
+      grid-template-columns: 40px 1fr;
+      gap: 14px;
+    }
+
+    .event-main,
+    .event-side {
+      padding: 20px 18px;
+      border-radius: 22px;
+    }
+
+    .event-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .event-top h3 {
+      max-width: none;
+    }
+
+    .event-marker::before {
+      width: 3px;
+    }
+
+    .event-dot {
+      width: 16px;
+      height: 16px;
+      border-width: 4px;
+    }
+  }
+</style>
+
 </head>
 <body>
-
-    <div class="site-header-wrap">
+  <div class="site-header-wrap">
+    <div class="site-shell">
       <header class="header">
         <a class="brand" href="index.html" aria-label="Consilium.ai home">
           <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
@@ -32,122 +196,142 @@
         </nav>
       </header>
     </div>
-  
+  </div>
+
   <div class="container">
-    <section class="hero">
-      <div class="hero-inner" style="grid-template-columns:1.1fr .9fr;">
-        <div>
-          <div class="hero-tag">Use Cases for Enterprise Decision Intelligence</div>
-          <h1>Strategic Use Cases Built on <span class="accent">AAIDIS</span></h1>
-          <p>Consilium.ai helps leaders move from fragmented analytics to structured decision intelligence. Each use case connects business decisions to the AAIDIS engine architecture and shows how leaders can proceed, reshape, or stop with greater discipline under uncertainty.</p>
-          <div class="hero-actions">
-            <a class="btn" href="#use-cases-grid">Explore Use Cases</a>
-            <a class="btn-outline" href="decision-platform.html">See the Platform</a>
+
+<section class="hero section">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">Use Cases · AAIDIS in Action</div>
+      <h1>Decision intelligence for the moments where weak choices become expensive.</h1>
+      <p>
+        These use cases show how AAIDIS supports real executive decisions under uncertainty. Each example is structured as a decision corridor, not a descriptive workflow, because the objective is to improve what leadership chooses to do next.
+      </p>
+      <p>
+        The pages below follow one disciplined path through each problem. They make the decision gates explicit, show which AAIDIS muscles are activated, and track the economics of continuing, revising, holding, or stopping as conditions evolve.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="#use-case-grid">Explore Use Cases</a>
+        <a class="btn-outline" href="decision-platform.html">View Decision Platform</a>
+      </div>
+    </div>
+
+    <div style="position:relative;">
+      <div class="orb1"></div>
+      <div class="orb2"></div>
+      <div class="glass-wrap">
+        <div class="metric-grid-2">
+          <div class="glass-card">
+            <div class="eyebrow">Decision focus</div>
+            <div class="big">Executive decisions, not analytics snapshots</div>
+            <p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">
+              Each use case shows how AAIDIS evaluates the situation, anticipates what may happen next, and recommends the next move.
+            </p>
           </div>
-        </div>
-        <div style="position:relative;">
-          <div class="orb1"></div><div class="orb2"></div>
-          <div class="glass-wrap">
-            <div class="metric-grid-2">
-              <div class="glass-card"><div class="eyebrow">Prediction / Forecasting</div><div class="big">Forward views</div><div class="glass-chart"><div class="bars"><div class="bar green" style="height:24px"></div><div class="bar white" style="height:42px"></div><div class="bar green" style="height:18px"></div><div class="bar white" style="height:46px"></div><div class="bar green" style="height:30px"></div><div class="ring"></div></div></div></div>
-              <div class="glass-card"><div class="eyebrow">Simulation</div><div class="big">Alternative futures</div><div class="glass-chart"><div class="bars"><div class="bar green" style="height:24px"></div><div class="bar white" style="height:42px"></div><div class="bar green" style="height:18px"></div><div class="bar white" style="height:46px"></div><div class="bar green" style="height:30px"></div><div class="ring"></div></div></div></div>
-              <div class="glass-card"><div class="eyebrow">Risk & Valuation</div><div class="big">Decision economics</div><div class="glass-chart"><div class="bars"><div class="bar green" style="height:24px"></div><div class="bar white" style="height:42px"></div><div class="bar green" style="height:18px"></div><div class="bar white" style="height:46px"></div><div class="bar green" style="height:30px"></div><div class="ring"></div></div></div></div>
-              <div class="glass-card"><div class="eyebrow">Optimization</div><div class="big">Best actions</div><div class="glass-chart"><div class="bars"><div class="bar green" style="height:24px"></div><div class="bar white" style="height:42px"></div><div class="bar green" style="height:18px"></div><div class="bar white" style="height:46px"></div><div class="bar green" style="height:30px"></div><div class="ring"></div></div></div></div>
-            </div>
+          <div class="glass-card">
+            <div class="eyebrow">Economic framing</div>
+            <div class="big">Track cost, value preserved, and downside avoided</div>
+            <p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">
+              Weak decisions compound over time. The pages make visible how late-stage reversal becomes more expensive.
+            </p>
+          </div>
+          <div class="glass-card">
+            <div class="eyebrow">System view</div>
+            <div class="big">External shocks reshape the path</div>
+            <p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">
+              These scenarios reflect real decision environments in which policy moves, demand shifts, competitors, and operating constraints change the economics.
+            </p>
+          </div>
+          <div class="glass-card">
+            <div class="eyebrow">AAIDIS role</div>
+            <div class="big">Advisor, not reporting layer</div>
+            <p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">
+              AAIDIS integrates forecasting, simulation, optimization, causal reasoning, and agentic guidance into one decision discipline.
+            </p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <section id="use-cases-grid" class="section">
-      <div class="section-top">
-        <div>
-          <p class="eyebrow-section">Core Use Cases</p>
-          <h2 class="h2">Where Consilium.ai Creates Enterprise Value</h2>
-        </div>
-        <p class="section-copy">These use cases reflect the AAIDIS architecture: the right engines activate at the right decision point, producing clearer signals on whether to proceed, proceed with conditions, reshape the path, or stop.</p>
+<section id="use-case-grid" class="panel section">
+  <div class="section-top">
+    <div>
+      <p class="eyebrow-section">Use Case Portfolio</p>
+      <h2 class="h2 medium">Six executive decision corridors built on the same decision discipline</h2>
+    </div>
+    <p class="section-copy">
+      The M&amp;A page remains the reference example. The five additional pages extend the same structure, tone, and logic into tariff response, workforce planning, oversupply management, capacity expansion, and strategic pivots.
+    </p>
+  </div>
+
+  <div class="cards-3" style="margin-top:32px;">
+    <div class="panel">
+      <p class="eyebrow-section">Use Case 01</p>
+      <h3 style="margin-top:8px;">M&A Decision Corridor</h3>
+      <p>Evaluate strategic fit, valuation discipline, market reaction, competitive pressure, and whether to proceed or stop before value is destroyed.</p>
+      <div class="hero-actions" style="margin-top:18px;">
+        <a class="btn" href="use-case-01-ma.html">Open Page</a>
       </div>
-
-      <div class="cards-3" style="margin-top:24px;">
-        <div class="card">
-          <div class="badge-row"><div class="number-badge">01</div><div class="badge-line"></div></div>
-          <div class="eyebrow" style="margin-top:20px; color:var(--teal);">Think through the full acquisition path</div>
-          <h4 style="font-size:22px; margin-top:8px;">M&amp;A Decision Intelligence</h4>
-          <p>Walk through a realistic acquisition process from integrity screening to valuation, financing, market reaction, negotiation, competing bidders, and the cost to unwind weak decisions over time.</p>
-          <div class="bullet-list">
-            <div class="bullet-item"><span class="dot"></span><span>AAIDIS engine activation by node</span></div>
-            <div class="bullet-item"><span class="dot"></span><span>GO / CONDITIONAL GO / HOLD / STOP signals</span></div>
-            <div class="bullet-item"><span class="dot"></span><span>Conservative economics and reversibility cost</span></div>
-          </div>
-          <a class="linkish" href="use-case-01-ma-decision-corridor.html">Learn how this supports decisions <span>→</span></a>
-        </div>
-
-        <div class="card">
-          <div class="badge-row"><div class="number-badge">02</div><div class="badge-line"></div></div>
-          <div class="eyebrow" style="margin-top:20px; color:var(--teal);">Quantify exposure before it becomes loss</div>
-          <h4 style="font-size:22px; margin-top:8px;">Risk &amp; Uncertainty Management</h4>
-          <p>Assess downside and upside ranges, identify the drivers of volatility, and convert uncertainty into disciplined decision paths for leaders managing risk at scale.</p>
-          <div class="bullet-list">
-            <div class="bullet-item"><span class="dot"></span><span>Risk measurement engine</span></div>
-            <div class="bullet-item"><span class="dot"></span><span>Simulation engine</span></div>
-            <div class="bullet-item"><span class="dot"></span><span>Decision-oriented action signals</span></div>
-          </div>
-          <div class="linkish">Learn how this supports decisions <span>→</span></div>
-        </div>
-
-        <div class="card">
-          <div class="badge-row"><div class="number-badge">03</div><div class="badge-line"></div></div>
-          <div class="eyebrow" style="margin-top:20px; color:var(--teal);">Turn signals into foresight</div>
-          <h4 style="font-size:22px; margin-top:8px;">Forecasting &amp; Early Signal Detection</h4>
-          <p>Combine macro, market, company, and operating data to improve forecasting, detect inflection points earlier, and monitor the indicators that matter most.</p>
-          <div class="bullet-list">
-            <div class="bullet-item"><span class="dot"></span><span>Prediction / forecasting engine</span></div>
-            <div class="bullet-item"><span class="dot"></span><span>Causal engine</span></div>
-            <div class="bullet-item"><span class="dot"></span><span>Interactive engine</span></div>
-          </div>
-          <div class="linkish">Learn how this supports decisions <span>→</span></div>
-        </div>
-
-        <div class="card">
-          <div class="badge-row"><div class="number-badge">04</div><div class="badge-line"></div></div>
-          <div class="eyebrow" style="margin-top:20px; color:var(--teal);">Position the business for changing demand</div>
-          <h4 style="font-size:22px; margin-top:8px;">Commercial &amp; Demand Intelligence</h4>
-          <p>Evaluate how rates, inflation, labor conditions, consumer trends, and industry shifts affect demand, pricing, mix, and revenue performance.</p>
-          <div class="bullet-list">
-            <div class="bullet-item"><span class="dot"></span><span>Prediction engine</span></div>
-            <div class="bullet-item"><span class="dot"></span><span>Optimization engine</span></div>
-            <div class="bullet-item"><span class="dot"></span><span>Simulation engine</span></div>
-          </div>
-          <div class="linkish">Learn how this supports decisions <span>→</span></div>
-        </div>
-
-        <div class="card">
-          <div class="badge-row"><div class="number-badge">05</div><div class="badge-line"></div></div>
-          <div class="eyebrow" style="margin-top:20px; color:var(--teal);">Prioritize where resources create the most value</div>
-          <h4 style="font-size:22px; margin-top:8px;">Capital Allocation &amp; Portfolio Decisions</h4>
-          <p>Compare investment choices under different assumptions and optimize across growth, resilience, profitability, strategic fit, and risk tolerance.</p>
-          <div class="bullet-list">
-            <div class="bullet-item"><span class="dot"></span><span>Optimization engine</span></div>
-            <div class="bullet-item"><span class="dot"></span><span>Valuation engine</span></div>
-            <div class="bullet-item"><span class="dot"></span><span>Risk measurement engine</span></div>
-          </div>
-          <div class="linkish">Learn how this supports decisions <span>→</span></div>
-        </div>
-
-        <div class="card">
-          <div class="badge-row"><div class="number-badge">06</div><div class="badge-line"></div></div>
-          <div class="eyebrow" style="margin-top:20px; color:var(--teal);">From data complexity to strategic clarity</div>
-          <h4 style="font-size:22px; margin-top:8px;">Executive Intelligence Briefings</h4>
-          <p>Produce executive-ready insights, concise narratives, and decision-oriented reporting that connect analysis to action for leadership teams.</p>
-          <div class="bullet-list">
-            <div class="bullet-item"><span class="dot"></span><span>Generative engine</span></div>
-            <div class="bullet-item"><span class="dot"></span><span>Interactive engine</span></div>
-            <div class="bullet-item"><span class="dot"></span><span>Agentic / cognitive engine</span></div>
-          </div>
-          <div class="linkish">Learn how this supports decisions <span>→</span></div>
-        </div>
+    </div>
+    <div class="panel">
+      <p class="eyebrow-section">Use Case 02</p>
+      <h3 style="margin-top:8px;">Tariff Shock & Pricing</h3>
+      <p>Decide whether to raise price, shift sourcing, redesign the cost structure, or phase execution as tariff pressure moves through margin, channels, and demand.</p>
+      <div class="hero-actions" style="margin-top:18px;">
+        <a class="btn" href="use-case-02-tariff-shock.html">Open Page</a>
       </div>
-    </section>
+    </div>
+    <div class="panel">
+      <p class="eyebrow-section">Use Case 03</p>
+      <h3 style="margin-top:8px;">Hiring Under Demand Uncertainty</h3>
+      <p>Separate real capacity need from momentum hiring and decide when to expand, use flexible labor, preserve a buffer, or hold fixed cost discipline.</p>
+      <div class="hero-actions" style="margin-top:18px;">
+        <a class="btn" href="use-case-03-hiring-demand-uncertainty.html">Open Page</a>
+      </div>
+    </div>
+    <div class="panel">
+      <p class="eyebrow-section">Use Case 04</p>
+      <h3 style="margin-top:8px;">Oversupply & Price Collapse</h3>
+      <p>Decide whether to move price, liquidate inventory, reset procurement, redirect supply, or protect margin when competitor oversupply distorts the market.</p>
+      <div class="hero-actions" style="margin-top:18px;">
+        <a class="btn" href="use-case-04-oversupply-price-collapse.html">Open Page</a>
+      </div>
+    </div>
+    <div class="panel">
+      <p class="eyebrow-section">Use Case 05</p>
+      <h3 style="margin-top:8px;">Capacity Expansion</h3>
+      <p>Evaluate whether to build, outsource, phase, or delay as demand durability, financing conditions, and fixed-cost risk reshape the investment case.</p>
+      <div class="hero-actions" style="margin-top:18px;">
+        <a class="btn" href="use-case-05-capacity-expansion.html">Open Page</a>
+      </div>
+    </div>
+    <div class="panel">
+      <p class="eyebrow-section">Use Case 06</p>
+      <h3 style="margin-top:8px;">Strategic Pivot</h3>
+      <p>Decide whether to stay the course, reallocate capital, phase a pivot, run dual strategies, or commit once structural change and readiness align.</p>
+      <div class="hero-actions" style="margin-top:18px;">
+        <a class="btn" href="use-case-06-strategic-pivot.html">Open Page</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">From Example to Application</p>
+  <h2>Discuss the decision corridor that best matches your enterprise challenge</h2>
+  <p>These examples are illustrative, but the decision discipline is practical. Each corridor is designed to show how leadership can move through uncertainty with more structure, better economics, and less momentum-driven risk.</p>
+  <p>Consilium.ai, powered by AAIDIS, is built to support decisions that sit across functions and across time—where forecasting, simulation, optimization, causal reasoning, and executive judgment must work together.</p>
+  <p>Whether the issue is pricing, sourcing, workforce design, capacity investment, strategic change, or corporate development, the objective is the same: make decisions that remain sound as conditions evolve.</p>
+  <div class="cta-actions">
+    <a class="btn" href="contact.html">Discuss your use case</a>
+    <a class="btn-outline" href="decision-platform.html">Learn more about AAIDIS</a>
+  </div>
+</section>
+
+    <div class="footer-space"></div>
   </div>
 </body>
 </html>
