@@ -142,7 +142,7 @@ img { max-width:100%; display:block; }
   background-color: #0f172a;
   color: #e5e7eb;
   padding: 60px 40px 30px;
-  margin-top: 80px;
+  margin-top: 40px;
   font-family: 'Inter', sans-serif;
 }
 
@@ -152,6 +152,7 @@ img { max-width:100%; display:block; }
   gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 24px; /* ADD THIS */
 }
 
 .footer-section ul {
