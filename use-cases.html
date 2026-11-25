@@ -1,389 +1,490 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Use Cases | Consilium.ai</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Use Cases | Consilium.ai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .corridor {
+        position: relative;
+      }
 
-<style>
-  .corridor {
-    position: relative;
-  }
+      .event-band {
+        display: grid;
+        grid-template-columns: 84px minmax(0, 0.975fr) minmax(320px, 0.8fr);
+        gap: 18px;
+        align-items: stretch;
+        position: relative;
+        margin: 18px 0 22px;
+      }
 
-  .event-band {
-    display: grid;
-    grid-template-columns: 84px minmax(0, 0.975fr) minmax(320px, 0.8fr);
-    gap: 18px;
-    align-items: stretch;
-    position: relative;
-    margin: 18px 0 22px;
-  }
+      .event-marker {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        min-height: 100%;
+      }
 
-  .event-marker {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    min-height: 100%;
-  }
+      .event-marker::before {
+        content: "";
+        position: absolute;
+        top: -22px;
+        bottom: -22px;
+        left: 43%;
+        transform: translateX(-50%);
+        width: 4px;
+        background: linear-gradient(180deg, #6f95bf 0%, #5e84b0 100%);
+        border-radius: 999px;
+        opacity: 0.95;
+        z-index: 0;
+      }
 
-  .event-marker::before {
-    content: "";
-    position: absolute;
-    top: -22px;
-    bottom: -22px;
-    left: 43%;
-    transform: translateX(-50%);
-    width: 4px;
-    background: linear-gradient(180deg, #6f95bf 0%, #5e84b0 100%);
-    border-radius: 999px;
-    opacity: 0.95;
-    z-index: 0;
-  }
+      .event-dot {
+        position: relative;
+        z-index: 1;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #ffffff;
+        border: 5px solid #1f5aa6;
+        margin-top: 18px;
+        box-sizing: border-box;
+        box-shadow: 0 0 0 3px rgba(31, 90, 166, 0.08);
+      }
 
-  .event-dot {
-    position: relative;
-    z-index: 1;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    background: #ffffff;
-    border: 5px solid #1f5aa6;
-    margin-top: 18px;
-    box-sizing: border-box;
-    box-shadow: 0 0 0 3px rgba(31, 90, 166, 0.08);
-  }
+      .event-main,
+        .event-side {
+        min-width: 0;
+        background: #f8fbff;
+        border: 1.5px dashed rgba(76, 130, 196, 0.38);
+        border-radius: 28px;
+        padding: 24px 26px;
+      }
 
-  .event-main,
-  .event-side {
-    min-width: 0;
-    background: #f8fbff;
-    border: 1.5px dashed rgba(76, 130, 196, 0.38);
-    border-radius: 28px;
-    padding: 24px 26px;
-  }
+      .event-main {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
 
-  .event-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
+      .event-side {
+        display: flex;
+        align-items: flex-start;
+      }
 
-  .event-side {
-    display: flex;
-    align-items: flex-start;
-  }
+      .event-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 18px;
+        margin-bottom: 16px;
+      }
 
-  .event-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 18px;
-    margin-bottom: 16px;
-  }
+      .event-top > div:first-child {
+        min-width: 0;
+        flex: 1 1 auto;
+      }
 
-  .event-top > div:first-child {
-    min-width: 0;
-    flex: 1 1 auto;
-  }
+      .event-top h3 {
+        margin: 8px 0 0;
+        line-height: 1.05;
+        max-width: 16ch;
+      }
 
-  .event-top h3 {
-    margin: 8px 0 0;
-    line-height: 1.05;
-    max-width: 16ch;
-  }
+      .event-main > p {
+        margin: 0;
+        max-width: 62ch;
+        line-height: 1.55;
+      }
 
-  .event-main > p {
-    margin: 0;
-    max-width: 62ch;
-    line-height: 1.55;
-  }
+      .event-side .metric-stack {
+        width: 100%;
+        margin: 0;
+      }
 
-  .event-side .metric-stack {
-    width: 100%;
-    margin: 0;
-  }
+      .event-side .metric-card {
+        width: 100%;
+        margin: 0;
+        border-radius: 22px;
+        box-sizing: border-box;
+      }
 
-  .event-side .metric-card {
-    width: 100%;
-    margin: 0;
-    border-radius: 22px;
-    box-sizing: border-box;
-  }
+      .event-label {
+        display: inline-block;
+        font-size: 0.9rem;
+        font-weight: 800;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
 
-  .event-label {
-    display: inline-block;
-    font-size: 0.9rem;
-    font-weight: 800;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-  }
+      .event-top .signal {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        margin-top: 10px;
+      }
 
-  .event-top .signal {
-    flex: 0 0 auto;
-    white-space: nowrap;
-    margin-top: 10px;
-  }
+      @media (max-width: 1180px) {
+        .event-band {
+          grid-template-columns: 64px 1fr;
+        }
 
-  @media (max-width: 1180px) {
-    .event-band {
-      grid-template-columns: 64px 1fr;
-    }
+        .event-side {
+          grid-column: 2 / 3;
+        }
 
-    .event-side {
-      grid-column: 2 / 3;
-    }
-  }
+      }
 
-  @media (max-width: 768px) {
-    .event-band {
-      grid-template-columns: 40px 1fr;
-      gap: 14px;
-    }
+      @media (max-width: 768px) {
+        .event-band {
+          grid-template-columns: 40px 1fr;
+          gap: 14px;
+        }
 
-    .event-main,
-    .event-side {
-      padding: 20px 18px;
-      border-radius: 22px;
-    }
+        .event-main,
+          .event-side {
+          padding: 20px 18px;
+          border-radius: 22px;
+        }
 
-    .event-top {
-      flex-direction: column;
-      align-items: flex-start;
-    }
+        .event-top {
+          flex-direction: column;
+          align-items: flex-start;
+        }
 
-    .event-top h3 {
-      max-width: none;
-    }
+        .event-top h3 {
+          max-width: none;
+        }
 
-    .event-marker::before {
-      width: 3px;
-    }
+        .event-marker::before {
+          width: 3px;
+        }
 
-    .event-dot {
-      width: 16px;
-      height: 16px;
-      border-width: 4px;
-    }
-  }
-</style>
+        .event-dot {
+          width: 16px;
+          height: 16px;
+          border-width: 4px;
+        }
 
-</head>
-<body>
-  <div class="site-header-wrap">
-    <div class="site-shell">
-      <header class="header">
-        <a class="brand" href="index.html" aria-label="Consilium.ai home">
+      }
+    </style>
+  </head>
+  <body>
+    <div class="site-header-wrap">
+      <div class="site-shell">
+        <header class="header">
+          <a class="brand" href="index.html" aria-label="Consilium.ai home">
           <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
           <div>
-            <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
-            <div class="brand-sub">AI Decision Intelligence</div>
+            <div class="brand-title">
+              <span>Consilium</span><span class="green">.ai</span>
+            </div>
+            <div class="brand-sub">
+              AI Decision Intelligence
+            </div>
           </div>
-        </a>
-        <nav class="nav" aria-label="Primary navigation">
-          <a href="index.html">Home</a>
-          <a href="decision-platform.html">Decision Platform</a>
-          <a href="decision-intelligence.html">Decision Intelligence</a>
-          <a class="active" href="use-cases.html">Use Cases</a>
-          <a href="insights.html">Insights</a>
-          <a href="about.html">About</a>
-          <a href="contact.html">Contact</a>
-          <a class="nav-cta" href="contact.html">Request a Demo</a>
-        </nav>
-      </header>
-    </div>
-  </div>
-
-  <div class="container">
-
-<section class="hero section">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-tag">Use Cases · AAIDIS in Action</div>
-      <h1>Decision intelligence for the moments where weak choices become expensive.</h1>
-      <p>
-        These use cases show how AAIDIS supports real executive decisions under uncertainty. Each example is structured as a decision corridor, not a descriptive workflow, because the objective is to improve what leadership chooses to do next.
-      </p>
-      <p>
-        The pages below follow one disciplined path through each problem. They make the decision gates explicit, show which AAIDIS muscles are activated, and track the economics of continuing, revising, holding, or stopping as conditions evolve.
-      </p>
-      <div class="hero-actions">
-        <a class="btn" href="#use-case-grid">Explore Use Cases</a>
-        <a class="btn-outline" href="decision-platform.html">View Decision Platform</a>
+          </a>
+          <nav class="nav" aria-label="Primary navigation">
+            <a href="index.html">Home</a>
+            <div class="portfolio-nav">
+              <a href="products.html">Products</a><button class="portfolio-toggle" type="button" aria-label="Toggle product menu" aria-expanded="false" aria-controls="portfolio-menu"><span aria-hidden="true">⌄</span></button>
+              <div class="portfolio-menu" id="portfolio-menu">
+                <a href="cae.html"><strong>Consilium Analytical Engine (CAE)</strong><small>Advanced analytical computing</small></a><a href="cfi.html"><strong>Consilium Financial Intelligence (CFI)</strong><small>Investment and financial intelligence</small></a><a href="sentinel.html"><strong>Consilium Sentinel</strong><small>Corporate risk intelligence</small></a><a href="cmi.html"><strong>Consilium Market Intelligence (CMI)</strong><small>Market and competitive intelligence</small></a><a href="flow.html"><strong>Consilium Flow</strong><small>Supply chain and operational intelligence</small></a><a href="aaidis-product.html"><strong>AAIDIS</strong><small>Agentic AI decision intelligence</small></a><a href="products.html">Explore all products →</a>
+              </div>
+            </div>
+            <a href="services.html">Services</a><a href="clients.html">Clients</a><a href="insights.html">Insights</a><a href="about.html">About</a><a href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Request a Demo</a>
+          </nav>
+        </header>
       </div>
     </div>
-
-    <div style="position:relative;">
-      <div class="orb1"></div>
-      <div class="orb2"></div>
-      <div class="glass-wrap">
-        <div class="metric-grid-2">
-          <div class="glass-card">
-            <div class="eyebrow">Decision focus</div>
-            <div class="big">Executive decisions, not analytics snapshots</div>
-            <p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">
-              Each use case shows how AAIDIS evaluates the situation, anticipates what may happen next, and recommends the next move.
+    <div class="container">
+      <nav class="aaidis-nav" aria-label="AAIDIS navigation">
+        <span>AAIDIS</span><a href="aaidis-product.html">Overview</a><a href="decision-platform.html">Decision Platform</a><a href="decision-intelligence.html">Decision Intelligence</a><a href="use-cases.html" class="active" aria-current="page">Use Cases</a>
+      </nav>
+      <section class="hero section">
+        <div class="hero-inner">
+          <div>
+            <div class="hero-tag">
+              Use Cases · AAIDIS in Action
+            </div>
+            <h1>
+              Decision intelligence for the moments where weak choices become expensive.
+            </h1>
+            <p>
+              These use cases show how AAIDIS supports real executive decisions under uncertainty. Each example is structured as a decision corridor, not a descriptive workflow, because the objective is to improve what leadership chooses to do next.
             </p>
+            <p>
+              The pages below follow one disciplined path through each problem. They make the decision gates explicit, show which AAIDIS muscles are activated, and track the economics of continuing, revising, holding, or stopping as conditions evolve.
+            </p>
+            <div class="hero-actions">
+              <a class="btn" href="#use-case-grid">Explore Use Cases</a>
+        <a class="btn-outline" href="decision-platform.html">View Decision Platform</a>
+            </div>
           </div>
-          <div class="glass-card">
-            <div class="eyebrow">Economic framing</div>
-            <div class="big">Track cost, value preserved, and downside avoided</div>
-            <p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">
-              Weak decisions compound over time. The pages make visible how late-stage reversal becomes more expensive.
-            </p>
-          </div>
-          <div class="glass-card">
-            <div class="eyebrow">System view</div>
-            <div class="big">External shocks reshape the path</div>
-            <p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">
-              These scenarios reflect real decision environments in which policy moves, demand shifts, competitors, and operating constraints change the economics.
-            </p>
-          </div>
-          <div class="glass-card">
-            <div class="eyebrow">AAIDIS role</div>
-            <div class="big">Advisor, not reporting layer</div>
-            <p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">
-              AAIDIS integrates forecasting, simulation, optimization, causal reasoning, and agentic guidance into one decision discipline.
-            </p>
+          <div style="position:relative;">
+            <div class="orb1">
+            </div>
+            <div class="orb2">
+            </div>
+            <div class="glass-wrap">
+              <div class="metric-grid-2">
+                <div class="glass-card">
+                  <div class="eyebrow">
+                    Decision focus
+                  </div>
+                  <div class="big">
+                    Executive decisions, not analytics snapshots
+                  </div>
+                  <p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">
+                    Each use case shows how AAIDIS evaluates the situation, anticipates what may happen next, and recommends the next move.
+                  </p>
+                </div>
+                <div class="glass-card">
+                  <div class="eyebrow">
+                    Economic framing
+                  </div>
+                  <div class="big">
+                    Track cost, value preserved, and downside avoided
+                  </div>
+                  <p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">
+                    Weak decisions compound over time. The pages make visible how late-stage reversal becomes more expensive.
+                  </p>
+                </div>
+                <div class="glass-card">
+                  <div class="eyebrow">
+                    System view
+                  </div>
+                  <div class="big">
+                    External shocks reshape the path
+                  </div>
+                  <p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">
+                    These scenarios reflect real decision environments in which policy moves, demand shifts, competitors, and operating constraints change the economics.
+                  </p>
+                </div>
+                <div class="glass-card">
+                  <div class="eyebrow">
+                    AAIDIS role
+                  </div>
+                  <div class="big">
+                    Advisor, not reporting layer
+                  </div>
+                  <p class="small" style="margin-top:10px; color:rgba(255,255,255,.82);">
+                    AAIDIS integrates forecasting, simulation, optimization, causal reasoning, and agentic guidance into one decision discipline.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="use-case-grid" class="panel section">
-  <div class="section-top">
-    <div>
-      <p class="eyebrow-section">Use Case Portfolio</p>
-      <h2 class="h2 medium">Six executive decision corridors built on the same decision discipline</h2>
-    </div>
-    <p class="section-copy">
-      Each use case shows how complex, high-stakes decisions unfold under real conditions—where uncertainty, external pressure, and timing shape outcomes. Explore how AAIDIS guides each decision toward value preservation and disciplined execution.
-    </p>
-  </div>
-
-  <div class="cards-3" style="margin-top:32px;">
-    <div class="panel">
-      <p class="eyebrow-section">Use Case 01</p>
-      <h3 style="margin-top:8px;">M&A Decision Corridor</h3>
-      <p>Evaluate strategic fit, valuation discipline, market reaction, competitive pressure, and whether to proceed or stop before value is destroyed.</p>
-      <div class="hero-actions" style="margin-top:18px;">
-        <a class="btn" href="use-case-01-ma.html">See AAIDIS in Action</a>
-      </div>
-    </div>
-    <div class="panel">
-      <p class="eyebrow-section">Use Case 02</p>
-      <h3 style="margin-top:8px;">Tariff Shock & Pricing</h3>
-      <p>Decide whether to raise price, shift sourcing, redesign the cost structure, or phase execution as tariff pressure moves through margin, channels, and demand.</p>
-      <div class="hero-actions" style="margin-top:18px;">
-        <a class="btn" href="use-case-02-tariff-shock.html">See AAIDIS in Action</a>
-      </div>
-    </div>
-    <div class="panel">
-      <p class="eyebrow-section">Use Case 03</p>
-      <h3 style="margin-top:8px;">Hiring Under Demand Uncertainty</h3>
-      <p>Separate real capacity need from momentum hiring and decide when to expand, use flexible labor, preserve a buffer, or hold fixed cost discipline.</p>
-      <div class="hero-actions" style="margin-top:18px;">
-        <a class="btn" href="use-case-03-hiring-demand-uncertainty.html">See AAIDIS in Action</a>
-      </div>
-    </div>
-    <div class="panel">
-      <p class="eyebrow-section">Use Case 04</p>
-      <h3 style="margin-top:8px;">Oversupply & Price Collapse</h3>
-      <p>Decide whether to move price, liquidate inventory, reset procurement, redirect supply, or protect margin when competitor oversupply distorts the market.</p>
-      <div class="hero-actions" style="margin-top:18px;">
-        <a class="btn" href="use-case-04-oversupply-price-collapse.html">See AAIDIS in Action</a>
-      </div>
-    </div>
-    <div class="panel">
-      <p class="eyebrow-section">Use Case 05</p>
-      <h3 style="margin-top:8px;">Capacity Expansion</h3>
-      <p>Evaluate whether to build, outsource, phase, or delay as demand durability, financing conditions, and fixed-cost risk reshape the investment case.</p>
-      <div class="hero-actions" style="margin-top:18px;">
-        <a class="btn" href="use-case-05-capacity-expansion.html">See AAIDIS in Action</a>
-      </div>
-    </div>
-    <div class="panel">
-      <p class="eyebrow-section">Use Case 06</p>
-      <h3 style="margin-top:8px;">Strategic Pivot</h3>
-      <p>Decide whether to stay the course, reallocate capital, phase a pivot, run dual strategies, or commit once structural change and readiness align.</p>
-      <div class="hero-actions" style="margin-top:18px;">
-        <a class="btn" href="use-case-06-strategic-pivot.html">See AAIDIS in Action</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta">
-  <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">From Example to Application</p>
-  <h2>Discuss the decision corridor that best matches your enterprise challenge</h2>
-  <p>These examples are illustrative, but the decision discipline is practical. Each corridor is designed to show how leadership can move through uncertainty with more structure, better economics, and less momentum-driven risk.</p>
-  <p>Consilium.ai, powered by AAIDIS, is built to support decisions that sit across functions and across time—where forecasting, simulation, optimization, causal reasoning, and executive judgment must work together.</p>
-  <p>Whether the issue is pricing, sourcing, workforce design, capacity investment, strategic change, or corporate development, the objective is the same: make decisions that remain sound as conditions evolve.</p>
-  <div class="cta-actions">
-    <a class="btn" href="contact.html">Discuss your use case</a>
+      </section>
+      <section id="use-case-grid" class="panel section">
+        <div class="section-top">
+          <div>
+            <p class="eyebrow-section">
+              Use Case Portfolio
+            </p>
+            <h2 class="h2 medium">
+              Six executive decision corridors built on the same decision discipline
+            </h2>
+          </div>
+          <p class="section-copy">
+            Each use case shows how complex, high-stakes decisions unfold under real conditions—where uncertainty, external pressure, and timing shape outcomes. Explore how AAIDIS guides each decision toward value preservation and disciplined execution.
+          </p>
+        </div>
+        <div class="cards-3" style="margin-top:32px;">
+          <div class="panel">
+            <p class="eyebrow-section">
+              Use Case 01
+            </p>
+            <h3 style="margin-top:8px;">
+              M&A Decision Corridor
+            </h3>
+            <p>
+              Evaluate strategic fit, valuation discipline, market reaction, competitive pressure, and whether to proceed or stop before value is destroyed.
+            </p>
+            <div class="hero-actions" style="margin-top:18px;">
+              <a class="btn" href="use-case-01-ma.html">See AAIDIS in Action</a>
+            </div>
+          </div>
+          <div class="panel">
+            <p class="eyebrow-section">
+              Use Case 02
+            </p>
+            <h3 style="margin-top:8px;">
+              Tariff Shock & Pricing
+            </h3>
+            <p>
+              Decide whether to raise price, shift sourcing, redesign the cost structure, or phase execution as tariff pressure moves through margin, channels, and demand.
+            </p>
+            <div class="hero-actions" style="margin-top:18px;">
+              <a class="btn" href="use-case-02-tariff-shock.html">See AAIDIS in Action</a>
+            </div>
+          </div>
+          <div class="panel">
+            <p class="eyebrow-section">
+              Use Case 03
+            </p>
+            <h3 style="margin-top:8px;">
+              Hiring Under Demand Uncertainty
+            </h3>
+            <p>
+              Separate real capacity need from momentum hiring and decide when to expand, use flexible labor, preserve a buffer, or hold fixed cost discipline.
+            </p>
+            <div class="hero-actions" style="margin-top:18px;">
+              <a class="btn" href="use-case-03-hiring-demand-uncertainty.html">See AAIDIS in Action</a>
+            </div>
+          </div>
+          <div class="panel">
+            <p class="eyebrow-section">
+              Use Case 04
+            </p>
+            <h3 style="margin-top:8px;">
+              Oversupply & Price Collapse
+            </h3>
+            <p>
+              Decide whether to move price, liquidate inventory, reset procurement, redirect supply, or protect margin when competitor oversupply distorts the market.
+            </p>
+            <div class="hero-actions" style="margin-top:18px;">
+              <a class="btn" href="use-case-04-oversupply-price-collapse.html">See AAIDIS in Action</a>
+            </div>
+          </div>
+          <div class="panel">
+            <p class="eyebrow-section">
+              Use Case 05
+            </p>
+            <h3 style="margin-top:8px;">
+              Capacity Expansion
+            </h3>
+            <p>
+              Evaluate whether to build, outsource, phase, or delay as demand durability, financing conditions, and fixed-cost risk reshape the investment case.
+            </p>
+            <div class="hero-actions" style="margin-top:18px;">
+              <a class="btn" href="use-case-05-capacity-expansion.html">See AAIDIS in Action</a>
+            </div>
+          </div>
+          <div class="panel">
+            <p class="eyebrow-section">
+              Use Case 06
+            </p>
+            <h3 style="margin-top:8px;">
+              Strategic Pivot
+            </h3>
+            <p>
+              Decide whether to stay the course, reallocate capital, phase a pivot, run dual strategies, or commit once structural change and readiness align.
+            </p>
+            <div class="hero-actions" style="margin-top:18px;">
+              <a class="btn" href="use-case-06-strategic-pivot.html">See AAIDIS in Action</a>
+            </div>
+          </div>
+        </div>
+        <section class="section">
+          <div class="panel">
+            <p class="eyebrow-section">
+              Additional Business Situation
+            </p>
+            <h2 class="h2 medium">
+              Pricing strategy under competitive and demand pressure
+            </h2>
+            <p class="section-copy">
+              A public PepsiCo pricing reversal provides a concrete example of why price changes should be evaluated as dynamic decisions involving volume, margin, costs, customer response, competitor behavior, and the option to reverse course.
+            </p>
+            <a class="linkish" href="use-case-07-pricing-strategy.html">Explore the pricing war-game example →</a>
+          </div>
+        </section>
+        <section class="cta">
+          <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">
+            From Example to Application
+          </p>
+          <h2>
+            Discuss the decision corridor that best matches your enterprise challenge
+          </h2>
+          <p>
+            These examples are illustrative, but the decision discipline is practical. Each corridor is designed to show how leadership can move through uncertainty with more structure, better economics, and less momentum-driven risk.
+          </p>
+          <p>
+            Consilium.ai, powered by AAIDIS, is built to support decisions that sit across functions and across time—where forecasting, simulation, optimization, causal reasoning, and executive judgment must work together.
+          </p>
+          <p>
+            Whether the issue is pricing, sourcing, workforce design, capacity investment, strategic change, or corporate development, the objective is the same: make decisions that remain sound as conditions evolve.
+          </p>
+          <div class="cta-actions">
+            <a class="btn" href="contact.html">Discuss your use case</a>
     <a class="btn-outline" href="decision-platform.html">Learn more about AAIDIS</a>
-  </div>
-</section>
-
-    <div class="footer-space"></div>
-  </div>
+          </div>
+        </section>
+        <div class="footer-space">
+        </div>
+      </div>
       <footer class="site-footer">
-  <div class="footer-container">
-
-    <!-- Brand + Positioning -->
-    <div class="footer-section footer-brand">
-      <div class="footer-logo">Consilium.ai</div>
-      <p class="footer-tagline">
-        Decision intelligence systems for enterprise leaders.
-      </p>
-      <p class="footer-description">
-        Consilium.ai develops AAIDIS (Agentic AI Decision Intelligence Systems) to improve decision quality under uncertainty.
-      </p>
-    </div>
-
-    <!-- Navigation -->
-    <div class="footer-section">
-      <div class="footer-heading">Platform</div>
-      <ul>
-        <li><a href="decision-platform.html">Decision Platform</a></li>
-        <li><a href="decision-intelligence.html">Decision Intelligence</a></li>
-        <li><a href="use-cases.html">Use Cases</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-section">
-      <div class="footer-heading">Insights</div>
-      <ul>
-        <li><a href="insights.html">Insights</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-section">
-      <div class="footer-heading">Company</div>
-      <ul>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-
-  </div>
-
-  <!-- Bottom Bar -->
-  <div class="footer-bottom">
-    <p>
-      © 2026 Consilium.ai. All rights reserved.
-    </p>
-    <p class="footer-legal">
-      AAIDIS™ (Agentic AI Decision Intelligence System) and all related concepts, frameworks, and materials are the intellectual property of Consilium.ai. 
+        <div class="footer-container">
+          <!-- Brand + Positioning -->
+          <div class="footer-section footer-brand">
+            <div class="footer-logo">
+              Consilium.ai
+            </div>
+            <p class="footer-tagline">
+              Decision intelligence systems for enterprise leaders.
+            </p>
+            <p class="footer-description">
+              Consilium.ai develops AAIDIS (Agentic AI Decision Intelligence Systems) to improve decision quality under uncertainty.
+            </p>
+          </div>
+          <!-- Navigation -->
+          <div class="footer-section">
+            <div class="footer-heading">
+              Platform
+            </div>
+            <ul>
+              <li>
+                <a href="decision-platform.html">Decision Platform</a>
+              </li>
+              <li>
+                <a href="decision-intelligence.html">Decision Intelligence</a>
+              </li>
+              <li>
+                <a href="use-cases.html">Use Cases</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <div class="footer-heading">
+              Insights
+            </div>
+            <ul>
+              <li>
+                <a href="insights.html">Insights</a>
+              </li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <div class="footer-heading">
+              Company
+            </div>
+            <ul>
+              <li>
+                <a href="about.html">About</a>
+              </li>
+              <li>
+                <a href="contact.html">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Bottom Bar -->
+        <div class="footer-bottom">
+          <p>
+            © 2026 Consilium.ai. All rights reserved.
+          </p>
+          <p class="footer-legal">
+            AAIDIS™ (Agentic AI Decision Intelligence System) and all related concepts, frameworks, and materials are the intellectual property of Consilium.ai. 
       No part of this site may be reproduced, distributed, or used to develop derivative systems without prior written permission.
-    </p>
-  </div>
-</footer>
-</body>
-</html>
+          </p>
+        </div>
+      </footer>
+      <script src="navigation.js" defer></script>
+    </body>
+  </html>
