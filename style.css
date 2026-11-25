@@ -280,3 +280,34 @@ img { max-width:100%; display:block; }
 .method-proof{margin-top:26px;display:flex;gap:10px;flex-wrap:wrap}.method-proof span{border:1px solid var(--line);background:#f7fafc;padding:9px 12px;border-radius:999px;color:var(--slate);font-size:13px;font-weight:700}
 @media(max-width:980px){.problem-grid{grid-template-columns:1fr 1fr}.decision-chain{grid-template-columns:repeat(3,1fr)}.decision-step::after{display:none}.value-strip{grid-template-columns:1fr 1fr}.compare-flow{grid-template-columns:1fr}.compare-arrow{text-align:center;transform:rotate(90deg)}.situation-grid{grid-template-columns:1fr}}
 @media(max-width:680px){.problem-grid,.value-strip{grid-template-columns:1fr}.decision-chain{grid-template-columns:1fr}}
+
+/* Portfolio navigation and AAIDIS secondary navigation */
+.portfolio-nav{position:relative;display:inline-flex;align-items:center;gap:3px;}
+.portfolio-toggle{font:inherit;color:var(--slate);background:transparent;border:0;cursor:pointer;padding:6px;line-height:1;}
+.portfolio-menu{display:none;position:absolute;top:100%;left:0;width:340px;max-width:calc(100vw - 32px);padding:10px;background:white;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 45px rgba(22,55,102,.18);z-index:1100;max-height:65vh;overflow:auto;}
+.portfolio-nav.is-open .portfolio-menu{display:block;}
+.portfolio-menu a{display:block;padding:10px 12px;border-radius:8px;color:var(--navy);line-height:1.35;}
+.portfolio-menu a:hover,.portfolio-menu a:focus-visible{background:#edf3f8;}
+.portfolio-menu small{display:block;color:var(--slate);font-size:12px;margin-top:3px;}
+.portfolio-menu a:last-child{border-top:1px solid var(--line);color:var(--blue);}
+.aaidis-nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0 20px;padding:12px 16px;background:white;border:1px solid var(--line);border-radius:16px;color:var(--navy);font-size:14px;}
+.aaidis-nav span{font-weight:800;margin-right:10px;}.aaidis-nav a{padding:8px 12px;border-radius:8px;}.aaidis-nav a.active{background:var(--blue);color:white;}.aaidis-nav a:not(.active):hover{background:#edf3f8;}
+@media(max-width:720px){.portfolio-nav{position:static}.nav{position:relative}.portfolio-menu{left:0;top:auto;transform:translateY(100%);bottom:0;width:min(340px,calc(100vw - 60px));}}
+
+/* Client brand assets */
+.client-logo { display:flex; align-items:center; justify-content:flex-start; height:92px; margin:12px 0 14px; }
+.client-logo img { display:block; width:auto; height:auto; max-width:100%; max-height:80px; object-fit:contain; }
+
+/* Balanced card layouts: four cards form a 2 x 2 grid. */
+@media (min-width: 721px) {
+  :is(.product-grid,.problem-grid,.product-capability-grid,.cards-3,.cards-4,.value-strip):has(> :nth-child(4):last-child) {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+  .product-grid:has(> :nth-child(4):last-child) > .product-card { min-height: 0; }
+}
+@media (min-width: 701px) and (max-width: 1050px) {
+  .product-grid:has(> :nth-child(3):last-child) > :last-child { grid-column: 1 / -1; }
+}
+@media (min-width: 681px) and (max-width: 980px) {
+  .problem-grid:has(> :nth-child(3):last-child) > :last-child { grid-column: 1 / -1; }
+}
