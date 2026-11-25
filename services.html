@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-    <link href="style.css" rel="stylesheet"/>
+    <link href="style.css?v=20261125-nav2" rel="stylesheet"/>
   </head>
   <body>
     <div class="site-header-wrap">
@@ -27,9 +27,35 @@
           <nav class="nav" aria-label="Primary navigation">
             <a href="index.html">Home</a>
             <div class="portfolio-nav">
-              <a href="products.html">Products</a><button class="portfolio-toggle" type="button" aria-label="Toggle product menu" aria-expanded="false" aria-controls="portfolio-menu"><span aria-hidden="true">⌄</span></button>
+              <a href="products.html">Products</a>
+              <button class="portfolio-toggle" type="button" aria-label="Toggle product menu" aria-expanded="false" aria-controls="portfolio-menu">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M4 6l4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
               <div class="portfolio-menu" id="portfolio-menu">
-                <a href="cae.html"><strong>Consilium Analytical Engine (CAE)</strong><small>Advanced analytical computing</small></a><a href="cfi.html"><strong>Consilium Financial Intelligence (CFI)</strong><small>Investment and financial intelligence</small></a><a href="sentinel.html"><strong>Consilium Sentinel</strong><small>Corporate risk intelligence</small></a><a href="cmi.html"><strong>Consilium Market Intelligence (CMI)</strong><small>Market and competitive intelligence</small></a><a href="flow.html"><strong>Consilium Flow</strong><small>Supply chain and operational intelligence</small></a><a href="aaidis-product.html"><strong>AAIDIS</strong><small>Agentic AI decision intelligence</small></a><a href="products.html">Explore all products →</a>
+                <a href="cae.html">
+                  <span>Consilium Analytical Engine</span>
+                  <span class="portfolio-acronym">CAE</span>
+                </a>
+                <a href="cfi.html">
+                  <span>Consilium Financial Intelligence</span>
+                  <span class="portfolio-acronym">CFI</span>
+                </a>
+                <a href="sentinel.html">
+                  <span>Consilium Sentinel</span>
+                </a>
+                <a href="cmi.html">
+                  <span>Consilium Market Intelligence</span>
+                  <span class="portfolio-acronym">CMI</span>
+                </a>
+                <a href="flow.html">
+                  <span>Consilium Flow</span>
+                </a>
+                <a href="aaidis-product.html">
+                  <span>AAIDIS</span>
+                </a>
+                <a class="portfolio-all" href="products.html">View all products <span aria-hidden="true">→</span></a>
               </div>
             </div>
             <a href="services.html" class="active" aria-current="page">Services</a><a href="clients.html">Clients</a><a href="insights.html">Insights</a><a href="about.html">About</a><a href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Request a Demo</a>
@@ -124,6 +150,6 @@
         </div>
       </section>
     </main>
-    <script src="navigation.js" defer></script>
+    <script src="navigation.js?v=20261125-nav2" defer></script>
   </body>
 </html>
