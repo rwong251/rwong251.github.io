@@ -1,376 +1,595 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Decision Platform | Consilium.ai</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Decision Platform | Consilium.ai</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="site-header-wrap">
       <div class="site-shell">
-    <header class="header">
-      <a class="brand" href="index.html" aria-label="Consilium.ai home">
+        <header class="header">
+          <a class="brand" href="index.html" aria-label="Consilium.ai home">
         <img class="brand-logo" src="assets/consilium-logo.png" alt="Consilium.ai logo" />
-        <div>
-          <div class="brand-title"><span>Consilium</span><span class="green">.ai</span></div>
-          <div class="brand-sub">AI Decision Intelligence</div>
-        </div>
-      </a>
-      <nav class="nav" aria-label="Primary navigation"><a href="index.html">Home</a><a href="products.html">Products</a><a class="active" href="decision-platform.html">Decision Platform</a><a href="decision-intelligence.html">Decision Intelligence</a><a href="use-cases.html">Use Cases</a><a href="insights.html">Insights</a><a href="about.html">About</a><a href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Request a Demo</a></nav>
-      <style>
-    .tags-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .tag-pill {
-      display: flex;
-      align-items: center;
-      min-height: 78px;
-      padding: 18px 20px;
-      border-radius: 22px;
-      background: rgba(255,255,255,.12);
-      border: 1px solid rgba(255,255,255,.10);
-      color: white;
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 1.25;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
-    }
-
-    .insight-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 28px;
-    }
-
-    @media (max-width: 1100px) {
-      .insight-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 820px) {
-      .tags-grid,
-      .insight-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ===== ONLY FIX ADDED ===== */
-
-    .simple-list {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-      margin-top: 18px;
-    }
-
-    .simple-item .title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 6px;
-    }
-
-    .simple-item p {
-      margin: 0;
-      font-size: 15px;
-      line-height: 1.7;
-      color: var(--slate);
-    }
-    .blue-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;   /* try 12px to 18px */
-    }
-  </style>
-    </header>
-  </div>
-</div>
-  
-  <div class="container">
-    <section class="hero">
-      <div class="hero-inner" style="grid-template-columns:1.05fr .95fr;">
-        <div>
-          <div class="hero-tag">The Decision Platform Behind Consilium.ai</div>
-          <h1>AAIDIS is built around the <span class="accent">full decision process</span></h1>
-          <p>
-            A useful decision system does more than generate analysis. It improves the sequence by which information becomes understanding, understanding becomes evaluation, evaluation becomes choice, and outcomes become learning. AAIDIS is designed around that full process so leaders can make decisions with greater structure, context, and practical rigor.
-          </p>
-          <div class="hero-actions">
-            <a class="btn" href="#architecture">Explore Architecture</a>
-            <a class="btn-outline" href="contact.html">Request a Platform Demo</a>
+          <div>
+            <div class="brand-title">
+              <span>Consilium</span><span class="green">.ai</span>
+            </div>
+            <div class="brand-sub">
+              AI Decision Intelligence
+            </div>
           </div>
-        </div>
-        <div style="position:relative;">
-          <div class="orb1"></div><div class="orb2"></div>
-          <div class="glass-wrap">
-            <div class="metric-grid-2">
-              <div class="glass-card">
-                <div class="eyebrow">Information Layer</div>
-                <div class="big">Enrich inputs</div>
-                <div class="glass-chart"><div class="bars"><div class="bar green" style="height:32px"></div><div class="bar white" style="height:56px"></div><div class="bar green" style="height:40px"></div><div class="bar white" style="height:64px"></div><div class="bar green" style="height:48px"></div><div class="ring"></div></div></div>
+          </a>
+          <nav class="nav" aria-label="Primary navigation">
+            <a href="index.html">Home</a>
+            <div class="portfolio-nav">
+              <a href="products.html">Products</a><button class="portfolio-toggle" type="button" aria-label="Toggle product menu" aria-expanded="false" aria-controls="portfolio-menu"><span aria-hidden="true">⌄</span></button>
+              <div class="portfolio-menu" id="portfolio-menu">
+                <a href="cae.html"><strong>Consilium Analytical Engine (CAE)</strong><small>Advanced analytical computing</small></a><a href="cfi.html"><strong>Consilium Financial Intelligence (CFI)</strong><small>Investment and financial intelligence</small></a><a href="sentinel.html"><strong>Consilium Sentinel</strong><small>Corporate risk intelligence</small></a><a href="cmi.html"><strong>Consilium Market Intelligence (CMI)</strong><small>Market and competitive intelligence</small></a><a href="flow.html"><strong>Consilium Flow</strong><small>Supply chain and operational intelligence</small></a><a href="aaidis-product.html"><strong>AAIDIS</strong><small>Agentic AI decision intelligence</small></a><a href="products.html">Explore all products →</a>
               </div>
-              <div class="glass-card">
-                <div class="eyebrow">Analytical Layer</div>
-                <div class="big">Surface signal</div>
-                <div class="glass-chart"><div class="bars"><div class="bar green" style="height:32px"></div><div class="bar white" style="height:56px"></div><div class="bar green" style="height:40px"></div><div class="bar white" style="height:64px"></div><div class="bar green" style="height:48px"></div><div class="ring"></div></div></div>
-              </div>
-              <div class="glass-card">
-                <div class="eyebrow">Cognitive Layer</div>
-                <div class="big">Evaluate choices</div>
-                <div class="glass-chart"><div class="bars"><div class="bar green" style="height:32px"></div><div class="bar white" style="height:56px"></div><div class="bar green" style="height:40px"></div><div class="bar white" style="height:64px"></div><div class="bar green" style="height:48px"></div><div class="ring"></div></div></div>
-              </div>
-              <div class="glass-card">
-                <div class="eyebrow">Learning Layer</div>
-                <div class="big">Refine outcomes</div>
-                <div class="glass-chart"><div class="bars"><div class="bar green" style="height:32px"></div><div class="bar white" style="height:56px"></div><div class="bar green" style="height:40px"></div><div class="bar white" style="height:64px"></div><div class="bar green" style="height:48px"></div><div class="ring"></div></div></div>
+            </div>
+            <a href="services.html">Services</a><a href="clients.html">Clients</a><a href="insights.html">Insights</a><a href="about.html">About</a><a href="contact.html">Contact</a><a class="nav-cta" href="contact.html">Request a Demo</a>
+          </nav>
+          <style>
+            .tags-grid {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 16px;
+            }
+
+            .tag-pill {
+              display: flex;
+              align-items: center;
+              min-height: 78px;
+              padding: 18px 20px;
+              border-radius: 22px;
+              background: rgba(255,255,255,.12);
+              border: 1px solid rgba(255,255,255,.10);
+              color: white;
+              font-size: 18px;
+              font-weight: 700;
+              line-height: 1.25;
+              box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+            }
+
+            .insight-grid {
+              display: grid;
+              grid-template-columns: repeat(3, minmax(0, 1fr));
+              gap: 28px;
+            }
+
+            @media (max-width: 1100px) {
+              .insight-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+              }
+
+            }
+
+            @media (max-width: 820px) {
+              .tags-grid,
+                  .insight-grid {
+                grid-template-columns: 1fr;
+              }
+
+            }
+
+            /* ===== ONLY FIX ADDED ===== */
+
+                .simple-list {
+              display: flex;
+              flex-direction: column;
+              gap: 22px;
+              margin-top: 18px;
+            }
+
+            .simple-item .title {
+              font-size: 18px;
+              font-weight: 700;
+              color: var(--navy);
+              margin-bottom: 6px;
+            }
+
+            .simple-item p {
+              margin: 0;
+              font-size: 15px;
+              line-height: 1.7;
+              color: var(--slate);
+            }
+
+            .blue-list {
+              display: flex;
+              flex-direction: column;
+              gap: 14px;
+              /* try 12px to 18px */
+            }
+          </style>
+        </header>
+      </div>
+    </div>
+    <div class="container">
+      <nav class="aaidis-nav" aria-label="AAIDIS navigation">
+        <span>AAIDIS</span><a href="aaidis-product.html">Overview</a><a href="decision-platform.html" class="active" aria-current="page">Decision Platform</a><a href="decision-intelligence.html">Decision Intelligence</a><a href="use-cases.html">Use Cases</a>
+      </nav>
+      <section class="hero">
+        <div class="hero-inner" style="grid-template-columns:1.05fr .95fr;">
+          <div>
+            <div class="hero-tag">
+              The Decision Platform Behind Consilium.ai
+            </div>
+            <h1>
+              AAIDIS is built around the <span class="accent">full decision process</span>
+            </h1>
+            <p>
+              A useful decision system does more than generate analysis. It improves the sequence by which information becomes understanding, understanding becomes evaluation, evaluation becomes choice, and outcomes become learning. AAIDIS is designed around that full process so leaders can make decisions with greater structure, context, and practical rigor.
+            </p>
+            <div class="hero-actions">
+              <a class="btn" href="#architecture">Explore Architecture</a>
+            <a class="btn-outline" href="contact.html">Request a Platform Demo</a>
+            </div>
+          </div>
+          <div style="position:relative;">
+            <div class="orb1">
+            </div>
+            <div class="orb2">
+            </div>
+            <div class="glass-wrap">
+              <div class="metric-grid-2">
+                <div class="glass-card">
+                  <div class="eyebrow">
+                    Information Layer
+                  </div>
+                  <div class="big">
+                    Enrich inputs
+                  </div>
+                  <div class="glass-chart">
+                    <div class="bars">
+                      <div class="bar green" style="height:32px">
+                      </div>
+                      <div class="bar white" style="height:56px">
+                      </div>
+                      <div class="bar green" style="height:40px">
+                      </div>
+                      <div class="bar white" style="height:64px">
+                      </div>
+                      <div class="bar green" style="height:48px">
+                      </div>
+                      <div class="ring">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="glass-card">
+                  <div class="eyebrow">
+                    Analytical Layer
+                  </div>
+                  <div class="big">
+                    Surface signal
+                  </div>
+                  <div class="glass-chart">
+                    <div class="bars">
+                      <div class="bar green" style="height:32px">
+                      </div>
+                      <div class="bar white" style="height:56px">
+                      </div>
+                      <div class="bar green" style="height:40px">
+                      </div>
+                      <div class="bar white" style="height:64px">
+                      </div>
+                      <div class="bar green" style="height:48px">
+                      </div>
+                      <div class="ring">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="glass-card">
+                  <div class="eyebrow">
+                    Cognitive Layer
+                  </div>
+                  <div class="big">
+                    Evaluate choices
+                  </div>
+                  <div class="glass-chart">
+                    <div class="bars">
+                      <div class="bar green" style="height:32px">
+                      </div>
+                      <div class="bar white" style="height:56px">
+                      </div>
+                      <div class="bar green" style="height:40px">
+                      </div>
+                      <div class="bar white" style="height:64px">
+                      </div>
+                      <div class="bar green" style="height:48px">
+                      </div>
+                      <div class="ring">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="glass-card">
+                  <div class="eyebrow">
+                    Learning Layer
+                  </div>
+                  <div class="big">
+                    Refine outcomes
+                  </div>
+                  <div class="glass-chart">
+                    <div class="bars">
+                      <div class="bar green" style="height:32px">
+                      </div>
+                      <div class="bar white" style="height:56px">
+                      </div>
+                      <div class="bar green" style="height:40px">
+                      </div>
+                      <div class="bar white" style="height:64px">
+                      </div>
+                      <div class="bar green" style="height:48px">
+                      </div>
+                      <div class="ring">
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="panel-soft section">
-      <div class="section-top">
-        <div>
-          <p class="eyebrow-section">Real-World Orientation</p>
-          <h2 class="h2">Built for messy, friction-filled decision-making</h2>
-        </div>
-        <p class="section-copy">
-          Enterprise decisions are rarely made by one actor with complete information in a stable environment. A practical decision platform must work in a world of incomplete data, multiple stakeholders, conflicting incentives, and non-equilibrium conditions.
-        </p>
-      </div>
-      <div class="cards-2" style="margin-top:32px;">
-        <div class="card soft">
-          <h4>What theory assumes</h4>
-          <p>
-            Idealized decision models assume a clear flow from information to action. They often imply that facts are complete, objectives are aligned, and analysis moves cleanly into execution. That is useful as a conceptual starting point, but it is not how most important enterprise decisions actually occur.
-          </p>
-        </div>
-        <div class="card soft">
-          <h4>What enterprises face</h4>
-          <p>
-            Real organizations experience information gaps, interpretation differences, coordination friction, and execution constraints. Decisions must be made anyway. AAIDIS is designed to preserve decision quality as much as possible in that environment rather than pretend the friction does not exist.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section id="architecture" class="panel section">
-      <div class="section-top">
-        <div>
-          <p class="eyebrow-section">Platform Architecture</p>
-          <h2 class="h2">A decision system from inputs to learning</h2>
-        </div>
-        <p class="section-copy">
-          AAIDIS is not a single model or dashboard. It is a modular platform that improves each major stage of the decision process, from the information set that informs a choice to the learning loop that improves the next one.
-        </p>
-      </div>
-      <div class="cards-2" style="margin-top:32px;">
-        <div class="card soft">
-          <div style="display:flex; align-items:center; gap:16px;">
-            <div class="number-badge">01</div>
-            <h4>Information Set Enrichment</h4>
+      </section>
+      <section class="panel-soft section">
+        <div class="section-top">
+          <div>
+            <p class="eyebrow-section">
+              Real-World Orientation
+            </p>
+            <h2 class="h2">
+              Built for messy, friction-filled decision-making
+            </h2>
           </div>
-          <p>
-            Bring together macroeconomic, market, company, operational, and multimodal signals so decisions begin with a broader, richer, and more relevant information base.
-          </p>
-        </div>
-
-        <div class="card soft">
-          <div style="display:flex; align-items:center; gap:16px;">
-            <div class="number-badge">02</div>
-            <h4>Information Processing</h4>
-          </div>
-          <p>
-            Reduce noise, maximize signal, detect meaningful patterns, and transform raw inputs into structured understanding that can support judgment rather than overwhelm it.
-          </p>
-        </div>
-
-        <div class="card soft">
-          <div style="display:flex; align-items:center; gap:16px;">
-            <div class="number-badge">03</div>
-            <h4>Cognitive Intelligence Layer</h4>
-          </div>
-          <p>
-            Apply forecasting, simulation, causal reasoning, trade-off analysis, and optimization to evaluate what different choices may mean before action is taken.
-          </p>
-        </div>
-
-        <div class="card soft">
-          <div style="display:flex; align-items:center; gap:16px;">
-            <div class="number-badge">04</div>
-            <h4>Decision Output and Learning</h4>
-          </div>
-          <p>
-            Deliver executive-ready decision guidance, track what happened, and improve future decisions through structured feedback and learning loops.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel-soft section">
-      <div class="split" style="grid-template-columns:.9fr 1.1fr; align-items:center;">
-        <div>
-          <p class="eyebrow-section">Core Capabilities</p>
-          <h2 class="h2 medium">What the platform is designed to do</h2>
           <p class="section-copy">
-            The platform supports both analytical depth and executive usability. It is built to help decision-makers interpret, compare, and act rather than simply consume outputs from disconnected tools.
+            Enterprise decisions are rarely made by one actor with complete information in a stable environment. A practical decision platform must work in a world of incomplete data, multiple stakeholders, conflicting incentives, and non-equilibrium conditions.
           </p>
         </div>
-        <div class="cards-2">
-          <div class="list-card">Multimodal information integration</div>
-          <div class="list-card">Signal extraction and noise reduction</div>
-          <div class="list-card">Forecasting across multiple horizons</div>
-          <div class="list-card">Scenario generation and stress testing</div>
-          <div class="list-card">Trade-off and reversibility evaluation</div>
-          <div class="list-card">Executive interpretation and action support</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="split section">
-      <div class="panel">
-        <p class="eyebrow-section">Why It Is Different</p>
-        <h2 class="h2 medium">Designed to improve each node of the decision process</h2>
-        <div class="simple-list">
-          <div class="simple-item">
-            <div class="title">Stronger inputs</div>
-            <p>AAIDIS improves the information set so decisions are informed by more relevant and better-processed signals.</p>
+        <div class="cards-2" style="margin-top:32px;">
+          <div class="card soft">
+            <h4>
+              What theory assumes
+            </h4>
+            <p>
+              Idealized decision models assume a clear flow from information to action. They often imply that facts are complete, objectives are aligned, and analysis moves cleanly into execution. That is useful as a conceptual starting point, but it is not how most important enterprise decisions actually occur.
+            </p>
           </div>
-          <div class="simple-item">
-            <div class="title">Better evaluation</div>
-            <p>It supports scenario comparison, uncertainty modeling, and trade-off assessment rather than relying on one narrow analytical view.</p>
-          </div>
-          <div class="simple-item">
-            <div class="title">Continuous improvement</div>
-            <p>It links decision outputs back to outcomes so the enterprise can learn, recalibrate, and strengthen future choices.</p>
+          <div class="card soft">
+            <h4>
+              What enterprises face
+            </h4>
+            <p>
+              Real organizations experience information gaps, interpretation differences, coordination friction, and execution constraints. Decisions must be made anyway. AAIDIS is designed to preserve decision quality as much as possible in that environment rather than pretend the friction does not exist.
+            </p>
           </div>
         </div>
-      </div>
-
-      <div class="blue-panel">
-        <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">Strategic Outcome</p>
-        <h2 class="h2 medium" style="color:white; margin-top:8px;">From information to stronger enterprise judgment</h2>
+      </section>
+      <section id="architecture" class="panel section">
+        <div class="section-top">
+          <div>
+            <p class="eyebrow-section">
+              Platform Architecture
+            </p>
+            <h2 class="h2">
+              A decision system from inputs to learning
+            </h2>
+          </div>
+          <p class="section-copy">
+            AAIDIS is not a single model or dashboard. It is a modular platform that improves each major stage of the decision process, from the information set that informs a choice to the learning loop that improves the next one.
+          </p>
+        </div>
+        <div class="cards-2" style="margin-top:32px;">
+          <div class="card soft">
+            <div style="display:flex; align-items:center; gap:16px;">
+              <div class="number-badge">
+                01
+              </div>
+              <h4>
+                Information Set Enrichment
+              </h4>
+            </div>
+            <p>
+              Bring together macroeconomic, market, company, operational, and multimodal signals so decisions begin with a broader, richer, and more relevant information base.
+            </p>
+          </div>
+          <div class="card soft">
+            <div style="display:flex; align-items:center; gap:16px;">
+              <div class="number-badge">
+                02
+              </div>
+              <h4>
+                Information Processing
+              </h4>
+            </div>
+            <p>
+              Reduce noise, maximize signal, detect meaningful patterns, and transform raw inputs into structured understanding that can support judgment rather than overwhelm it.
+            </p>
+          </div>
+          <div class="card soft">
+            <div style="display:flex; align-items:center; gap:16px;">
+              <div class="number-badge">
+                03
+              </div>
+              <h4>
+                Cognitive Intelligence Layer
+              </h4>
+            </div>
+            <p>
+              Apply forecasting, simulation, causal reasoning, trade-off analysis, and optimization to evaluate what different choices may mean before action is taken.
+            </p>
+          </div>
+          <div class="card soft">
+            <div style="display:flex; align-items:center; gap:16px;">
+              <div class="number-badge">
+                04
+              </div>
+              <h4>
+                Decision Output and Learning
+              </h4>
+            </div>
+            <p>
+              Deliver executive-ready decision guidance, track what happened, and improve future decisions through structured feedback and learning loops.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="panel-soft section">
+        <div class="split" style="grid-template-columns:.9fr 1.1fr; align-items:center;">
+          <div>
+            <p class="eyebrow-section">
+              Core Capabilities
+            </p>
+            <h2 class="h2 medium">
+              What the platform is designed to do
+            </h2>
+            <p class="section-copy">
+              The platform supports both analytical depth and executive usability. It is built to help decision-makers interpret, compare, and act rather than simply consume outputs from disconnected tools.
+            </p>
+          </div>
+          <div class="cards-2">
+            <div class="list-card">
+              Multimodal information integration
+            </div>
+            <div class="list-card">
+              Signal extraction and noise reduction
+            </div>
+            <div class="list-card">
+              Forecasting across multiple horizons
+            </div>
+            <div class="list-card">
+              Scenario generation and stress testing
+            </div>
+            <div class="list-card">
+              Trade-off and reversibility evaluation
+            </div>
+            <div class="list-card">
+              Executive interpretation and action support
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="split section">
+        <div class="panel">
+          <p class="eyebrow-section">
+            Why It Is Different
+          </p>
+          <h2 class="h2 medium">
+            Designed to improve each node of the decision process
+          </h2>
+          <div class="simple-list">
+            <div class="simple-item">
+              <div class="title">
+                Stronger inputs
+              </div>
+              <p>
+                AAIDIS improves the information set so decisions are informed by more relevant and better-processed signals.
+              </p>
+            </div>
+            <div class="simple-item">
+              <div class="title">
+                Better evaluation
+              </div>
+              <p>
+                It supports scenario comparison, uncertainty modeling, and trade-off assessment rather than relying on one narrow analytical view.
+              </p>
+            </div>
+            <div class="simple-item">
+              <div class="title">
+                Continuous improvement
+              </div>
+              <p>
+                It links decision outputs back to outcomes so the enterprise can learn, recalibrate, and strengthen future choices.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="blue-panel">
+          <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">
+            Strategic Outcome
+          </p>
+          <h2 class="h2 medium" style="color:white; margin-top:8px;">
+            From information to stronger enterprise judgment
+          </h2>
+          <p>
+            The objective is not simply to produce more analysis. It is to improve how leaders interpret information, compare alternatives, act under uncertainty, and learn from results over time. That is the difference between an analytical tool and a real decision platform.
+          </p>
+          <div class="blue-list">
+            <div class="blue-box">
+              <div class="title">
+                Richer information sets
+              </div>
+            </div>
+            <div class="blue-box">
+              <div class="title">
+                Clearer scenario evaluation
+              </div>
+            </div>
+            <div class="blue-box">
+              <div class="title">
+                Lower decision friction
+              </div>
+            </div>
+            <div class="blue-box">
+              <div class="title">
+                Better long-term outcomes
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="panel section">
+        <div class="section-top">
+          <div>
+            <p class="eyebrow-section">
+              How It Works
+            </p>
+            <h2 class="h2 medium">
+              A practical workflow for real decisions
+            </h2>
+          </div>
+          <p class="section-copy">
+            The platform is designed to move methodically from information enrichment to action support and learning.
+          </p>
+        </div>
+        <div class="cards-4" style="margin-top:32px;">
+          <div class="card soft">
+            <div class="eyebrow">
+              01
+            </div>
+            <h4 style="margin-top:8px;">
+              Build the information set
+            </h4>
+            <p>
+              Assemble the structured and unstructured inputs that matter for the decision environment.
+            </p>
+          </div>
+          <div class="card soft">
+            <div class="eyebrow">
+              02
+            </div>
+            <h4 style="margin-top:8px;">
+              Process for clarity
+            </h4>
+            <p>
+              Extract signal, reduce noise, and form usable understanding from what would otherwise remain fragmented inputs.
+            </p>
+          </div>
+          <div class="card soft">
+            <div class="eyebrow">
+              03
+            </div>
+            <h4 style="margin-top:8px;">
+              Evaluate and guide
+            </h4>
+            <p>
+              Compare scenarios, trade-offs, reversibility, and likely consequences before a choice is made.
+            </p>
+          </div>
+          <div class="card soft">
+            <div class="eyebrow">
+              04
+            </div>
+            <h4 style="margin-top:8px;">
+              Learn and improve
+            </h4>
+            <p>
+              Track outcomes, refine assumptions, and use structured feedback to improve the next cycle of decisions.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="cta">
+        <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">
+          Ready to Engage
+        </p>
+        <h2>
+          See how the Decision Platform fits your business
+        </h2>
         <p>
-          The objective is not simply to produce more analysis. It is to improve how leaders interpret information, compare alternatives, act under uncertainty, and learn from results over time. That is the difference between an analytical tool and a real decision platform.
+          Whether the need is enterprise forecasting, scenario planning, strategic risk management, or executive decision support, Consilium.ai can shape the platform around the decisions that matter most.
         </p>
-        <div class="blue-list">
-          <div class="blue-box"><div class="title">Richer information sets</div></div>
-          <div class="blue-box"><div class="title">Clearer scenario evaluation</div></div>
-          <div class="blue-box"><div class="title">Lower decision friction</div></div>
-          <div class="blue-box"><div class="title">Better long-term outcomes</div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="panel section">
-      <div class="section-top">
-        <div>
-          <p class="eyebrow-section">How It Works</p>
-          <h2 class="h2 medium">A practical workflow for real decisions</h2>
-        </div>
-        <p class="section-copy">
-          The platform is designed to move methodically from information enrichment to action support and learning.
-        </p>
-      </div>
-      <div class="cards-4" style="margin-top:32px;">
-        <div class="card soft">
-          <div class="eyebrow">01</div>
-          <h4 style="margin-top:8px;">Build the information set</h4>
-          <p>Assemble the structured and unstructured inputs that matter for the decision environment.</p>
-        </div>
-        <div class="card soft">
-          <div class="eyebrow">02</div>
-          <h4 style="margin-top:8px;">Process for clarity</h4>
-          <p>Extract signal, reduce noise, and form usable understanding from what would otherwise remain fragmented inputs.</p>
-        </div>
-        <div class="card soft">
-          <div class="eyebrow">03</div>
-          <h4 style="margin-top:8px;">Evaluate and guide</h4>
-          <p>Compare scenarios, trade-offs, reversibility, and likely consequences before a choice is made.</p>
-        </div>
-        <div class="card soft">
-          <div class="eyebrow">04</div>
-          <h4 style="margin-top:8px;">Learn and improve</h4>
-          <p>Track outcomes, refine assumptions, and use structured feedback to improve the next cycle of decisions.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="cta">
-      <p class="eyebrow-section" style="color:rgba(255,255,255,.7)">Ready to Engage</p>
-      <h2>See how the Decision Platform fits your business</h2>
-      <p>
-        Whether the need is enterprise forecasting, scenario planning, strategic risk management, or executive decision support, Consilium.ai can shape the platform around the decisions that matter most.
-      </p>
-      <div class="cta-actions">
-        <a class="btn" href="contact.html">Request a Demo</a>
+        <div class="cta-actions">
+          <a class="btn" href="contact.html">Request a Demo</a>
         <a class="btn-outline" href="contact.html">Discuss the Platform</a>
+        </div>
+      </section>
+      <div class="footer-space">
       </div>
-    </section>
-
-    <div class="footer-space"></div>
-  </div>
-      <footer class="site-footer">
-  <div class="footer-container">
-
-    <!-- Brand + Positioning -->
-    <div class="footer-section footer-brand">
-      <div class="footer-logo">Consilium.ai</div>
-      <p class="footer-tagline">
-        Decision intelligence systems for enterprise leaders.
-      </p>
-      <p class="footer-description">
-        Consilium.ai develops AAIDIS (Agentic AI Decision Intelligence Systems) to improve decision quality under uncertainty.
-      </p>
     </div>
-
-    <!-- Navigation -->
-    <div class="footer-section">
-      <div class="footer-heading">Platform</div>
-      <ul>
-        <li><a href="decision-platform.html">Decision Platform</a></li>
-        <li><a href="decision-intelligence.html">Decision Intelligence</a></li>
-        <li><a href="use-cases.html">Use Cases</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-section">
-      <div class="footer-heading">Insights</div>
-      <ul>
-        <li><a href="insights.html">Insights</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-section">
-      <div class="footer-heading">Company</div>
-      <ul>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-
-  </div>
-
-  <!-- Bottom Bar -->
-  <div class="footer-bottom">
-    <p>
-      © 2026 Consilium.ai. All rights reserved.
-    </p>
-    <p class="footer-legal">
-      AAIDIS™ (Agentic AI Decision Intelligence System) and all related concepts, frameworks, and materials are the intellectual property of Consilium.ai. 
+    <footer class="site-footer">
+      <div class="footer-container">
+        <!-- Brand + Positioning -->
+        <div class="footer-section footer-brand">
+          <div class="footer-logo">
+            Consilium.ai
+          </div>
+          <p class="footer-tagline">
+            Decision intelligence systems for enterprise leaders.
+          </p>
+          <p class="footer-description">
+            Consilium.ai develops AAIDIS (Agentic AI Decision Intelligence Systems) to improve decision quality under uncertainty.
+          </p>
+        </div>
+        <!-- Navigation -->
+        <div class="footer-section">
+          <div class="footer-heading">
+            Platform
+          </div>
+          <ul>
+            <li>
+              <a href="decision-platform.html">Decision Platform</a>
+            </li>
+            <li>
+              <a href="decision-intelligence.html">Decision Intelligence</a>
+            </li>
+            <li>
+              <a href="use-cases.html">Use Cases</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <div class="footer-heading">
+            Insights
+          </div>
+          <ul>
+            <li>
+              <a href="insights.html">Insights</a>
+            </li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <div class="footer-heading">
+            Company
+          </div>
+          <ul>
+            <li>
+              <a href="about.html">About</a>
+            </li>
+            <li>
+              <a href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <p>
+          © 2026 Consilium.ai. All rights reserved.
+        </p>
+        <p class="footer-legal">
+          AAIDIS™ (Agentic AI Decision Intelligence System) and all related concepts, frameworks, and materials are the intellectual property of Consilium.ai. 
       No part of this site may be reproduced, distributed, or used to develop derivative systems without prior written permission.
-    </p>
-  </div>
-</footer>
-</body>
+        </p>
+      </div>
+    </footer>
+    <script src="navigation.js" defer></script>
+  </body>
 </html>
