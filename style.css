@@ -1513,66 +1513,110 @@ img {
 }
 
 /* Portfolio navigation and AAIDIS secondary navigation */
+/* Products dropdown: desktop hover and accessible disclosure. */
 .portfolio-nav {
-  position:relative;
-  display:inline-flex;
-  align-items:center;
-  gap:3px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 0;
 }
 
 .portfolio-toggle {
-  font:inherit;
-  color:var(--slate);
-  background:transparent;
-  border:0;
-  cursor:pointer;
-  padding:6px;
-  line-height:1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 28px;
+  padding: 0;
+  color: var(--navy);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.portfolio-toggle svg {
+  width: 14px;
+  height: 14px;
 }
 
 .portfolio-menu {
-  display:none;
-  position:absolute;
-  top:100%;
-  left:0;
-  width:340px;
-  max-width:calc(100vw - 32px);
-  padding:10px;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:16px;
-  box-shadow:0 18px 45px rgba(22,55,102,.18);
-  z-index:1100;
-  max-height:65vh;
-  overflow:auto;
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 350px;
+  max-width: calc(100vw - 32px);
+  padding: 8px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 12px 36px rgba(22,55,102,.18);
+  z-index: 1100;
+  max-height: 60vh;
+  overflow: auto;
 }
 
 .portfolio-nav.is-open .portfolio-menu {
-  display:block;
+  display: block;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .portfolio-nav:hover:not(.is-dismissed) .portfolio-menu {
+    display: block;
+  }
 }
 
 .portfolio-menu a {
-  display:block;
-  padding:10px 12px;
-  border-radius:8px;
-  color:var(--navy);
-  line-height:1.35;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 7px;
+  color: var(--navy);
+  line-height: 1.4;
+  font-weight: 600;
 }
 
-.portfolio-menu a:hover,.portfolio-menu a:focus-visible {
-  background:#edf3f8;
+.portfolio-menu a:hover,
+.portfolio-menu a:focus-visible {
+  background: #edf3f8;
 }
 
-.portfolio-menu small {
-  display:block;
-  color:var(--slate);
-  font-size:12px;
-  margin-top:3px;
+.portfolio-menu .portfolio-acronym {
+  color: var(--teal);
+  font-size: 12px;
+  flex-shrink: 0;
 }
 
-.portfolio-menu a:last-child {
-  border-top:1px solid var(--line);
-  color:var(--blue);
+.portfolio-menu .portfolio-all {
+  border-top: 1px solid var(--line);
+  border-radius: 0 0 7px 7px;
+  color: var(--blue);
+  margin-top: 4px;
+}
+
+.portfolio-toggle:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+@media (max-width: 720px) {
+  .portfolio-nav {
+    position: static;
+  }
+
+  .nav {
+    position: relative;
+  }
+
+  .portfolio-menu {
+    top: 100%;
+    right: 0;
+    width: min(350px, calc(100vw - 60px));
+  }
 }
 
 .aaidis-nav {
@@ -1606,25 +1650,6 @@ img {
 
 .aaidis-nav a:not(.active):hover {
   background:#edf3f8;
-}
-
-@media(max-width:720px) {
-  .portfolio-nav {
-    position:static
-  }
-
-  .nav {
-    position:relative
-  }
-
-  .portfolio-menu {
-    left:0;
-    top:auto;
-    transform:translateY(100%);
-    bottom:0;
-    width:min(340px,calc(100vw - 60px));
-  }
-
 }
 
 /* Client brand assets */
